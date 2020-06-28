@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-06-21T17:45:14Z",
+  "id": "fp-c1-getting-started",
+  "duration": 55,
+  "title": "C1 Getting started with Scala",
+  "authors": "Antony Harfield",
+  "summary": "In this codelab, you will set up IntelliJ and write your first Scala program. At the end of the lab you will take a deep-dive into Scala code and explore Scala Worksheets.",
+  "source": "16F4zQe6bqZzeWzUHtJ4TGiv6k25wnAnfPykvESWmORE",
+  "theme": "functional-programming",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "Functional Programming"
+  ],
+  "tags": [
+    "web"
+  ],
+  "ga": "UA-50147748-15",
+  "url": "fp-c1-getting-started"
+}

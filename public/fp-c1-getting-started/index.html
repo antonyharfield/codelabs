@@ -1,0 +1,286 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>C1 Getting started with Scala</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid="UA-50147748-15"
+                  id="fp-c1-getting-started"
+                  title="C1 Getting started with Scala"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <iframe class="youtube-video" src="https://www.youtube.com/embed/9zCnXCEl9xY?rel=0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<aside class="warning"><p><strong>Note:</strong> This Codelab is exclusively for 254484 Functional Programming, an undergraduate course at the Department of Computer Science &amp; Information Technology, Faculty of Science, Naresuan University.</p>
+</aside>
+<h2 is-upgraded><strong>What you will do</strong></h2>
+<p>In this codelab, you&#39;re going to install an IDE for Scala development (IntelliJ) and write some simple Scala programs.</p>
+<h2 is-upgraded><strong>What you will learn</strong></h2>
+<ul>
+<li>How to install and setup JetBrains IntelliJ for Scala</li>
+<li>How to create a Scala project using IntelliJ and SBT</li>
+<li>How to write and run a basic class in Scala</li>
+<li>How to work with Scala Worksheets</li>
+</ul>
+<aside class="special"><p><strong>Acknowledgement:</strong> Thank you to Charles Allen for sharing the original content of his course 231374 Functional &amp; Concurrent Programming from which the following exercise is adapted.</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Set up your IDE" duration="15">
+        <p>There are many ways to start building Scala programs. One of the easiest is to use an IDE. IntelliJ is an IDE by JetBrains that supports Java, Kotlin, Scala and many other languages. We will be using IntelliJ throughout the course.</p>
+<h2 is-upgraded><strong>Installation</strong></h2>
+<p>We will install the <strong>IntelliJ IDEA Community Edition</strong>. It is free and open-source. It works on Windows, macOS and Linux. Start by downloading and installing IntelliJ IDEA.</p>
+<p><a href="https://www.jetbrains.com/idea/download/" target="_blank"><paper-button class="colored" raised><iron-icon icon="cloud_download"></iron-icon>Download IntelliJ IDEA </paper-button></a></p>
+<p class="image-container"><img style="width: 624.00px" src="img/12c548259b7e067a.png"></p>
+<p>Follow the instructions for installing IntelliJ IDEA Community Edition.</p>
+<h2 is-upgraded><strong>Setup IntelliJ</strong></h2>
+<p>On the first time you open IntelliJ, you will be prompted to set up the IDE. First choose your colour scheme: dark or light. Choose whichever you prefer!</p>
+<p class="image-container"><img style="width: 624.00px" src="img/219f3f38e7348f27.png"></p>
+<p>On the next step &#34;Launcher Script&#34;, press &#34;Next&#34;.</p>
+<p class="image-container"><img style="width: 624.00px" src="img/90c0e5c52cee41eb.png"></p>
+<p>In the &#34;Default plugins&#34; step, you can disable plugins that you do not need. Press <strong>Disable</strong> for &#34;Swing&#34;, &#34;Android&#34;, &#34;Other Tools&#34; and &#34;Plugin Development&#34; to save hard drive space.</p>
+<p class="image-container"><img style="width: 624.00px" src="img/da5d72b95861ada.png"></p>
+<p>Finally, the most important step is to <strong>Install</strong> the &#34;Scala&#34; plugin.</p>
+<p class="image-container"><img style="width: 624.00px" src="img/506127b6cb0368a7.png"></p>
+<p>At the end your IntelliJ is configured!</p>
+<p class="image-container"><img style="width: 370.67px" src="img/47b819ac520df390.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Create a Scala project" duration="5">
+        <p>From the IntelliJ welcome screen, select <strong>Create New Project</strong>.</p>
+<p class="image-container"><img style="width: 624.00px" src="img/b18601a1f3cba755.png"></p>
+<p>Then select <strong>Scala</strong> on the left, and <strong>sbt</strong> on the right, then <strong>Next</strong>.</p>
+<p class="image-container"><img style="width: 624.00px" src="img/2b949d5896961b7.png"></p>
+<p>Give your project a name (e.g. <strong>MakeSomeNoise</strong>). Select the highest version number for JDK, sbt and Scala.</p>
+<p>Press <strong>Finish</strong>.</p>
+<h3 is-upgraded><strong>Project syncing/build</strong></h3>
+<p>Wait for the project to finish building.</p>
+<p class="image-container"><img style="width: 624.00px" src="img/8632768e0f31d3dd.png"></p>
+<p>Look for the ✅.</p>
+<p class="image-container"><img style="width: 624.00px" src="img/a7fe68b7ac09f941.png"></p>
+<h3 is-upgraded><strong>Project Structure</strong></h3>
+<p class="image-container"><img style="width: 370.18px" src="img/e5119f21fde19b7f.png"></p>
+<p>Your new project will contain:</p>
+<ul>
+<li><code>.idea</code> (IntelliJ files)</li>
+<li><code>project</code> (plugins and additional settings for sbt)</li>
+<li><code>src</code> (source files) - <code>main/scala</code> <strong>← Add code here!</strong></li>
+<li><code>target</code> (generated files)</li>
+<li><code>build.sbt</code> (build definition file for sbt)</li>
+</ul>
+<p>If you open the main/scala directory then you will see there is <strong>no code in the project yet</strong>. Let&#39;s add some in the next step.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Hello World" duration="5">
+        <h2 is-upgraded><strong>1. Create the file</strong></h2>
+<p class="image-container"><img style="width: 624.00px" src="img/55f364e653b8d2ce.png"></p>
+<p>Right-click on <code>src/main/scala</code>,</p>
+<ul>
+<li><strong>New</strong></li>
+<li><strong>Scala Class</strong></li>
+</ul>
+<aside class="warning"><p>No <strong>Scala Class</strong>? Right-click on MakeSomeNoise and click on <strong>Add Framework Support...</strong>, select Scala and proceed. If you see <strong>Error: library is not specified</strong>, you can either click download button, or select the library path manually.</p>
+</aside>
+<p class="image-container"><img style="width: 382.09px" src="img/bfd258c344b89115.png"></p>
+<p>Create New Scala Class:</p>
+<ul>
+<li>Type <code>Hello</code></li>
+<li>Press down arrow to select<strong> Object</strong></li>
+<li>Press <strong>Enter</strong></li>
+</ul>
+<h2 is-upgraded><strong>2. Make a main function</strong></h2>
+<ul>
+<li>Type <code>main</code></li>
+<li>Press <strong>Enter</strong></li>
+</ul>
+<p class="image-container"><img style="width: 624.00px" src="img/11e7875e1bb4c335.png"></p>
+<p class="image-container"><img style="width: 89.68px" src="img/3d70d07ae3e45339.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/2ffc02d2600e010f.png"></p>
+<h2 is-upgraded><strong>3. Add a print</strong></h2>
+<p><code>Hello.scala</code></p>
+<pre><code>object Hello {
+  def main(args: Array[String]): Unit = {
+    println(&#34;Hello CSIT&#34;)
+  }
+}</code></pre>
+<h2 is-upgraded><strong>4. Run</strong></h2>
+<ul>
+<li>Click the play ► button (next to <code>object Hello</code>)</li>
+<li>Select <strong>Run ‘Hello&#39;</strong></li>
+</ul>
+<p class="image-container"><img style="width: 624.00px" src="img/2049bfce71aa9efe.png"></p>
+<p class="image-container"><img style="width: 89.68px" src="img/3d70d07ae3e45339.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/57634dd6c0adf246.png"></p>
+<h2 is-upgraded><strong>5. Remove main</strong></h2>
+<p>Let&#39;s refactor. This is easier...</p>
+<p><code>Hello.scala</code></p>
+<pre><code>object Hello extends App {
+  println(&#34;Hello CSIT&#34;)
+}</code></pre>
+<p><strong>Run ‘Hello&#39;</strong> again.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Scala Worksheets" duration="5">
+        <p>Another way to write Scala code is using Scala Worksheets.</p>
+<p>Right-click on <code>src/main/scala</code>,</p>
+<ul>
+<li><strong>New</strong></li>
+<li><strong>Scala Class</strong></li>
+</ul>
+<p class="image-container"><img style="width: 624.00px" src="img/336b1e81cdcfc858.png"></p>
+<p>Give your worksheet a name:</p>
+<p class="image-container"><img style="width: 316.33px" src="img/f0fae33c0a6df2f1.png"></p>
+<p>Write some code and press the play ► button (in the worksheet).</p>
+<p class="image-container"><img style="width: 508.68px" src="img/9e2d5b6e5e90e56.png"></p>
+<p class="image-container"><img style="width: 89.68px" src="img/3d70d07ae3e45339.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/5a51e5c195365239.png"></p>
+<p>Worksheets are great for experimenting and trying out code. Next we will explore some Scala syntax.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Deep-dive into Scala code" duration="15">
+        <p>Continue writing code in your <strong>DeepDive</strong> Scala Worksheet.</p>
+<h2 is-upgraded><strong>Values not variables</strong></h2>
+<ul>
+<li>Try to assign (change) the <code>department</code> value to <code>&#34;Maths&#34;</code></li>
+</ul>
+<p class="image-container"><img style="width: 400.89px" src="img/afd0209792844044.png"></p>
+<p><strong>You cannot! →</strong> Good 😀</p>
+<h2 is-upgraded><strong>Loops on lists</strong></h2>
+<p>In Java, we would have defined an array as <code>int[] numbers = {1, 1, 2, 3, 5, 8};</code> and used a for loop to print out the numbers. We can do the same in Scala using lists.</p>
+<p class="image-container"><img style="width: 446.97px" src="img/99740a33b24320c5.png"></p>
+<p>There are shorter and easier ways to loop a list in Scala. Try these:</p>
+<p><code>DeepDive.sc</code></p>
+<pre><code>val numbers = List(1, 2, 3, 4, 5, 6)
+
+for (n &lt;- numbers) {
+  println(n)
+}
+
+numbers.foreach(n =&gt; {
+  println(n)
+})
+
+numbers.foreach({
+  println(_)
+})
+
+numbers.foreach(println(_))
+
+numbers.foreach(println)</code></pre>
+<h2 is-upgraded><strong>Filtering a list</strong></h2>
+<p>Now we understand that <code>numbers.foreach(println)</code> will print a list of numbers. What do these statements do?</p>
+<p><code>DeepDive.sc</code></p>
+<pre><code>val numbers = List(1, 2, 3, 4, 5, 6)
+
+numbers
+  .filter(n =&gt; n &lt; 3)
+  .foreach(println)
+
+numbers
+  .filter(_ &gt; 2)
+  .foreach(println)
+
+numbers
+  .filter(_ % 2 == 0)
+  .foreach(println)
+
+numbers
+  .filter(_ % 2 == 0)
+  .filter(_ &gt; 2)
+  .foreach(println)</code></pre>
+<p>The <code>filter</code> function removes items from a list.</p>
+<h2 is-upgraded><strong>Modifying list items</strong></h2>
+<p>The <code>map</code> function modifies each item of a list.</p>
+<p><code>DeepDive.sc</code></p>
+<pre><code>val numbers = List(1, 2, 3, 4, 5, 6)
+
+numbers
+  .map(_ * 2)
+  .foreach(println)
+
+numbers
+  .map(n =&gt; n * n)
+  .foreach(println)
+
+(1 to 10)
+  .map(n =&gt; n * n)
+  .filter(_ &lt; 50)
+  .foreach(println)</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Intro challenge" duration="10">
+        <p>Create a new Scala Worksheet called <strong>Intro</strong>. Copy in the code below.</p>
+<p><code>Intro.sc</code></p>
+<pre><code>val fruits = List(
+  &#34;Apple&#34;,
+  &#34;Banana&#34;,
+  &#34;Cantaloupe&#34;,
+  &#34;Cherry&#34;,
+  &#34;Coconut&#34;,
+  &#34;Grape&#34;,
+  &#34;Guava&#34;,
+  &#34;Strawberry&#34;,
+  &#34;Lemon&#34;,
+  &#34;Lime&#34;
+)</code></pre>
+<p>Then write the code to print this:</p>
+<p class="image-container"><img style="width: 624.00px" src="img/230a231c3b45c19f.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Congratulations" duration="0">
+        <p>Congratulations, you&#39;ve successfully written a Scala program! </p>
+<h2 is-upgraded><strong>Further reading</strong></h2>
+<ul>
+<li><a href="https://docs.scala-lang.org/getting-started/intellij-track/building-a-scala-project-with-intellij-and-sbt.html" target="_blank">Building a Scala project with IntelliJ and sbt</a></li>
+<li><a href="https://medium.com/@wangyunlongau/scala-sbt-project-directory-structure-c254bb08623e" target="_blank">Scala sbt Project Directory Walkthrough</a></li>
+<li><a href="https://www.scala-sbt.org/1.x/docs/sbt-by-example.html" target="_blank">User manual and examples for sbt (simple build tool)</a></li>
+<li><a href="https://www.educative.io/blog/scala-101-a-beginners-guide" target="_blank">Scala 101: a beginner&#39;s guide to the scalable language</a></li>
+<li><a href="https://medium.com/scale360-engineering/introduction-to-scala-programming-%E0%B8%95%E0%B8%AD%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B9%88-1-3e7cef02e93" target="_blank">Introduction to Scala Programming ตอนที่ 1</a></li>
+<li><a href="https://hpc-thai.com/?p=150" target="_blank">Functional Programming #1 : ก้าวแรก</a></li>
+</ul>
+<h2 is-upgraded><strong></strong></h2>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>
