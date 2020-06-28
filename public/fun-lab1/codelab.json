@@ -1,9 +1,9 @@
 {
   "environment": "web",
   "format": "html",
-  "prefix": "https://ant-codelabs.web.app",
+  "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2020-06-28T05:30:28Z",
+  "updated": "2020-06-28T05:31:26Z",
   "id": "fun-lab1",
   "duration": 55,
   "title": "Lab 1: Working with Variables",
