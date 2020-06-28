@@ -1,0 +1,24 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://ant-codelabs.web.app",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-06-28T08:19:50Z",
+  "id": "fp-c2-listsfunctionsio",
+  "duration": 50,
+  "title": "C2 Lists, functions and I/O",
+  "authors": "Antony Harfield",
+  "summary": "In this codelab, you will learn the basic I/O functions of Scala and be able to apply functions to create and manipulate lists.",
+  "source": "1DnUkcXKTCupYZn3kl9H6YI0Fute49sl-VGLLO4wo3Y8",
+  "theme": "functional-programming",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "Functional Programming"
+  ],
+  "tags": [
+    "web"
+  ],
+  "url": "fp-c2-listsfunctionsio"
+}

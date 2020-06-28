@@ -1,0 +1,197 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>C2 Lists, functions and I/O</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://ant-codelabs.web.app/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="fp-c2-listsfunctionsio"
+                  title="C2 Lists, functions and I/O"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <iframe class="youtube-video" src="https://www.youtube.com/embed/UmOcqKTeeBg?rel=0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<aside class="warning"><p><strong>Note:</strong> This Codelab is part of Functional Programming, an undergraduate course at the Department of Computer Science &amp; Information Technology, Faculty of Science, Naresuan University.</p>
+</aside>
+<h2 is-upgraded><strong>What you will do</strong></h2>
+<p>In this codelab, you will be solving some simple I/O problems using println and readLine, while also using strings, lists, chars and integers.</p>
+<h2 is-upgraded><strong>What you will learn</strong></h2>
+<ul>
+<li>How to read in lines from the user</li>
+<li>How to split strings into lists</li>
+<li>How to use functions on lists and their elements</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Create a new Scala project" duration="5">
+        <h2 is-upgraded><strong>Getting started</strong></h2>
+<p>Follow the instructions from last week on creating a new project in IntelliJ named <strong>C2</strong>.</p>
+<p class="image-container"><img style="width: 624.00px" src="img/23c5a66e99a87f71.png"></p>
+<p>Wait for your project to load and sync, then check you can create a <strong>new Scala class</strong>.</p>
+<p class="image-container"><img style="width: 624.00px" src="img/60793de2a34bde7.png"></p>
+<p>If you need a reminder or have any problems then follow the instructions from last codelab:</p>
+<p><a href="https://ant-codelabs.web.app/fp-c1-getting-started/#2" target="_blank"><paper-button class="colored" raised>C1 Getting started with Scala</paper-button></a></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Read lines to lists" duration="10">
+        <h2 is-upgraded><strong>Task 1 Triple Lines</strong></h2>
+<p>Write a Scala program named &#34;Task1TripleLines&#34; that reads in a line of numbers and prints out the numbers tripled, one per line.</p>
+<p class="image-container"><img style="width: 353.00px" src="img/ad498bc2ce381b4b.png"></p>
+<p>Think about the steps:</p>
+<ul>
+<li>Read a line</li>
+<li>Split it by &#34; &#34;</li>
+<li>Triple (x3)</li>
+<li>Print</li>
+</ul>
+<h3 is-upgraded><strong>Examples</strong></h3>
+<table>
+<tr><td colspan="1" rowspan="1"><p><em>Input</em></p>
+</td><td colspan="1" rowspan="1"><p><em>Output</em></p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>3 10 2 7 33 1</p>
+</td><td colspan="1" rowspan="1"><p>9 30 6 21 99 3</p>
+</td></tr>
+</table>
+<h3 is-upgraded><strong>Template</strong></h3>
+<p class="image-container"><img style="width: 373.00px" src="img/e2fe4b06bb00775b.png"></p>
+<h2 is-upgraded><strong>Task 2 Triple String</strong></h2>
+<p>Write a Scala program named &#34;Task2TripleString&#34; that reads in a line of numbers and prints out the numbers tripled on one line.</p>
+<p class="image-container"><img style="width: 357.00px" src="img/1a8b03ea8d68c725.png"></p>
+<p>Steps:</p>
+<ul>
+<li>Read a line</li>
+<li>Split it by &#34; &#34;</li>
+<li>Triple (x3)</li>
+<li>Combine to string</li>
+<li>Print</li>
+</ul>
+<h3 is-upgraded><strong>Template</strong></h3>
+<p class="image-container"><img style="width: 385.00px" src="img/87f7f69d449d4a87.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Working with lists of strings" duration="10">
+        <h2 is-upgraded><strong>Task 3 Initials</strong></h2>
+<p>Write a Scala program to:</p>
+<ul>
+<li>Read a line</li>
+<li>Split into words</li>
+<li>Take 1st character</li>
+<li>Convert to uppercase</li>
+<li>Print on 1 line</li>
+</ul>
+<p class="image-container"><img style="width: 372.00px" src="img/d4e868fc8239436.png"></p>
+<p>Note: <code>toUpper</code> for chars and <code>toUpperCase</code> for strings.</p>
+<h2 is-upgraded><strong>Task 4 Remove Words</strong></h2>
+<p>Write a Scala program to:</p>
+<ul>
+<li>Read a line</li>
+<li>Split into words</li>
+<li>Filter out words beginning with &#34;a&#34;</li>
+<li>Print 1 word per line</li>
+</ul>
+<p class="image-container"><img style="width: 399.00px" src="img/cf5b04f4dfd5ca09.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Read multiple lines" duration="10">
+        <h2 is-upgraded><strong>Task 5 Read All Lines</strong></h2>
+<p>Read in multiple lines and print each one.</p>
+<p class="image-container"><img style="width: 358.00px" src="img/96c803e0b621b7fc.png"></p>
+<ul>
+<li>Change the import to <code>io.Source.stdin</code></li>
+<li>When you run, use Ctrl-D to end the input</li>
+</ul>
+<h3 is-upgraded><strong>Template</strong></h3>
+<p class="image-container"><img style="width: 386.00px" src="img/359f824c724e8742.png"></p>
+<h2 is-upgraded><strong>Task 6 Clean filenames</strong></h2>
+<p>Read in file names (one per line)</p>
+<ul>
+<li>Replace - and _ with space</li>
+<li>Sort by alphabetical order (need to use <code>.toList</code> before <code>.sort</code>)</li>
+<li>Print one per line</li>
+</ul>
+<p class="image-container"><img style="width: 395.00px" src="img/99bc0804ecdf2d33.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Working with characters" duration="10">
+        <p>A string is a list of characters, and therefore you can use a map on a string to apply a transform to each character. Try this example:</p>
+<p><code>CharsExample.scala</code></p>
+<pre><code>import scala.io.StdIn.readLine
+
+object CharsExample extends App {
+
+  readLine().map(_.toInt).map(_ + 1).foreach(println)
+
+}</code></pre>
+<h2 is-upgraded><strong>Task 7 Increment chars</strong></h2>
+<p>Read in a line, increment each char by 1.</p>
+<p class="image-container"><img style="width: 357.00px" src="img/28a7214bf7bbb731.png"></p>
+<ul>
+<li>Use <code>.toChar</code> to convert from int to char</li>
+</ul>
+<h2 is-upgraded><strong>Task 8 Encrypt</strong></h2>
+<p>Write a Scala program to encrypt messages.</p>
+<p class="image-container"><img style="width: 362.00px" src="img/974953378a416e28.png"></p>
+<ul>
+<li>Read in an encryption key (1-25</li>
+<li>Read in the message</li>
+<li>Increment each char by <code>key</code></li>
+<li>Convert back to char</li>
+<li>Print out the string</li>
+</ul>
+<h3 is-upgraded><strong>Template</strong></h3>
+<p class="image-container"><img style="width: 417.00px" src="img/2114908e144e76e0.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Submission" duration="5">
+        <p>Open Google Classroom and go to C2 Submission. Copy and paste the code for each completed task.</p>
+<p><a href="https://docs.google.com/forms/d/e/1FAIpQLSfrT3-Vh30-5x6tPrdjJ5CrgEo9sw2uDEutrGPZo8HH-Laf5Q/viewform" target="_blank"><paper-button class="colored" raised>C2 Submission</paper-button></a> </p>
+<h2 is-upgraded><strong>Further reading</strong></h2>
+<ul>
+<li><a href="https://docs.scala-lang.org/overviews/scala-book/command-line-io.html" target="_blank">Command-line IO - Scala Book</a></li>
+<li><a href="https://docs.scala-lang.org/overviews/scala-book/pure-functions.html" target="_blank">Pure Functions - Scala Book</a></li>
+</ul>
+<h2 is-upgraded><strong></strong></h2>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://ant-codelabs.web.app/codelab-elements/native-shim.js"></script>
+  <script src="https://ant-codelabs.web.app/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://ant-codelabs.web.app/codelab-elements/prettify.js"></script>
+  <script src="https://ant-codelabs.web.app/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>
