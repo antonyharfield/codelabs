@@ -1,7 +1,7 @@
 {
   "environment": "web",
   "format": "html",
-  "prefix": "https://storage.googleapis.com",
+  "prefix": "https://ant-codelabs.web.app",
   "mainga": "UA-49880327-14",
   "updated": "2020-06-21T17:45:14Z",
   "id": "fp-c1-getting-started",
