@@ -1,0 +1,24 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-06-28T03:34:35Z",
+  "id": "fun-lab1",
+  "duration": 0,
+  "title": "Lab 1: Working with Variables",
+  "authors": "Antony Harfield",
+  "summary": "กระบวนการคิดเชิงการพัฒนาโปรแกรม และการแสดงผลทางหน้าจอ",
+  "source": "1CqwPqNnNe_X3s7J5VFTPmQOY5ivbPvBi2Mcsy8j76tw",
+  "theme": "fundamentals-of-programming",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "Fundamentals of Programming"
+  ],
+  "tags": [
+    "web"
+  ],
+  "url": "fun-lab1"
+}

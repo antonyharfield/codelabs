@@ -1,0 +1,196 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Lab 1: Working with Variables</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="fun-lab1"
+                  title="Lab 1: Working with Variables"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <aside class="warning"><p><strong>Note:</strong> This Codelab is part of 254271 Fundamentals of Programming, an undergraduate course at the Department of Computer Science &amp; Information Technology, Faculty of Science, Naresuan University.</p>
+</aside>
+<h2 is-upgraded>เรื่อง</h2>
+<p>กระบวนการคิดเชิงการพัฒนาโปรแกรม และการแสดงผลทางหน้าจอ</p>
+<h2 is-upgraded>วัตถุประสงค์</h2>
+<p>เพื่อฝึกฝนกระบวนการคิดสําหรับการพัฒนาโปรแกรม ใช้คําสั่งสําหรับการแสดงผลทางหน้าจอ และใช้คําสั่งสําหรับการแสดงผลทางหน้าจอด้วยภาษา Java</p>
+<h2 is-upgraded>หัวข้อ</h2>
+<ul>
+<li>ฝึกกระบวนการคิดในการพัฒนาโปรแกรม โดยอาศัยตัวแปร และ ตัวดําเนินการทางคณิตศาสตร์ </li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Testing and debugging" duration="0">
+        <p>ทดสอบทุกงาน</p>
+<ul>
+<li><code>javac YourClassName.java</code></li>
+<li><code>java YourClassName</code></li>
+</ul>
+<p class="image-container"><img style="width: 368.26px" src="img/edfb3638d4df46f1.png"></p>
+<h2 is-upgraded>Task 1</h2>
+<p>แก้ไขข้อผิดพลาดในโปรแกรมนี้ เพื่อที่จะพิมพ์ &#34;We love Java&#34;</p>
+<h3 is-upgraded>Task1.java</h3>
+<pre><code>class Task1 {
+
+    public static viod hello(String[] args) {
+
+        System.println(&#34;We love Java&#34;)
+    
+}</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Printing to the Command Line" duration="0">
+        <h2 is-upgraded>Task 2</h2>
+<p>จงเขียนโปรแกรมแสดง รหัสนิสิต ชื่อ-นามสกุล สาขาวิชา และ ที่อยู่ โดยให้แสดงผลแยกคนละละบรรทัด  ตัวอย่างเช่น</p>
+<pre>63312135
+Matee Muangdee
+Applied Physics
+9/12 Moo 2, Thapho, Muang, Phitsanulok 65000</pre>
+<h2 is-upgraded>Task 3</h2>
+<p>ให้นิสิตเขียนโปรแกรมโดยตั้งชื่อไฟล์เป็น Task3.java พร้อมเขียนโปรแกรมแสดงผลบนจอตามภาพ</p>
+<pre>+-+-+-+
+| | | |
++-+-+-+
+| | | |
++-+-+-+
+| | | |
++-+-+-+</pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Printing variables" duration="0">
+        <h2 is-upgraded>Task 4</h2>
+<p>ทำโปรแกรมให้เสร็จสมบูรณ์เพื่อให้แสดงผล...</p>
+<p>Alvin has 1 brother and 3 sisters.</p>
+<p>มันจะต้องใช้ตัวแปร!</p>
+<h3 is-upgraded>Task4.java</h3>
+<pre><code>class Task4 {
+
+    public static void main(String[] args) {
+        String name = &#34;Alvin&#34;;
+        int brothers = 1;
+        int sisters = 3;
+        
+        ???
+    }
+}</code></pre>
+<h2 is-upgraded>Task 5</h2>
+<p>ให้นิสิตเขียนโปรแกรมโดยตั้งชื่อไฟล์เป็น Task4.java พร้อมเขียนโปรแกรมแสดงผลบนจอตามภาพ</p>
+<p>บรรทัด<strong>แรก</strong>แสดงข้อความ &#34;7 + 3 = 10&#34;</p>
+<p>บรรทัด<strong>สอง</strong>แสดงข้อความ &#34;7.3 + 6.3 = 13.6&#34;</p>
+<h3 is-upgraded>Task5.java</h3>
+<pre><code>class Task5 {
+
+    public static void main(String[] args) {
+        int a = 7;
+        int b = 3;
+        float c = 6.4f;
+        float d = 5.2f;
+        
+        ???
+    }
+}</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Variable types" duration="0">
+        <h2 is-upgraded>Task 6</h2>
+<p>ให้นิสิตกำหนดชนิดข้อมูล (data type) ในภาษา Java ให้เหมาะสมสำหรับการใช้แทนข้อมูลดังต่อไปนี้</p>
+<ol type="1" start="1">
+<li>จำนวนคนบนรถโดยสารประจำทาง                         ______________<br></li>
+<li>น้ำหนักของอาหารที่ซื้อขายกันในตลาด                        ______________</li>
+<li>เกรดของนิสิต ตัวอย่างเช่น เกรด A, B, C, D, F                ______________<br></li>
+<li>เลขบัตรประชาชน                                        ______________</li>
+</ol>
+<h2 is-upgraded>Task 7</h2>
+<p>ให้นิสิตประกาศชื่อตัวแปรให้สอดคล้องกับข้อกำหนดต่อไปนี้ เขียนเป็นภาษา Java</p>
+<ol type="1" start="1">
+<li>จัดเก็บอายุคน                                        int age;</li>
+<li>จัดเก็บชื่อ                                        __________________________</li>
+<li>เงินเดือน                                        __________________________</li>
+<li>น้ำหนัก                                                __________________________</li>
+<li>จำนวนวันที่ทำงานต่อเดือน                        __________________________</li>
+<li>จำนวนวันที่ขาดต่อเดือน                                __________________________</li>
+<li>ชื่อแผนกที่ทำงาน เช่น IT, Manager, Engineer        __________________________</li>
+</ol>
+<h2 is-upgraded>Task 8</h2>
+<p>พิจารณา source code ต่อไปนี้ว่ามีข้อผิดพลาด (error) หรือไม่ ถ้ามี error ผิดตรงบรรทัดไหนและแก้ไขอย่างไรให้ถูกต้อง</p>
+<p><code>int x = 75.5;</code></p>
+<p><code>double y = 75;</code></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Variables for calculations" duration="0">
+        <h2 is-upgraded>Task 9</h2>
+<p>ให้นิสิตค้นหาและทำการขีดคร่อมชุดคำสั่งที่เขียนไม่ถูกต้อง โดยให้เขียนใหม่ทั้งหมดลงด้านล่างต่อไปนี้</p>
+<h3 is-upgraded>Task9.java</h3>
+<pre><code>class Task9 {
+
+    public static void main(String[] args) {
+        float pi = 3.141;
+        float radius = 5.0;
+        System.out.____________(&#34;Radius is &#34; + radius);
+        float area = ____________ * radius * radius;
+        System.out.println(&#34;Area is &#34; + _____________);
+        float perimeter = 2 * ____________ * ___________;
+        System.out.println(&#34;Perimeter is &#34; + perimeter);
+    }
+}</code></pre>
+<h2 is-upgraded>Task 10</h2>
+<p>ให้นิสิตเขียนโปรแกรมต่อไปนี้ให้สมบูรณ์ เพื่อคำนวณหาค่าของ <img src="img/976e0d87090f06a4.png"> สมการ <img src="img/ffa5aff7c4960832.png"> โดยกำหนด<br>ให้ x = 0.25</p>
+<h3 is-upgraded>Task10.java</h3>
+<pre><code>class Task10 {
+
+    public static void main(String[] args) {
+        double x = 0.25;
+        double y = _________________________________;
+        System.out.println(&#34;Value of y is &#34; + y);
+    }
+}</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Submission" duration="0">
+        <p>กรุณาส่งคำตอบของคุณ</p>
+<p><a href="https://docs.google.com/forms/d/e/1FAIpQLSeakU4r9zyK0cky5iB2ZjabHIpguPDvl-U2IaJuYiMHJqETsg/viewform?usp=sf_link" target="_blank"><paper-button class="colored" raised>Submission form</paper-button></a></p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>
