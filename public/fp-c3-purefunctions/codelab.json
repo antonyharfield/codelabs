@@ -1,0 +1,24 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-07-13T11:33:58Z",
+  "id": "fp-c3-purefunctions",
+  "duration": 75,
+  "title": "C3 Pure functions",
+  "authors": "Antony Harfield",
+  "summary": "In this codelab, you will define and call your own pure functions using the different syntaxes available in Scala.",
+  "source": "19TU-tPWea3jmvz3gEVVmZXJ0Uc2KxDwrc4_Wq7VjE2E",
+  "theme": "functional-programming",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "Functional Programming"
+  ],
+  "tags": [
+    "web"
+  ],
+  "url": "fp-c3-purefunctions"
+}

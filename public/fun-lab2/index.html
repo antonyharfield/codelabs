@@ -1,0 +1,204 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Lab 2: Handling Input</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="fun-lab2"
+                  title="Lab 2: Handling Input"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <iframe class="youtube-video" src="https://www.youtube.com/embed/skbmpOLUdl8?rel=0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<aside class="warning"><p><strong>Note:</strong> This Codelab is part of 254271 Fundamentals of Programming, an undergraduate course at the Department of Computer Science &amp; Information Technology, Faculty of Science, Naresuan University.</p>
+</aside>
+<h2 is-upgraded>เรื่อง</h2>
+<p>กระบวนการคิดเพื่อการเขียนโปรแกรมและการรับค่าผ่านทางคีย์บอร์ด</p>
+<h2 is-upgraded>วัตถุประสงค์</h2>
+<p>เพื่อฝึกฝนกระบวนการคิดในการพัฒนาโปรแกรม และการรับค่าผ่านทางคีย์บอร์ด</p>
+<h2 is-upgraded>หัวข้อ</h2>
+<ul>
+<li>ทบทวนการประกาศร่วมกับกำหนดค่าตัวแปร และการใช้งานตัวดำเนิน </li>
+<li>ฝึกการใช้งานการแสดงผลทางจอภาพ และการรับค่าผ่านทางคีย์บอร์ด</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Getting input from the user" duration="5">
+        <p>กรณีต้องการรับค่าเป็น</p>
+<ul>
+<li>String                        <code>String s = sc.nextLine();</code> </li>
+<li>int                        <code>int x = sc.nextInt();</code> </li>
+<li>float                        <code>float y = sc.nextFloat();</code> </li>
+<li>double                        <code>double z = sc.nextDouble();</code> </li>
+</ul>
+<p>ก่อนรับค่า</p>
+<ol type="1" start="1">
+<li>ที่ด้านบนของไฟล์        <code>import java.util.Scanner;</code></li>
+<li>ภายใน main                <code>Scanner sc = new Scanner(System.in);</code></li>
+</ol>
+<p>จุดสำคัญ</p>
+<ul>
+<li>สร้างเพียง 1 <code>Scanner</code> ในโปรแกรม</li>
+<li>ตัวแปร <code>sc</code> สามารถเปลี่ยนชื่อได้</li>
+<li>อย่าผสม <code>nextLine</code> กับ <code>nextInt/Float/Double</code> ในโปรแกรมเดียวกัน</li>
+</ul>
+<h3 is-upgraded>HelloName.java</h3>
+<pre><code>import java.util.Scanner;
+
+class HelloName {
+
+    public static void main(String[] args) {
+
+        System.out.print(&#34;What is your name? &#34;);
+
+        Scanner sc = new Scanner(System.in);
+        String name = sc.nextLine();
+
+        System.out.println(&#34;Hello &#34; + name);
+    }    
+}</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Text input" duration="15">
+        <p>กรณีต้องการรับค่าเป็น String        </p>
+<p><code>String s = sc.nextLine();</code> </p>
+<h2 is-upgraded>Task 1</h2>
+<p>แก้ไข HelloName.java เพื่อที่จะพิมพ์ &#34;Hello [name] [name] [name]&#34; ทำซ้ำชื่อ 3 ครั้ง</p>
+<pre>&gt; java Task1
+What is your name? George
+Hello George George George</pre>
+<h2 is-upgraded>Task 2</h2>
+<p>แก้ไข HelloName.java เพื่อที่จะพิมพ์ &#34;There are [x] letters in your name&#34;</p>
+<pre>&gt; java Task2
+What is your name? George
+There are 6 letters in your name</pre>
+<p>Hint: use <code>name.length()</code> to get the number of characters in a string.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Numerical input" duration="15">
+        <p>กรณีต้องการรับค่าเป็น int        </p>
+<p><code>int x = sc.nextInt();</code> </p>
+<h2 is-upgraded>Task 3</h2>
+<p>แก้ไข Task3.java เพื่อพิมพ์ผลลัพธ์การคูณด้วย 2 ตามตัวอย่าง</p>
+<pre>&gt; java Task3
+Enter a number: 47
+47 x 2 = 94</pre>
+<h3 is-upgraded>Task3.java</h3>
+<pre><code>import java.util.Scanner;
+
+class Task3 {
+
+    public static void main(String[] args) {
+        System.out.print(&#34;Enter a number: &#34;);
+
+        Scanner scanner = new Scanner(System.in);
+        int number = scanner.nextInt();
+
+        ???
+    }
+}</code></pre>
+<h2 is-upgraded>Task 4</h2>
+<p>เขียนโปรแกรมรับค่าปี พ.ศ. จากผู้ใช้งานผ่านทางคีย์บอร์ดและดำเนินการแปลงไปเป็นระบบปี ค.ศ. จากนั้นให้แสดงผลลัพธ์ทางจอภาพ (พ.ศ. = ค.ศ. + 543) โดยตั้งชื่อไฟล์เป็น Task4.java</p>
+<pre>&gt; java Task4
+Enter the year: 2020
+In Thailand the year is 2563</pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Floating-point input" duration="15">
+        <p>กรณีต้องการรับค่าเป็น float/double        </p>
+<p><code>float a = sc.nextFloat();</code> </p>
+<p><code>double b = sc.nextDouble();</code> </p>
+<h2 is-upgraded>Task 5</h2>
+<p>สิ่งที่พิมพ์ออกมาจากโปรแกรมนี้คืออะไร</p>
+<h3 is-upgraded>Task5.java</h3>
+<pre><code>import java.util.Scanner;
+
+class Task5 {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        float x = scanner.nextFloat();
+        float y = scanner.nextFloat();
+        float z = (x * 3) – y;
+        System.out.println(z);
+    }
+}</code></pre>
+<ol type="1" start="1">
+<li>Input:                <code>1.25 0.75</code>                         Output:                ______________<br></li>
+<li>Input:                <code>3.75 0.5</code>                         Output:                ______________<br></li>
+<li>Input:                <code>5.1 2</code>                         Output:                ______________<br></li>
+<li>Input:                <code>2.5 1.5</code>                         Output:                ______________</li>
+</ol>
+<h2 is-upgraded>Task 6</h2>
+<p>เขียนโปรแกรมคำนวณค่าน้ำมันต้องชำระจากปริมาณน้ำมันที่ผู้ใช้เติมผ่านทางคีย์บอร์ด (หน่วยเป็นลิตร) และแสดงผลออกทางจอภาพ โดยกำหนดให้ราคาน้ำต่อลิตรเท่ากับ 32.5 บาท</p>
+<pre>&gt; java Task6
+Number of litres: 15.0
+Total price: 487.5 baht</pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Practice problems" duration="25">
+        <h2 is-upgraded>Task 7</h2>
+<p>เขียนโปรแกรมแปลงสกุลเงินจาก &#34;บาท&#34; ไปสู่สกุลเงิน &#34;เยน&#34; และแสดงผลทางจอภาพ โดยกำหนดให้อัตราแลกเปลี่ยนเท่ากับ 3.4 และรับค่าเงินบาทผ่านทางคีย์บอร์ด (ใช้ double)</p>
+<h2 is-upgraded>Task 8</h2>
+<p>นิสิตได้รับมอบหมายให้ทำงานรวมกันเป็นกลุ่มโดยจำนวนสมาชิกภายในกลุ่ม เช่น นิสิตในห้องเรียนมีทั้งหมด 50 คน กำหนดให้จัดกลุ่มกลุ่มละ 3 คน ดังนั้นจะมีจำนวนกลุ่มทั้งหมด 16 กลุ่ม และมีนิสิตเหลือ 2 คนที่ไม่มีกลุ่ม โปรแกรมต้องแสดงผลลัพธ์จำนวนกลุ่มทั้งหมด และจำนวนนิสิตที่ไม่มีกลุ่ม</p>
+<pre>&gt; java Task8
+Number of students in the class: 55
+Size of the groups: 4
+Number of groups: 13
+Students remaining without a group: 3</pre>
+<h2 is-upgraded>Task 9</h2>
+<p>เขียนโปรแกรมรับค่า 3 ค่า จากคีย์บอร์ด แล้วหาค่าของผลรวมและค่าเฉลี่ย</p>
+<pre>&gt; java Task9
+Number 1 is: 5
+Number 2 is: 8.5
+Number 3 is: 12
+Sum value is: 25.5
+Average value is: 8.5</pre>
+<h2 is-upgraded>Task 10</h2>
+<p>เขียนโปรแกรมแปลงหน่วยจาก ชั่วโมงและนาที ให้เป็นวินาทีเพื่อแสดงผลทางจอภาพ โดยกำหนดให้รับจำนวนชั่วโมงและนาทีผ่านทางคีย์บอร์ด</p>
+<pre>&gt; java Task10
+Hours: 2
+Minutes: 42
+Total number of seconds: 9720</pre>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>

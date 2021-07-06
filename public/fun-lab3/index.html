@@ -1,0 +1,248 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Lab 3: Conditionals</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="fun-lab3"
+                  title="Lab 3: Conditionals"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <iframe class="youtube-video" src="https://www.youtube.com/embed/YMtskcfkC0E?rel=0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<aside class="warning"><p><strong>Note:</strong> This Codelab is part of 254271 Fundamentals of Programming, an undergraduate course at the Department of Computer Science &amp; Information Technology, Faculty of Science, Naresuan University.</p>
+</aside>
+<h2 is-upgraded>เรื่อง</h2>
+<p>กระบวนการคิดเพื่อการเขียนโปรแกรมแบบโครงสร้างการตัดสินใจ</p>
+<h2 is-upgraded>วัตถุประสงค์</h2>
+<p>เพื่อฝึกฝนกระบวนการคิดในการพัฒนาโปรแกรมแบบโครงสร้างการตัดสินใจด้วยภาษาจาวา</p>
+<h2 is-upgraded>หัวข้อ</h2>
+<ul>
+<li>ฝึกการใช้คำสั่ง if-else</li>
+<li>ฝึกการเขียนเงื่อนไขย่อย และการเชื่อมเงื่อนไขย่อย</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Warm up" duration="10">
+        <p>โบนัสถ้าคุณสามารถตอบภารกิจที่ 1 ได้โดยไม่ต้องใช้คอมพิวเตอร์</p>
+<h2 is-upgraded>Task 1</h2>
+<p>ให้หาผลลัพธ์ของโปรแกรมต่อไปนี้</p>
+<pre><code>import java.util.Scanner;
+
+class Task1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print(&#34;Enter a number: &#34;);
+        int x = sc.nextInt();
+        if (x &gt; 10) {
+            System.out.println(&#34;Green&#34;);
+        }
+        System.out.println(&#34;Red&#34;);
+        if (x &lt; 5) {
+            System.out.println(&#34;Yellow&#34;);
+            System.out.println(&#34;Blue&#34;);
+        }
+    }
+}</code></pre>
+<ol type="1" start="1">
+<li>ถ้า user ใส่ค่าเท่ากับ 20  </li>
+<li>ถ้า user ใส่ค่าเท่ากับ 10  </li>
+<li>ถ้า user ใส่ค่าเท่ากับ 0 </li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Using if" duration="15">
+        <h2 is-upgraded>Task 2</h2>
+<p>ทำโปรแกรมให้สมบูรณ์ ถ้าหากผู้ใช้ป้อนหมายเลขคู่ ให้แปลงเป็นหมายเลขคี่จำนวนถัดไป</p>
+<pre><code>import java.util.Scanner;
+
+class Task2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print(&#34;Enter an odd number: &#34;);
+        int num = sc.nextInt();
+        if (        ???         ) {
+            num = num + 1;
+        }
+        System.out.println(&#34;Your odd number is &#34; + num);
+    }
+}</code></pre>
+<p>ตัวอย่าง</p>
+<pre>&gt; java Task2
+Enter an odd number: 7
+Your odd number is 7
+
+&gt; java Task2
+Enter an odd number: 12
+Your odd number is 13
+
+&gt; java Task2
+Enter an odd number: 21
+Your odd number is 21</pre>
+<p>คำแนะนำ: ใช้ % เพื่อคำนวณส่วนที่เหลือของการหารด้วย 2</p>
+<h2 is-upgraded>Task 3</h2>
+<p>เขียนโปรแกรมที่ขอให้ผู้ใช้ป้อน int ระหว่าง 1 ถึง 5 หากผู้ใช้ป้อนหมายเลขที่มีจำนวนสูงกว่า 5 ให้เปลี่ยนค่าเป็น 5 หากจำนวนน้อยกว่า 1 ให้เปลี่ยนค่าเป็น 1</p>
+<p>ตัวอย่าง</p>
+<pre>&gt; java Task3
+Enter a number: 4
+4
+
+&gt; java Task3
+Enter a number: 7
+5</pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Using if-else" duration="15">
+        <h2 is-upgraded>Task 4</h2>
+<p>เขียนโปรแกรมรับค่าผ่านคีย์บอร์ดจำนวน 2 ค่า เพื่อคำนวณหาค่าผลรวม ถ้าผลรวมมีค่าเป็นเลขคู่ ให้แสดงออกทางหน้าจอว่า &#34;Even number&#34; แต่ถ้าผลรวมเป็นเลขคี่ให้แสดงออกทางหน้าจอว่า &#34;Odd number&#34;</p>
+<p>ตัวอย่าง</p>
+<pre>&gt; java Task4
+Enter a number: 4
+Even number
+
+&gt; java Task4
+Enter a number: 7
+Odd number</pre>
+<h2 is-upgraded>Task 5</h2>
+<p>เขียนโปรแกรมเพื่อหาค่าของ c จากสมการที่ 1 เมื่อค่าของตัวแปร a มากกว่าค่าของตัวแปร b และหาค่า d เมื่อค่าของตัวแปร a น้อยกว่าค่าของตัวแปร b จากสมการที่ 2 โดยกำหนดให้ค่าตัวแปร a และ b ต้องรับผ่านคีย์บอร์ด</p>
+<p class="image-container"><img style="width: 159.93px" src="img/49202f1a4b3e6a99.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Inspecting strings" duration="25">
+        <p>สามารถเปรียบเทียบตัวเลขได้โดยใช้ ==, !=, &lt;=, &gt;=, &lt;, &gt; แต่การเปรียบเทียบ String ใช้หลายวิธี</p>
+<ul>
+<li>Equality:<br><code>&#34;Hello&#34;.equals(&#34;Hello&#34;)  // true<br>&#34;HELLO&#34;.equals(&#34;Hello&#34;)  // false</code></li>
+<li>Equality (any case): <br><code>&#34;HELLO&#34;.equalsIgnoreCase(&#34;hello&#34;)    // true<br>&#34;Goodbye&#34;.equalsIgnoreCase(&#34;Hello&#34;)  // false</code></li>
+<li>Starts with or ends with:<br><code>&#34;Goodbye&#34;.startsWith(&#34;Good&#34;)  // true<br>&#34;Hello&#34;.endsWith(&#34;lo&#34;)        // true</code></li>
+<li>Length:<br><code>&#34;Goodbye&#34;.length() == &#34;Good&#34;.length()  // false (7 == 4)<br>&#34;Good&#34;.length() == &#34;Alex&#34;.length()     // true (4 == 4)</code></li>
+<li>Characters (count from 0):<br><code>&#34;Alex&#34;.charAt(3) == &#39;x&#39;  // true<br>&#34;Alex&#34;.charAt(0) == &#39;a&#39;  // false (&#39;A&#39; == &#39;a&#39;)</code></li>
+</ul>
+<h2 is-upgraded>Task 6</h2>
+<p>เขียนโปรแกรมที่พิมพ์ &#34;Fine, thank you&#34; เมื่อผู้ใช้ป้อน &#34;How are you?&#34; </p>
+<pre><code>import java.util.Scanner;
+
+class Task6 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print(&#34;Say something: &#34;);
+        String line = sc.nextLine();
+        if (        ???         ) {
+            System.out.println(&#34;Fine, thank you&#34;);
+        } else {
+            System.out.println(&#34;I don&#39;t understand that&#34;);
+        }
+    }
+}</code></pre>
+<p>ตัวอย่าง</p>
+<pre>&gt; java Task6
+Say something: How are you?
+Fine, thank you
+
+&gt; java Task6
+Say something: HOW ARE YOU?
+Fine, thank you
+
+&gt; java Task6
+Say something: How&#39;s it going?
+I don&#39;t understand that</pre>
+<h2 is-upgraded>Task 7</h2>
+<p>เขียนโปรแกรมที่ขอให้ผู้ใช้ป้อน 2 ชื่อ แล้ว พิมพ์ชื่อที่สั้นที่สุด</p>
+<pre>&gt; java Task7
+Player 1: Max
+Player 2: Alex
+Max is the shortest name
+
+&gt; java Task7
+Player 1: Lewis
+Player 2: Valtteri
+Lewis is the shortest name</pre>
+<p>หากชื่อมีความยาวเท่ากันให้เลือกชื่อที่ป้อนก่อน</p>
+<h2 is-upgraded>Task 8</h2>
+<p>เขียนโปรแกรมที่ขอให้ผู้ใช้ป้อน 2 ชื่อแล้วเปรียบเทียบตัวอักษรตัวแรกของชื่อ หากเหมือนกันให้พิมพ์ &#34;The names both start with [letter]&#34;</p>
+<pre>&gt; java Task8
+Player 1: Alex
+Player 2: George
+The names start with A and G
+
+&gt; java Task8
+Player 1: Lewis
+Player 2: Lando
+The names both start with L</pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Going for a walk" duration="10">
+        <p class="image-container"><img style="width: 409.33px" src="img/16e4f83710c2d2f.png"></p>
+<h2 is-upgraded>Task 9</h2>
+<p>เขียนโปรแกรมที่แสดงผลสิ่งที่เห็นขณะเดิน โดยผู้ใช้สามารถเลือกทิศทางที่ต้องการ ด้วยการพิมพ์ A หรือ B</p>
+<p>คุณสามารถสันนิษฐานได้ว่าผู้ใช้ป้อนข้อมูลที่ถูกต้องเท่านั้น</p>
+<pre>&gt; java Task9
+Started walk
+A or B? A
+You walked past the forest
+A or B? B
+You walked past the monkey
+Finished walk
+
+&gt; java Task9
+Started walk
+A or B? B
+You walked past the house
+You walked past the lake
+Finished walk</pre>
+<p>คำแนะนำ: สามารถมี if-else ภายใน if-else อื่นได้</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="What next?" duration="0">
+        <h2 is-upgraded>Further reading (English)</h2>
+<ul>
+<li>programiz.com <a href="https://www.programiz.com/java-programming/if-else-statement" target="_blank">https://www.programiz.com/java-programming/if-else-statement</a> </li>
+</ul>
+<h2 is-upgraded>Further reading (ภาษาไทย)</h2>
+<ul>
+<li>marcuscode.com <a href="http://marcuscode.com/lang/java/selection-statements" target="_blank">http://marcuscode.com/lang/java/selection-statements</a> </li>
+<li>ครูไอที <a href="https://kru-it.com/java-programming/if-statement-in-java/" target="_blank">https://kru-it.com/java-programming/if-statement-in-java/</a> </li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>

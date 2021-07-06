@@ -1,0 +1,164 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>C3 Pure functions</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="fp-c3-purefunctions"
+                  title="C3 Pure functions"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <iframe class="youtube-video" src="https://www.youtube.com/embed/Spbq9YOFxkw?rel=0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<aside class="warning"><p><strong>Note:</strong> This Codelab is part of Functional Programming, an undergraduate course at the Department of Computer Science &amp; Information Technology, Faculty of Science, Naresuan University.</p>
+</aside>
+<h2 is-upgraded><strong>What you will do</strong></h2>
+<p>In this codelab, you will define and call your own functions using the different syntaxes available in Scala.</p>
+<h2 is-upgraded><strong>What you will learn</strong></h2>
+<ul>
+<li>How to write pure functions on numbers and strings</li>
+<li>How to define a function using val and def</li>
+<li>How to use conditional expressions</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Functions as values" duration="10">
+        <h3 is-upgraded>The <code>val</code><strong> function</strong></h3>
+<h3 is-upgraded><img style="width: 503.50px" src="img/6fa5eacbe1a8732.png"></h3>
+<h2 is-upgraded><strong>Task 1 Square</strong></h2>
+<p>Complete the square function such that it returns x to the power of 2.</p>
+<p class="image-container"><img style="width: 527.50px" src="img/3f4a5b463412cf27.png"></p>
+<p>Example</p>
+<p class="image-container"><img style="width: 270.50px" src="img/a6bd4a7af46ae058.png"></p>
+<h2 is-upgraded><strong>Task 2 Double string</strong></h2>
+<p>Write a program that reads a string and prints it out 2 times.</p>
+<p class="image-container"><img style="width: 523.50px" src="img/727cd3b5bf787880.png"></p>
+<p>Example</p>
+<p class="image-container"><img style="width: 273.61px" src="img/d05a5ebd19c90d4a.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Functions with conditionals" duration="10">
+        <p>In Imperative Programming, typically if-else is a control flow statement. Example in Java:</p>
+<pre><code>if (number &lt; 10) {
+    System.out.println(&#34;Single&#34;);
+} else {
+    System.out.println(&#34;Multiple&#34;);
+}</code></pre>
+<p>In Functional Programming, if-else can be used as an expression. Example in Scala:</p>
+<pre><code>val digits: String = if (number &lt; 10) &#34;Single&#34; else &#34;Multiple&#34;</code></pre>
+<p>General form:</p>
+<p class="image-container"><img style="width: 624.00px" src="img/6e3870f3af309fc3.png"></p>
+<h2 is-upgraded><strong>Task 3 Minimum</strong></h2>
+<p>Write a program that reads 2 integers and prints out the smallest one (minimum) using a conditional if-else expression.</p>
+<p class="image-container"><img style="width: 524.50px" src="img/3b0b6142ed87aa08.png"></p>
+<h2 is-upgraded><strong>Task 4 Dumb plural</strong></h2>
+<p>In English, the plural of a noun is usually formed by adding an &#34;s&#34; at the end of the word. For example: dog =&gt; dogs, cat =&gt; cats. However there are some additional rules. If the word ends in &#34;s&#34; then you usually add &#34;es&#34;. For example: kiss =&gt; kisses.</p>
+<p>Write the <code>dumbPlural</code> function.</p>
+<p class="image-container"><img style="width: 624.00px" src="img/d614664cb7cd9f99.png"></p>
+<p>Output</p>
+<p class="image-container"><img style="width: 302.86px" src="img/14907ef4da2ef1d5.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Defining functions with def" duration="20">
+        <p>In this section we will use an alternative syntax for defining functions.</p>
+<h3 is-upgraded>The <code>def</code><strong> function</strong></h3>
+<h3 is-upgraded><img style="width: 501.84px" src="img/8aea183480be5c61.png"></h3>
+<p>The <code>def</code> syntax is closer to a method in Java: the function name is followed by one or more parameters in parentheses.</p>
+<h2 is-upgraded><strong>Task 5 Average of 3 doubles</strong></h2>
+<p>Complete the <code>average3</code> function so that it returns the average of the 3 double values (x,y,z).</p>
+<p class="image-container"><img style="width: 624.00px" src="img/225523740154e1da.png"></p>
+<p>The output should be <code>3.5</code>.</p>
+<h2 is-upgraded><strong>Task 6 Minimum of 3</strong></h2>
+<p>In Task 3 you wrote a minimum function (using the <code>val</code> syntax) for 2 integers. Write a minimum function for 3 integers using the <code>def</code> syntax.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Functions on strings and chars" duration="15">
+        <p>You may want to use some of the string functions that were introduced in C2. Furthermore, the String class is the same as Java so you can use any Java String method in Scala too.</p>
+<h2 is-upgraded><strong>Task 7 Starts with a vowel</strong></h2>
+<p>In English, the vowels are &#34;A&#34;, &#34;E&#34;, &#34;I&#34;, &#34;O&#34; and &#34;U&#34;. Write a function that returns true if the input string starts with a vowel.</p>
+<p class="image-container"><img style="width: 499.50px" src="img/31c432b767dc0113.png"></p>
+<p class="image-container"><img style="width: 624.00px" src="img/54272ea9f6d86f09.png"></p>
+<h2 is-upgraded><strong>Task 8 Phone number</strong></h2>
+<p>A mobile phone number in Thailand has 10 numbers and starts with 06 or 08 or 09. Write a function that returns true if the input string is a mobile number.</p>
+<p class="image-container"><img style="width: 574.50px" src="img/f5efd7f76ce19fe5.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Challenge" duration="20">
+        <p class="image-container"><img style="width: 510.50px" src="img/e1d9dbadcb89fc21.png"></p>
+<p>One of the simplest encryption algorithms is the Caesar cipher (also known as &#34;Shift cipher&#34;), named after Julius Caesar who is known to have used it. Each letter is encoded by shifting it in the alphabet. If the shift key is 1 then A is encoded as B, B as C, etc.</p>
+<p>(The Caesar cipher is easily cracked because, like other substitution ciphers, the distribution of letters is predictable in most languages.)</p>
+<h2 is-upgraded><strong>Task 9 Simple shift</strong></h2>
+<p>The simplest Caesar cipher is when the shift key is 1. Write a function that shifts a character by 1.</p>
+<p class="image-container"><img style="width: 389.00px" src="img/8d783aaa571ed4b4.png"></p>
+<h4 is-upgraded>Task9.scala</h4>
+<pre><code>object Task9 extends App {
+
+  ...
+
+  val plaintext = readLine().toUpperCase
+  val ciphertext = plaintext.map(c =&gt; shiftChar(c))
+
+  println(s&#34;Plaintext:  ${plaintext}&#34;)
+  println(s&#34;Ciphertext: ${ciphertext}&#34;)
+}</code></pre>
+<h2 is-upgraded><strong>Task 10 Caesar shift</strong></h2>
+<p>Extend your solution to Task 9:</p>
+<ul>
+<li>Read in the shift key <em>before the plaintext</em></li>
+<li>Modify the shiftChar function to accept the key parameter</li>
+<li>If the key is 2 then A encodes as C, etc.</li>
+</ul>
+<p class="image-container"><img style="width: 318.00px" src="img/d301f4a716b7739a.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Summary" duration="0">
+        <p>In this codelab you have learnt to define your own functions. Scala gives you 2 ways to give a function a name.</p>
+<h3 is-upgraded>The <code>val</code><strong> function</strong></h3>
+<h3 is-upgraded><img style="width: 503.50px" src="img/6fa5eacbe1a8732.png"></h3>
+<h3 is-upgraded>The <code>def</code><strong> function</strong></h3>
+<h3 is-upgraded><img style="width: 501.84px" src="img/8aea183480be5c61.png"></h3>
+<p>The next topic is recursive functions.</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>

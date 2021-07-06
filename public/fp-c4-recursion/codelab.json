@@ -1,0 +1,24 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-07-30T06:22:50Z",
+  "id": "fp-c4-recursion",
+  "duration": 85,
+  "title": "C4 Recursion",
+  "authors": "Antony Harfield",
+  "summary": "Write recursive functions in Scala to solve iteration problems without loops.",
+  "source": "1CcSEvNVcKZs09lbKz0g72iLwKzLttEQtCFXBZWj7eVs",
+  "theme": "functional-programming",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "Functional Programming"
+  ],
+  "tags": [
+    "web"
+  ],
+  "url": "fp-c4-recursion"
+}

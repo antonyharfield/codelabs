@@ -1,0 +1,190 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>C4 Recursion</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="fp-c4-recursion"
+                  title="C4 Recursion"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <iframe class="youtube-video" src="https://www.youtube.com/embed/nCWpYE59H-8?rel=0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<aside class="warning"><p><strong>Note:</strong> This Codelab is part of Functional Programming, an undergraduate course at the Department of Computer Science &amp; Information Technology, Faculty of Science, Naresuan University.</p>
+</aside>
+<h2 is-upgraded><strong>What you will do</strong></h2>
+<p>In this codelab, you&#39;re going to write recursive functions in Scala to solve iteration problems without loops..</p>
+<h2 is-upgraded><strong>What you will learn</strong></h2>
+<ul>
+<li>What is recursion</li>
+<li>How to write a recursive function</li>
+<li>What is a tail recursive function and how to write one</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="First steps" duration="5">
+        <h2 is-upgraded><strong>Recursive function example</strong></h2>
+<p>In the video, the recursive function for sum was defined with:</p>
+<ul>
+<li>Base case <code>sumRec(0) = 0</code></li>
+<li>Recursive case <code>sumRec(n) = n + sumRec(n-1)</code></li>
+</ul>
+<p class="image-container"><img style="width: 624.00px" src="img/59edc965219dc8ca.png"></p>
+<p>Try this out in a Scala Worksheet.</p>
+<h2 is-upgraded><strong>Task 1 Factorial</strong></h2>
+<p>Write a recursive function for product where:</p>
+<ul>
+<li>Base case <code>product(1) = 1</code></li>
+<li>Recursive case <code>product(n) = n * product(n-1</code>)</li>
+</ul>
+<p class="image-container"><img style="width: 624.00px" src="img/a6de23495e0c8859.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Loops vs recursion" duration="15">
+        <p>Look at the pattern.</p>
+<ul>
+<li><code>Input: x = 18</code></li>
+<li><code>Output: 18, 13, 8, 3, -2, 12, 7, 2, -3, 11, 6, 1, -4, 10, 5, 0</code></li>
+</ul>
+<p>Instructions:</p>
+<ul>
+<li>Reduce by 5 until negative or 0.</li>
+<li>When negative, add 14.</li>
+<li>When 0, stop.</li>
+</ul>
+<h2 is-upgraded><strong>Task 2 Pattern by loop</strong></h2>
+<p>Write a function that uses a loop to print the output.</p>
+<p class="image-container"><img style="width: 469.98px" src="img/f7cd579460060d77.png"></p>
+<p>Your answer should output:</p>
+<p class="image-container"><img style="width: 624.00px" src="img/5470582669f3a86e.png"></p>
+<h2 is-upgraded><strong>Task 3 Pattern by recursion</strong></h2>
+<p>Write a recursive function (no loop!) to print the output.</p>
+<aside class="warning"><p><strong>Note:</strong> These are not pure functions because there are side-effects (print) inside the function!</p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Savings account" duration="25">
+        <p>Calculate the savings in a bank account after <em>n</em> months:</p>
+<ul>
+<li>Deposit 1,000 baht each month</li>
+<li>Earn 2.5% interest each month</li>
+</ul>
+<p>After 36 months, you would have invested 36,000 baht and your balance would be 57,301 baht.</p>
+<p class="image-container"><img style="width: 624.00px" src="img/ece105506fb7976c.png"></p>
+<h2 is-upgraded><strong>Task 4 Savings by loop</strong></h2>
+<p>Write a function named <strong>savings</strong> that takes the number of <strong>months</strong> n and the starting <strong>balance</strong>, and returns the balance at the end of n months.</p>
+<p>Test your function by comparing the values to the table above.</p>
+<p>Example</p>
+<p class="image-container"><img style="width: 624.00px" src="img/19486cdecd5bb010.png"></p>
+<h2 is-upgraded><strong>Task 5 Savings by recursion</strong></h2>
+<p>Write the same function using recursion.</p>
+<h2 is-upgraded><strong>Task 6 More parameters</strong></h2>
+<p>Modify the solution to Task 5 such that the deposit amount (1,000 baht) and the interest rate (2.5%) are parameters to the recursive function.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Recurse on strings" duration="25">
+        <h2 is-upgraded><strong>Task 7</strong></h2>
+<p>Write a recursive function to reverse a string.</p>
+<p class="image-container"><img style="width: 624.00px" src="img/26ddd74ab2e0647d.png"></p>
+<h2 is-upgraded><strong>Task 8</strong></h2>
+<p>A palindrome is a word or phrase that has the same character order forwards and backwards. Palindromes:</p>
+<ul>
+<li>madam</li>
+<li>anna</li>
+<li>civic</li>
+<li>racecar</li>
+<li>noon</li>
+</ul>
+<p>Write a recursive function to check if a string is a palindrome.</p>
+<p class="image-container"><img style="width: 624.00px" src="img/cbe3285c0eaf7d66.png"></p>
+<h2 is-upgraded><strong>Task 9</strong></h2>
+<p>A subsequence is a string that is part of another string. Example: &#34;el&#34; is part of &#34;hello&#34;.</p>
+<p>Write a recursive function to check if a string is a subsequence of a string.</p>
+<ul>
+<li><code>subsequence(&#34;el&#34;, &#34;hello&#34;)</code> should return <code>true</code></li>
+<li><code>subsequence(&#34;heo&#34;, &#34;hello&#34;)</code> should return <code>false</code></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Challenge" duration="15">
+        <p>There are a finite number of passwords. A brute force attack involves checking all of them.</p>
+<h2 is-upgraded><strong>Task 10 Generate passwords</strong></h2>
+<p>Given a set of characters generate all possible passwords. This means we should generate all possible permutations of words using the given characters.</p>
+<p>Write a function that takes an array of characters and returns an array of strings that is every possible password that can be generated.</p>
+<p>Examples</p>
+<ul>
+<li><code>perms([&#39;a&#39;, &#39;b&#39;])</code> should return <code>[&#34;a&#34;, &#34;b&#34;, &#34;aa&#34;, &#34;ab&#34;, &#34;ba&#34;, &#34;bb&#34;]</code></li>
+<li><code>perms([&#39;x&#39;, &#39;y&#39;, &#39;z&#39;])</code> should return <code>[&#34;x&#34;, &#34;y&#34;, &#34;z&#34;, &#34;xx&#34;, &#34;xy&#34;, &#34;xz&#34;, &#34;yx&#34;, &#34;yy&#34;, &#34;yz&#34;, &#34;zx&#34;, &#34;zy&#34;, &#34;zz&#34;, &#34;xxx&#34;, &#34;xxy&#34;, &#34;xxz&#34;, &#34;xyx&#34;, &#34;xyy&#34;, &#34;xyz&#34;, &#34;xzx&#34;, &#34;xzy&#34;, &#34;xzz&#34;, ...]</code></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Super Challenge" duration="0">
+        <p>Only do this if you want to push yourself!</p>
+<p>A <strong>shrinkable word</strong> is a word that can be reduced down to the empty string by deleting one letter at a time such that, at each stage, the remaining string is a word. For example, the word &#34;startling&#34; is shirnkable because of this sequence of words:</p>
+<ul>
+<li>startling → starting → staring → string → sting → sing → sin → in → i → (empty)</li>
+</ul>
+<p>More information: <a href="https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1174/lectures/10/Small10.pdf" target="_blank">https://web.stanford.edu/class/archive/cs/cs106b/cs106b.1174/lectures/10/Small10.pdf</a> </p>
+<p>Write a function that accepts as input a string and a set of all the words in English, then reports whether the input word is shrinkable.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Summary" duration="0">
+        <p>Recursion requires you to think differently about programming problems:</p>
+<ul>
+<li>What is the base case? (Typically an empty string or 0 or 1)</li>
+<li>How to go from <em>n-</em>th case to <em>n+1-</em>th case? Use a divide-and-conquer approach. </li>
+</ul>
+<p>Always try to write your recursive function as a tail recursive function for better performance.</p>
+<p class="image-container"><img style="width: 256.00px" src="img/7a78747bd89973ed.png"></p>
+<p>Further reading:</p>
+<ul>
+<li>Alvin Alexander on <a href="https://alvinalexander.com/scala/fp-book/tail-recursive-algorithms/" target="_blank">Tail-Recursive Algorithms in Scala</a></li>
+<li>Scala Tutorial <a href="https://www.scala-exercises.org/scala_tutorial/tail_recursion" target="_blank">Tail Recursion</a></li>
+<li>Free code camp <a href="https://www.freecodecamp.org/news/recursion-is-not-hard-858a48830d83/" target="_blank">Recursion is not hard: a step-by-step walkthrough</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-07-16T09:56:38Z",
+  "id": "fun-lab3",
+  "duration": 75,
+  "title": "Lab 3: Conditionals",
+  "authors": "Antony Harfield",
+  "summary": "กระบวนการคิดเพื่อการเขียนโปรแกรมแบบโครงสร้างการตัดสินใจ",
+  "source": "1A9TKOBxizvqviT7qCLYcPVKFzEJduYmq7m28iuCcgLM",
+  "theme": "fundamentals-of-programming",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "Fundamentals of Programming"
+  ],
+  "tags": [
+    "web"
+  ],
+  "url": "fun-lab3"
+}

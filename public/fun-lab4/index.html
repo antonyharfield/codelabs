@@ -1,0 +1,226 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Lab 4: Loops</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="fun-lab4"
+                  title="Lab 4: Loops"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <aside class="warning"><p><strong>Note:</strong> This Codelab is part of 254271 Fundamentals of Programming, an undergraduate course at the Department of Computer Science &amp; Information Technology, Faculty of Science, Naresuan University.</p>
+</aside>
+<h2 is-upgraded>เรื่อง</h2>
+<p>กระบวนการคิดเพื่อการเขียนโปรแกรมแบบโครงสร้างการทำงานซ้ำ</p>
+<h2 is-upgraded>วัตถุประสงค์</h2>
+<p>เพื่อฝึกฝนกระบวนการคิดในการพัฒนาโปรแกรมแบบโครงสร้างการตัดสินใจด้วยภาษาจาวา</p>
+<h2 is-upgraded>หัวข้อ</h2>
+<ul>
+<li>ฝึกการใช้คำสั่ง for</li>
+<li>ฝึกการใช้งานคำสั่งซ้อนคำสั่ง nested-for และ inner-if</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Understanding for loops" duration="15">
+        <h2 is-upgraded>Task 1</h2>
+<pre><code>class Task1 {
+
+   public static void main(String[] args) {
+      for (int x = 3; x &lt; 8; x++) {
+         System.out.print(x);
+      }
+   }
+}</code></pre>
+<p>จงเขียนผลลัพธ์ของโปรแกรมในตารางต่อไปนี้</p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>รอบที่</p>
+</td><td colspan="1" rowspan="1"><p>ค่าตัวแปร x</p>
+</td><td colspan="1" rowspan="1"><p>แสดงผลทางจอภาพ</p>
+</td></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+</table>
+<h2 is-upgraded>Task 2</h2>
+<pre><code>class Task2 {
+
+   public static void main(String[] args) {
+      for (int x = 10; x &gt;= 2; x--) {
+         System.out.print(x*2);
+      }
+   }
+}</code></pre>
+<p>จงเขียนผลลัพธ์ของโปรแกรมในตารางต่อไปนี้</p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>รอบที่</p>
+</td><td colspan="1" rowspan="1"><p>ค่าตัวแปร x</p>
+</td><td colspan="1" rowspan="1"><p>แสดงผลทางจอภาพ</p>
+</td></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+</table>
+<h2 is-upgraded>Task 3</h2>
+<pre><code>class Task3 {
+
+   public static void main(String[] args) {
+      for (int x = -10; x &lt; 10; x += 2) {
+         System.out.print(2+(3*x));
+      }
+   }
+}</code></pre>
+<p>จงเขียนผลลัพธ์ของโปรแกรมในตารางต่อไปนี้</p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>รอบที่</p>
+</td><td colspan="1" rowspan="1"><p>ค่าตัวแปร x</p>
+</td><td colspan="1" rowspan="1"><p>แสดงผลทางจอภาพ</p>
+</td></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+</table>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Writing for loops" duration="15">
+        <h2 is-upgraded>Task 4</h2>
+<p>เติมเงื่อนไขในบริเวณช่อง (A), (B) และ (C) เพื่อให้ได้ผลลัพธ์ดังต่อไปนี้</p>
+<pre><code>class Task4 {
+   public static void main(String[] args) {
+      for (int x = ___(A)___; ___(B)___; ___(C)___) {
+         System.out.print(x + &#34;, &#34;);
+      }
+   }
+}</code></pre>
+<ol type="1" start="1">
+<li>ผลลัพธ์ 5, 6, 7, 8, 9, 10,</li>
+</ol>
+<table>
+<tr><td colspan="1" rowspan="1"><p>(A)</p>
+</td><td colspan="1" rowspan="1"><p>(B)</p>
+</td><td colspan="1" rowspan="1"><p>(C)</p>
+</td></tr>
+<tr></tr>
+</table>
+<ol type="1" start="2">
+<li>ผลลัพธ์ 1, 4, 7, 10, 13, 16, 19,</li>
+</ol>
+<table>
+<tr></tr>
+</table>
+<ol type="1" start="3">
+<li>ผลลัพธ์ -100, -90, -80, -70, -60, -50, -40, -30, -20, -10, 0,</li>
+</ol>
+<table>
+<tr></tr>
+</table>
+<ol type="1" start="4">
+<li>ผลลัพธ์ -10, -5, 0,  5, 10, 15, 20,</li>
+</ol>
+<table>
+<tr></tr>
+</table>
+<ol type="1" start="5">
+<li>ผลลัพธ์ 0, 4, 8, 12,</li>
+</ol>
+<table>
+<tr></tr>
+</table>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Conditionals in loops" duration="10">
+        <h2 is-upgraded>Task 5</h2>
+<p>จงแสดงผลลัพธ์ของโปรแกรมนี้</p>
+<pre><code>class Task5 {
+   public static void main(String[] args) {
+      for (int i = 1; i &lt; 10; i++) {
+         if (i % 2 == 0) {
+            System.out.print(&#34;A&#34;);
+         }
+         else {
+            System.out.print(&#34;B&#34;);
+         }
+      }
+   }
+}</code></pre>
+<h2 is-upgraded>Task 6</h2>
+<p>จงแสดงผลลัพธ์ของโปรแกรมนี้</p>
+<pre><code>class Task6 {
+   public static void main(String[] args) {
+      for (int i = 20; i &gt;= 0; i--) {
+         if ((i+2) % 3 == 0) {
+            System.out.print(&#34;A&#34;);
+         }
+         else {
+            System.out.print(&#34;B&#34;);
+         }
+      }
+   }
+}</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Loops using input" duration="20">
+        <h2 is-upgraded>Task 7</h2>
+<p>เขียนโปรแกรมสูตรคูณ โดยรับค่าแม่จากผู้ใช้ผ่านทางคีย์บอร์ดและแสดงผลดังต่อไปนี้</p>
+<p>ตัวอย่าง</p>
+<p class="image-container"><img style="width: 136.73px" src="img/21b28e2f00d7bafe.png">     <img style="width: 125.08px" src="img/69e6c28e1a866bd8.png"></p>
+<h2 is-upgraded>Task 8</h2>
+<p>แก้ไข Task 7 เพื่อให้ตัวเลขสอดคล้องกัน (ชิด)</p>
+<p>ตัวอย่าง</p>
+<p class="image-container"><img style="width: 120.61px" src="img/86090439f79d7964.png">      <img style="width: 124.79px" src="img/8b7738f9ade4c195.png"></p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>

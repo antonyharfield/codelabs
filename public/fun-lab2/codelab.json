@@ -1,0 +1,24 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-07-13T04:29:42Z",
+  "id": "fun-lab2",
+  "duration": 75,
+  "title": "Lab 2: Handling Input",
+  "authors": "Antony Harfield",
+  "summary": "กระบวนการคิดเพื่อการเขียนโปรแกรมและการรับค่าผ่านทางคีย์บอร์ด",
+  "source": "16P0RR1SKGL_pWJRGwLgZ25VnykQApqhgiXh-x1P26WQ",
+  "theme": "fundamentals-of-programming",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "Fundamentals of Programming"
+  ],
+  "tags": [
+    "web"
+  ],
+  "url": "fun-lab2"
+}
