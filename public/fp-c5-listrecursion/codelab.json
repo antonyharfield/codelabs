@@ -1,0 +1,24 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-08-17T10:44:22Z",
+  "id": "fp-c5-listrecursion",
+  "duration": 10,
+  "title": "C5 List recursion",
+  "authors": "Antony Harfield",
+  "summary": "In this codelab, you will write recursive functions for list operations.",
+  "source": "1VpNaG5pCNjSkc6LvXzTpPHTtoRAMcbSIyCWnbN7Mhq0",
+  "theme": "functional-programming",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "Functional Programming"
+  ],
+  "tags": [
+    "web"
+  ],
+  "url": "fp-c5-listrecursion"
+}

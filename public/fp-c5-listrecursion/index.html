@@ -1,0 +1,176 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>C5 List recursion</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="fp-c5-listrecursion"
+                  title="C5 List recursion"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <iframe class="youtube-video" src="https://www.youtube.com/embed/VYHbfphFiyU?rel=0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<aside class="warning"><p><strong>Note:</strong> This Codelab is part of Functional Programming, an undergraduate course at the Department of Computer Science &amp; Information Technology, Faculty of Science, Naresuan University.</p>
+</aside>
+<h2 is-upgraded><strong>What you will do</strong></h2>
+<p>In this codelab,  you will write recursive functions for list operations.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Lists &amp; Recursion" duration="5">
+        <h2 is-upgraded><strong>Lists</strong></h2>
+<p>A list is made from &#34;con cells&#34;.</p>
+<ul>
+<li>The &#34;head&#34; is the first element of a list</li>
+<li>The &#34;tail&#34; is the rest of the list (not including the first element)</li>
+</ul>
+<h3 is-upgraded><strong>Example</strong></h3>
+<pre><code>val list = List(2, 3, 4)
+
+val updated = 1 :: list // List(1, 2, 3, 4)
+
+val head :: tail = list // 2 :: List(3, 4)  </code></pre>
+<h2 is-upgraded><strong>Recursion</strong></h2>
+<p>A recursive function is a function that calls itself.</p>
+<ul>
+<li>&#34;Base case&#34; is when the function no longer calls itself - must have at least 1 base case!</li>
+<li>&#34;Recursive case&#34; is when the function calls itself.</li>
+</ul>
+<h3 is-upgraded><strong>Example</strong></h3>
+<pre><code>def sumToZero(n: Int): Int =
+  if (n == 0) 0
+  else n + sumToZero(n - 1)
+
+def sumL(l: List[Int]): Int =
+  l match {
+    case Nil =&gt; 0
+    case head::tail =&gt; head + sumL(tail)
+  }</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Length of a list" duration="1">
+        <p>Think about a list:</p>
+<ul>
+<li>Length of empty list is 0</li>
+<li>Length of head is 1</li>
+<li>Length of tail is... recursive call!</li>
+</ul>
+<h2 is-upgraded><strong>Task 1: Length</strong></h2>
+<p>Write a recursive function that returns the length of a list.</p>
+<pre><code>def length[T](l: List[T])
+  : Int = ???
+
+val list1 = List(4, 2, 8)
+val result = length(list1)   // 3  </code></pre>
+<p>When writing <code>head :: tail</code>, you may get a warning that you have not used <code>head</code>. To remove the warning, write <code>_ :: tail</code>.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Maximum" duration="1">
+        <h2 is-upgraded><strong>Task 2: Maximum</strong></h2>
+<p>Write a recursive function that returns the maximum number of a list.</p>
+<p>If the list is empty...</p>
+<ul>
+<li><code>throw new UnsupportedOperationException</code></li>
+</ul>
+<pre><code>def maximum(l: List[Int])
+  : Int = ???
+
+val list1 = List(4, 8, 2)
+val result1 = maximum(list1)   // 8
+
+val list2: List[Int] = List()
+val result2 = maximum(list2)   // Exception</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Drop elements" duration="1">
+        <h2 is-upgraded><strong>Task 3: Drop</strong></h2>
+<p>Take a list and remove n elements from the start of the list.</p>
+<pre><code>def drop[T](l: List[T], n: Int)
+  : List[T] = ???
+
+val list1 = List(1, 2, 3)
+drop(list1, 0) // List(1,2,3)
+drop(list1, 1) // List(2,3)
+drop(list1, 2) // List(3)
+drop(list1, 4) // List()</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Concatenate two lists" duration="1">
+        <h2 is-upgraded><strong>Task 4: Concatenate</strong></h2>
+<p>Concatenate takes 2 lists and joins them returning a single list.</p>
+<pre><code>def concat[T](l1: List[T], l2: List[T])
+  : List[T] = ???
+
+val list1 = List(1, 2, 3)
+val list2 = List(4, 5, 6)
+val result = concat(list1, list2)
+// List(1, 2, 3, 4, 5, 6)  </code></pre>
+<p>Hint:</p>
+<p><code>concat(Nil, List(2,8,4)) = List(2,8,4)</code></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Reverse a list" duration="1">
+        <h2 is-upgraded><strong>Task 5: Reverse</strong></h2>
+<p>Take a list and reverse all the elements.</p>
+<pre><code>def reverse[T](l: List[T]) : List[T] =
+  ???
+
+val list1 = List(1, 2, 3)
+val result = reverse(list1)
+// List(3, 2, 1)
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Summary" duration="0">
+        <p>Find more information online by searching for &#34;list recursion&#34; or check out the following sources. </p>
+<h2 is-upgraded><strong>Further reading</strong></h2>
+<ul>
+<li><a href="https://alvinalexander.com/scala/fp-book/recursion-lets-look-at-lists-head-tail-cons/" target="_blank">Recursion: Let&#39;s Look at Lists (Alvin Alexander)</a></li>
+<li><a href="https://www.47deg.com/blog/basic-recursion-schemes-in-scala/" target="_blank">Basic Recursion Schemes in Scala (47 Degrees)</a></li>
+</ul>
+<h2 is-upgraded><strong></strong></h2>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>
