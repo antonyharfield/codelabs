@@ -1,0 +1,253 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Lab 6: Nested Loops</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="fun-lab6"
+                  title="Lab 6: Nested Loops"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <iframe class="youtube-video" src="https://www.youtube.com/embed/211wc9k2XgA?rel=0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<aside class="warning"><p><strong>Note:</strong> This Codelab is part of 254271 Fundamentals of Programming, an undergraduate course at the Department of Computer Science &amp; Information Technology, Faculty of Science, Naresuan University.</p>
+</aside>
+<h2 is-upgraded>เรื่อง</h2>
+<p>การประยุกต์ใช้งานโครงสร้างพื้นฐานร่วมกัน</p>
+<h2 is-upgraded>วัตถุประสงค์</h2>
+<p>เพื่อฝึกฝนกระบวนการคิดในการพัฒนาโปรแกรมจากการประยุกต์ใช้งานโครงสร้างพื้นฐานร่วมกันด้วยภาษาจาวา</p>
+<h2 is-upgraded>หัวข้อ</h2>
+<ul>
+<li>ฝึกฝนการใช้คำสั่ง for ซ้อน for</li>
+<li>ฝึกฝนการใช้คำสั่ง for กับ if</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Understanding inner loops" duration="10">
+        <h2 is-upgraded>Task 1</h2>
+<pre><code>class Task1 {
+
+   public static void main(String[] args) {
+      for (int i = 1; i &lt;= 3; i++) {
+         for (int j = 2; j &lt;= 4; j++) {
+            int x = i + j;
+            System.out.println(x);
+         }
+      }
+   }
+}</code></pre>
+<p>จงเขียนผลลัพธ์ของโปรแกรมในตารางต่อไปนี้</p>
+<table>
+<tr><td colspan="1" rowspan="1"><p>ค่าตัวแปร i</p>
+</td><td colspan="1" rowspan="1"><p>ค่าตัวแปร j</p>
+</td><td colspan="1" rowspan="1"><p>แสดงผลทางจอภาพ</p>
+</td></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+<tr></tr>
+</table>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Easy problems" duration="20">
+        <p>บรรทัดแรกจะเป็นอินพุตเสมอ</p>
+<h2 is-upgraded>Task 2</h2>
+<p>เขียนโค้ดเพื่อแสดงรูปสี่เหลี่ยมจัตุรัส โดยผู้ใช้จะกำหนดขนาดความสูงผ่านทางคีย์บอร์ด</p>
+<p>ตัวอย่าง</p>
+<pre>4
+X X X X
+X X X X
+X X X X
+X X X X</pre>
+<pre>6
+X X X X X
+X X X X X
+X X X X X
+X X X X X
+X X X X X
+X X X X X</pre>
+<h2 is-upgraded>Task 3</h2>
+<p>แก้ไข Task 2 เพื่อแทนที่ X ด้วยหมายเลขแถว</p>
+<p>ตัวอย่าง</p>
+<pre>3
+1 1 1
+2 2 2
+3 3 3</pre>
+<pre>4
+1 1 1 1
+2 2 2 2
+3 3 3 3
+4 4 4 4</pre>
+<h2 is-upgraded>Task 4</h2>
+<p>เขียนโค้ดเพื่อแสดงรูปสามเหลี่ยมมุมฉาก โดยผู้ใช้จะกำหนดขนาดความสูงของสามเหลี่ยม</p>
+<p>ตัวอย่าง</p>
+<pre>5
+1
+2 2
+3 3 3
+4 4 4 4
+5 5 5 5 5</pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Hard problems" duration="30">
+        <p>บรรทัดแรกจะเป็นอินพุตเสมอ</p>
+<h2 is-upgraded>Task 5</h2>
+<pre>4
+X
+XX
+X#X
+XXXX</pre>
+<pre>6
+X
+XX
+X#X
+X##X
+X###X
+XXXXXX</pre>
+<h2 is-upgraded>Task 6</h2>
+<pre>2
+ X
+XXX</pre>
+<pre>5
+    X
+   XXX
+  XXXXX
+ XXXXXXX
+XXXXXXXXX</pre>
+<h2 is-upgraded>Task 7</h2>
+<pre>2
+A A 0 B B
+A A 0 B B
+X X X X X
+C C 0 D D
+C C 0 D D</pre>
+<pre>3
+A A A 0 B B B
+A A A 0 B B B
+A A A 0 B B B
+X X X X X X X
+C C C 0 D D D
+C C C 0 D D D
+C C C 0 D D D
+
+</pre>
+<h2 is-upgraded>Task 8</h2>
+<pre>6
+    X
+   XX
+  XXX
+ XXXX
+XXXXX</pre>
+<pre>3
+  X
+ XX 
+XXX</pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Mega problems" duration="30">
+        <p>บรรทัดแรกจะเป็นอินพุตเสมอ</p>
+<h2 is-upgraded>Task 9</h2>
+<pre>4 2 G
+GG
+GG
+GG
+GG</pre>
+<pre>2 3 H
+HHH
+HHH</pre>
+<h2 is-upgraded>Task 10</h2>
+<pre>5 + -
+    +
+   +-+
+  +---+
+ +-----+
++-------+</pre>
+<pre>3 o x
+  o
+ oxo
+oxxxo</pre>
+<h2 is-upgraded>Task 11</h2>
+<pre>4
++--+
+|##|
+|##|
++--+</pre>
+<pre>5
++---+
+|###|
+|###|
+|###|
++---+</pre>
+<h2 is-upgraded>Task 12</h2>
+<pre>4 4 + -
+++++
++--+
++--+
+++++</pre>
+<pre>5 6 # $
+#####
+#$$$#
+#$$$#
+#$$$#
+#$$$#
+#####</pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="What next?" duration="0">
+        <h2 is-upgraded>Further reading (English)</h2>
+<ul>
+<li>geeksforgeeks.org <a href="https://www.geeksforgeeks.org/java-nested-loops-with-examples/" target="_blank">https://www.geeksforgeeks.org/java-nested-loops-with-examples/</a> </li>
+<li>csawesome <a href="https://csawesome.runestone.academy/runestone/books/published/csawesome/Unit4-Iteration/topic-4-4-nested-loops.html" target="_blank">https://csawesome.runestone.academy/runestone/books/published/csawesome/Unit4-Iteration/topic-4-4-nested-loops.html</a> </li>
+</ul>
+<h2 is-upgraded>Further reading (ภาษาไทย)</h2>
+<ul>
+<li>marcuscode.com <a href="http://marcuscode.com/lang/java/loop-statements" target="_blank">http://marcuscode.com/lang/java/loop-statements</a> </li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>
