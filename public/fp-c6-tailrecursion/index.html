@@ -1,0 +1,187 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>C6 Tail Recursion</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="fp-c6-tailrecursion"
+                  title="C6 Tail Recursion"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <iframe class="youtube-video" src="https://www.youtube.com/embed/GOzqGcaR3PI?rel=0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<aside class="warning"><p><strong>Note:</strong> This Codelab is part of Functional Programming, an undergraduate course at the Department of Computer Science &amp; Information Technology, Faculty of Science, Naresuan University.</p>
+</aside>
+<h2 is-upgraded><strong>What you will do</strong></h2>
+<p>In this codelab, you will be solving programming problems by writing functions in Scala using tail recursion.</p>
+<h2 is-upgraded><strong>What you will learn</strong></h2>
+<ul>
+<li>What is &#34;tail recursion&#34;</li>
+<li>How to mark a function as tail recursive in Scala</li>
+<li>How to re-write recursive functions to be tail recursive</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Basic Concepts" duration="10">
+        <h2 is-upgraded><strong>What makes a recursive function tail recursive?</strong></h2>
+<p>A recursive function is tail recursive when a recursive call is the last thing executed by the function.</p>
+<h3 is-upgraded><strong>Example: not tail recursive</strong></h3>
+<pre><code>def sumToZero(n: Int): Int =
+  if (n == 0) 0
+  else n + sumToZero(n - 1)  </code></pre>
+<h3 is-upgraded><strong>Example: tail recursive</strong></h3>
+<pre><code>@tailrec
+def trSumToZero(n: Int, acc: Int) =
+  if (n == 0) acc
+  else trSumToZero(n - 1, acc + n)
+}</code></pre>
+<p>When writing a tail recursive function, it is common to hide any additional parameters (e.g. the accumulator) by placing the tail recursive function inside a calling function.</p>
+<h3 is-upgraded><strong>Example: tail recursive function hiding additional parameter</strong></h3>
+<pre><code>def sumToZero(n: Int): Int = {
+  @tailrec
+  def trSumToZero(n: Int, acc: Int) =
+    if (n == 0) acc
+    else trSumToZero(n - 1, acc + n)
+
+  trSumToZero(n, 0)
+}</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Rewriting factorial" duration="10">
+        <p>A common example of recursion is the following factorial function. However, it is not tail recursive because the recursion is an expression (<code>n * factorial(n - 1)</code>) not a function call.</p>
+<pre><code>def factorial(n: Int): Int =
+  if (n == 0) 1 else n * factorial(n - 1) </code></pre>
+<h2 is-upgraded><strong>Task 1: Factorial</strong></h2>
+<p>Write a tail recursive function that returns the factorial of a number.</p>
+<pre><code>def factorial(n: Int): Int =
+  @tailrec
+  def trFactorial(n: Int, acc: Int): Int = ???
+
+  trFactorial(n, 1)
+
+
+val result = factorial(5)   // 5*4*3*2*1 = 120</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Rewriting list length" duration="10">
+        <p>In the last codelab, you wrote a recursive function to find the length of a list. It most likely contained the line:</p>
+<pre><code>    case head :: tail =&gt; 1 + length(tail)  </code></pre>
+<p>That&#39;s NOT tail recursive!</p>
+<h2 is-upgraded><strong>Task 2: Length</strong></h2>
+<p>Write a tail recursive function that returns the length of a list.</p>
+<pre><code>def length[T](l: List[T]): Int = {
+   @tailrec
+   def trLength(list: List[T], acc: Int): Int = ???
+
+   trLength(l, 0)
+}
+
+val list1 = List(4, 2, 8)
+val result = length(list1)   // 3  </code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Easier rewrites" duration="10">
+        <h2 is-upgraded><strong>Task 3: Get a list element</strong></h2>
+<p>Some recursive functions are already tail recursive. Copy your solution to get an element in a list from the previous codelab.</p>
+<pre><code>def get(list: List[String], index: Int): String = list match {
+  case Nil =&gt; throw IndexOutOfBoundsException()
+  case head :: tail =&gt; 
+    if (index == 0) head else get(tail, index - 1)
+}</code></pre>
+<p>You only need to add 1 line to this function (@tailrec) to mark it as tail recursive.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Tailrec tricks" duration="10">
+        <p>Sometimes you can modify the inputs or outputs of a function before the recursive part to make it easier to tail recurse.</p>
+<p>For example, when concatenating two lists, if you reverse the first list then it is easier to move one element from the first list to the second list in the correct order.</p>
+<h2 is-upgraded><strong>Task 4: Concatenate two lists</strong></h2>
+<p>Write the tail recursive function <code>trConcatenate</code> to complete the concatenation of two lists.</p>
+<pre><code>def concatenate(list1: List[Any], list2: List[Any]): List[Any] = {
+  @tailrec
+  def trConcatenate(reversedList: List[Any], acc: List[Any]): List[Any] = ???
+
+  trConcatenate(list1.reverse, list2)
+}</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Reverse a list" duration="20">
+        <h2 is-upgraded><strong>Task 5: Reverse</strong></h2>
+<p>Rewrite the reverse function from the previous codelab to be tail recursive.</p>
+<pre><code>def reverse[T](l: List[T]) : List[T] =
+  ???
+
+val list1 = List(1, 2, 3)
+val result = reverse(list1)
+// List(3, 2, 1)
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Challenge" duration="20">
+        <p>There is a good post on tail recursion that uses Fibonacci as an example: <a href="https://codeburst.io/understanding-tail-recursion-7975af331296" target="_blank">https://codeburst.io/understanding-tail-recursion-7975af331296</a> </p>
+<p>The Fibonacci sequence is: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, ...</p>
+<h2 is-upgraded><strong>Task 6: Fibonacci with tail recursion</strong></h2>
+<p>Write a Fibonacci function that is tail recursive. If you want a challenge then try to do it without reading the above blog post!</p>
+<pre><code>fibonacci(1)  // 1
+fibonacci(2)  // 1
+fibonacci(3)  // 2
+fibonacci(4)  // 3
+fibonacci(5)  // 5
+fibonacci(10) // 55</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Well Done!" duration="0">
+        <p>Congratulations, you&#39;ve mastered recursion!</p>
+<h2 is-upgraded><strong>Further reading</strong></h2>
+<ul>
+<li><a href="https://codeburst.io/understanding-tail-recursion-7975af331296" target="_blank">Understanding Tail Recursion</a></li>
+<li><a href="https://towardsdatascience.com/what-is-tail-recursion-elimination-or-why-functional-programming-can-be-awesome-43091d76915e" target="_blank">How Functional Programming Can Be Awesome</a></li>
+</ul>
+<h2 is-upgraded><strong></strong></h2>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>
