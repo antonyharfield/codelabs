@@ -1,0 +1,382 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Lab 2: Prompt Engineering</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid="UA-50147748-15"
+                  id="agents-l2-prompting"
+                  title="Lab 2: Prompt Engineering"
+                  environment="web"
+                  feedback-link="https://github.com/antonyharfield/codelabs/issues">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <p class="image-container"><img style="width: 378.99px" src="img/2b69d488abbd10df.png"></p>
+<p><strong>Last Updated:</strong> 2025-06-27</p>
+<h2 is-upgraded><strong>What is Prompt Engineering?</strong></h2>
+<p>Prompt engineering is the process of designing and refining prompts (input text) to guide a large language model (LLM) to produce desired outputs. It&#39;s a crucial skill for effectively using LLMs for various tasks, from text generation and summarization to question answering and creative writing.</p>
+<h2 is-upgraded><strong>What you&#39;ll build</strong></h2>
+<p>In this codelab, you won&#39;t build a specific application, but rather experiment with different prompting techniques to understand how they influence LLM responses.</p>
+<h2 class="checklist" is-upgraded><strong>What you&#39;ll learn</strong></h2>
+<ul class="checklist">
+<li>What is prompt engineering and how to use it with the Google Gen AI SDK.</li>
+<li>Apply best practices for prompt design, including conciseness, specificity, and task definition.</li>
+<li>Explore various text generation use cases with the Google Gen AI SDK, such as ideation, question answering, text classification and information extraction.</li>
+</ul>
+<h2 is-upgraded><strong>What you&#39;ll need</strong></h2>
+<ul>
+<li>A web browser</li>
+<li>A Google account</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="The Basics" duration="10">
+        <p>Prompt engineering is all about how to design your prompts so that the response is what you were indeed hoping to see.</p>
+<p>The idea of using &#34;unfancy&#34; prompts is to minimize the noise in your prompt to reduce the possibility of the LLM misinterpreting the intent of the prompt. Below are a few guidelines on how to engineer prompts.</p>
+<p>In this section, you&#39;ll cover the following best practices when engineering prompts:</p>
+<ul>
+<li>Be concise</li>
+<li>Be specific, and well-defined</li>
+<li>Ask one task at a time</li>
+</ul>
+<h2 is-upgraded><strong>Be concise</strong></h2>
+<p>Being concise means removing unnecessary words. A shorter, more direct prompt is easier for the model to understand and can lead to a more relevant response.</p>
+<p>🛑 Not Recommended: The prompt below is unnecessarily verbose.</p>
+<p><code>What do you think could be a good name for a flower shop that specializes in selling bouquets of dried flowers more than fresh flowers?</code></p>
+<p>✅ Recommended: The prompt below is to the point.</p>
+<p><code>Suggest a name for a flower shop that sells bouquets of dried flowers</code></p>
+<h2 is-upgraded><strong>Be specific, and well-defined</strong></h2>
+<p>If your prompt is too general, the model might not give you the specific information you need. The more specific and well-defined your prompt is, the better the model can tailor its response to your goal.</p>
+<p>🛑 Not Recommended: The prompt below is too generic.</p>
+<p><code>Tell me about Earth</code></p>
+<p>✅ Recommended: This prompt is specific and clearly defines the desired output.</p>
+<p><code>Generate a list of ways that makes Earth unique compared to other planets</code></p>
+<h2 is-upgraded><strong>Ask one task at a time</strong></h2>
+<p>LLMs can get confused when asked to perform multiple, unrelated tasks in a single prompt. For best results, break down complex requests into a series of smaller, single-task prompts.</p>
+<p>🛑 Not Recommended: The prompt below asks two unrelated questions.</p>
+<p><code>What's the best method of boiling water and why is the sky blue?</code></p>
+<p>✅ Recommended: Ask one question at a time.</p>
+<p><code>What's the best method of boiling water?</code></p>
+<p><code>Why is the sky blue?</code></p>
+<h3 is-upgraded><strong>Exercise</strong></h3>
+<p>Try the &#34;Not recommended&#34; prompt in each of these cases and compare it to the &#34;Recommended&#34; prompt. Try it in English and Thai. What differences did you find?</p>
+<p>You can use AI Studio to test prompts.</p>
+<p>Or you create another Python project (follow instructions from Lab 1) and create the following <code>example.py</code> in your project:</p>
+<p><code>example.py</code></p>
+<pre><code>import os
+from google import genai
+from google.genai import types
+
+client = genai.Client(api_key=os.getenv(&#34;GEMINI_API_KEY&#34;))
+
+prompt = &#34;&#34;&#34;
+What do you think could be a good name for a flower shop 
+that specializes in selling bouquets of dried flowers more 
+than fresh flowers?
+&#34;&#34;&#34;
+
+response = client.models.generate_content(
+  model=&#39;gemini-2.0-flash&#39;,
+  contents=prompt
+)
+
+print(&#34;\nResponse:&#34;)
+print(response.text)</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Including Examples" duration="5">
+        <p>You can guide the model to produce a specific format or style of response by including examples directly in the prompt. This technique is often called &#34;few-shot prompting&#34;.</p>
+<h2 is-upgraded><strong>Zero-shot prompt</strong></h2>
+<p>A zero-shot prompt asks a question without providing any examples. This is useful for open-ended or creative tasks.</p>
+<pre>Decide whether a Tweet&#39;s sentiment is positive, neutral, or negative.
+
+Tweet: I loved the new YouTube video you made!
+Sentiment:</pre>
+<h2 is-upgraded><strong>One-shot prompt</strong></h2>
+<p>A one-shot prompt provides a single example to guide the model. This helps the model understand the expected output format.</p>
+<pre>Decide whether a Tweet&#39;s sentiment is positive, neutral, or negative.
+
+Tweet: I loved the new YouTube video you made!
+Sentiment: positive
+
+Tweet: That was awful. Super boring 😠
+Sentiment:</pre>
+<h2 is-upgraded><strong>Few-shot prompt</strong></h2>
+<p>A few-shot prompt provides multiple examples. This is the most effective way to get consistent and accurate responses for classification or structured data tasks.</p>
+<pre>Decide whether a Tweet&#39;s sentiment is positive, neutral, or negative.
+
+Tweet: I loved the new YouTube video you made!
+Sentiment: positive
+
+Tweet: That was awful. Super boring 😠
+Sentiment: negative
+
+Tweet: Something surprised me about this video - it was actually original. It was not the same old recycled stuff that I always see. Watch it - you will not regret it.
+Sentiment:</pre>
+<h3 is-upgraded><strong>Exercise</strong></h3>
+<p>Compare zero-shot, one-shot and few-shot prompts in Thai. </p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Guardrail the Model" duration="5">
+        <p>You can provide the LLM with system instructions or a &#34;persona&#34; to guide its behavior and prevent it from answering irrelevant questions. This is a powerful way to keep your agent on topic.</p>
+<p>For example, you can create a travel chatbot that refuses to answer questions unrelated to travel.</p>
+<pre>Hello! You are an AI chatbot for a travel web site.
+Your mission is to provide helpful queries for travelers.
+Remember that before you answer a question, you must check to see if it complies with your mission.
+If not, you can say, &#34;Sorry I can&#39;t answer that question.&#34;
+
+User question: How do I make pizza dough at home?</pre>
+<p>With these instructions, the model will recognize that the user&#39;s question is off-topic and respond with a polite refusal, rather than trying to provide a recipe for pizza dough.</p>
+<p>The following file named <code>guardrail.py</code> reproduces this example in code:</p>
+<p><code>guardrail.py</code></p>
+<pre><code>import os
+from google import genai
+from google.genai import types
+
+client = genai.Client(api_key=os.getenv(&#34;GEMINI_API_KEY&#34;))
+
+system_prompt = &#34;&#34;&#34;
+Hello! You are an AI chatbot for a travel web site.
+Your mission is to provide helpful queries for travelers.
+Remember that before you answer a question, you must check to see if it complies with your mission.
+If not, you can say, &#34;Sorry I can&#39;t answer that question.&#34;
+&#34;&#34;&#34;
+prompt = &#34;How do I make pizza dough at home?&#34;
+
+response = client.models.generate_content(
+    model=&#39;gemini-2.0-flash-lite&#39;,
+    contents=prompt,
+    config=types.GenerateContentConfig(
+        system_instruction=system_prompt
+    )
+)
+
+print(response.text)</code></pre>
+<p>Recall that we discussed the <code>system_instruction</code> in Lab 1 during the topic of model configuration.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Turn Generative Tasks into Classification Tasks" duration="5">
+        <p>While open-ended, generative responses are useful for brainstorming and creative tasks, they can lead to high output variability. For situations where you need a more predictable and controlled response, you can frame your prompt as a classification task. This guides the model to choose from a set of options rather than generating a free-form answer.</p>
+<h3 is-upgraded><strong>Generative tasks lead to higher output variability</strong></h3>
+<p>A generative prompt encourages an open-ended response. This is great for creativity, but the answer can be different every time and may not align with specific constraints you have in mind.</p>
+<p><strong>🛑 Not Recommended (for predictable output): The prompt below results in a highly variable, open-ended response.</strong></p>
+<pre>I&#39;m a high school student. Recommend me a programming activity to improve my skills.</pre>
+<h3 is-upgraded><strong>Classification tasks reduce output variability</strong></h3>
+<p>By providing a set of choices, you turn the task into a classification problem. This makes the output much easier to control and process programmatically. The model will select from your options and justify its choice.</p>
+<p><strong>✅ Recommended: This prompt guides the model to a more structured and predictable answer.</strong></p>
+<pre>I&#39;m a high school student. Which of these activities do you suggest and why:
+a) learn Python
+b) learn JavaScript
+c) learn Fortran</pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Chain of Thought Prompting" duration="15">
+        <p>For complex tasks that require multiple steps of reasoning, like math or logic problems, a standard prompt may not be enough for the LLM to arrive at the correct answer. Chain of Thought (CoT) prompting is a technique that guides the model to &#34;think step by step,&#34; breaking down a complex problem into a series of intermediate steps. This significantly improves the model&#39;s reasoning ability.</p>
+<h3 is-upgraded><strong>Standard Prompting</strong></h3>
+<p>With a standard prompt, the model is asked to provide the final answer directly. For multi-step problems, this can often lead to incorrect results because the model tries to jump to the conclusion without working through the problem.</p>
+<p><strong>🛑 Not Recommended: The model gets the math wrong because it doesn&#39;t reason through the steps.</strong></p>
+<pre><code>import os
+from google import genai
+
+client = genai.Client(api_key=os.getenv(&#34;GEMINI_API_KEY&#34;))
+
+prompt = &#34;&#34;&#34;
+Q: The cafeteria had 23 apples.
+If they used 20 to make lunch and bought 6 more, how many apples do they have?
+A:
+&#34;&#34;&#34;
+
+print(f&#34;Sending prompt: &#39;{prompt}&#39;&#34;)
+response = client.models.generate_content(
+    model=&#39;gemini-2.0-flash-001&#39;,
+    contents=prompt
+)
+print(&#34;\nResponse:&#34;)
+print(response.text)
+# Likely incorrect output, e.g., &#34;The answer is 19.&#34;</code></pre>
+<h3 is-upgraded><strong>Few-Shot Chain of Thought</strong></h3>
+<p>To improve the response, we can provide an example in the prompt that demonstrates the reasoning process. By showing the model <em>how</em> to think, it can apply the same logic to the new question.</p>
+<p><strong>✅ Recommended: Showing the model an example of step-by-step reasoning produces the correct result.</strong></p>
+<pre><code>import os
+from google import genai
+
+client = genai.Client(api_key=os.getenv(&#34;GEMINI_API_KEY&#34;))
+
+prompt = &#34;&#34;&#34;
+Q: Roger has 5 tennis balls. He buys 2 more cans of tennis balls.
+Each can has 3 tennis balls. How many tennis balls does he have now?
+A: Roger started with 5 balls. 2 cans of 3 tennis balls
+each is 6 tennis balls. 5 + 6 = 11. The answer is 11.
+
+Q: The cafeteria had 23 apples.
+If they used 20 to make lunch and bought 6 more, how many apples do they have?
+A:
+&#34;&#34;&#34;
+
+print(f&#34;Sending prompt: &#39;{prompt}&#39;&#34;)
+response = client.models.generate_content(
+    model=&#39;gemini-2.0-flash-001&#39;,
+    contents=prompt
+)
+print(&#34;\nResponse:&#34;)
+print(response.text)
+# Correct output: &#34;The cafeteria had 23 apples. They used 20, so they had 23 - 20 = 3. They bought 6 more, so they now have 3 + 6 = 9. The answer is 9.&#34;</code></pre>
+<h3 is-upgraded><strong>Zero-Shot Chain of Thought</strong></h3>
+<p>A simpler but often effective technique is &#34;Zero-shot CoT&#34;. Instead of providing a full example, you can simply append the phrase &#34;Let&#39;s think step by step&#34; to your prompt. This simple instruction is often enough to trigger the model&#39;s reasoning process.</p>
+<p><strong>✅ Recommended: A simple instruction can trigger the model&#39;s reasoning.</strong></p>
+<pre><code>import os
+from google import genai
+
+client = genai.Client(api_key=os.getenv(&#34;GEMINI_API_KEY&#34;))
+
+prompt = &#34;&#34;&#34;
+Q: The cafeteria had 23 apples.
+If they used 20 to make lunch and bought 6 more, how many apples do they have?
+A: Let&#39;s think step by step.
+&#34;&#34;&#34;
+
+print(f&#34;Sending prompt: &#39;{prompt}&#39;&#34;)
+response = client.models.generate_content(
+    model=&#39;gemini-2.0-flash-001&#39;,
+    contents=prompt
+)
+print(&#34;\nResponse:&#34;)
+print(response.text)</code></pre>
+<h2 is-upgraded><strong>Gemini and Chain of Thought</strong></h2>
+<p>The Gemini 2.5 series models use an internal &#34;thinking process&#34; that significantly improves their reasoning and multi-step planning abilities. Gemini 2.5 Flash and Pro default to use thinking on every request, and it can be reduced or switched off through model configuration (see Lab 1). On Gemini 2.5 Flash Lite, thinking is switched off by default.</p>
+<h3 is-upgraded><strong>Exercise</strong></h3>
+<p>Below is the &#34;Not recommended&#34; prompt, but with Gemini 2.5 and &#34;thinking&#34; enabled. Does it find the correct answer?</p>
+<pre><code>import os
+from google import genai
+from google.genai import types
+
+client = genai.Client(api_key=os.getenv(&#34;GEMINI_API_KEY&#34;))
+
+prompt = &#34;&#34;&#34;
+Q: The cafeteria had 23 apples.
+If they used 20 to make lunch and bought 6 more, how many apples do they have?
+A:
+&#34;&#34;&#34;
+
+response = client.models.generate_content(
+  model=&#39;gemini-2.5-flash&#39;,
+  contents=prompt,
+  config=types.GenerateContentConfig(
+    thinking_config=types.ThinkingConfig(
+      thinking_budget=1024,
+      include_thoughts=True
+    )
+  )
+)
+
+for part in response.candidates[0].content.parts:
+  if not part.text:
+    continue
+  if part.thought:
+    print(&#34;Thought summary:&#34;)
+    print(part.text)
+    print()
+  else:
+    print(&#34;Answer:&#34;)
+    print(part.text)
+    print()</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Information extraction" duration="15">
+        <h2 is-upgraded><strong>Exercise</strong></h2>
+<p>Your mother has given you the steps for a recipe, without a list of ingredients. Let the LLM do the work of preparing a shopping list for you.</p>
+<h3 is-upgraded><strong>Task 1</strong></h3>
+<p>You are given an example prompt. </p>
+<pre><code>prompt = &#34;&#34;&#34;
+  Step 1:
+  Grind 3 garlic cloves, knob of fresh ginger, roughly chopped, 3 spring onions to a paste in a food processor.
+  Add 2 tbsp of clear honey, juice from one orange, 1 tbsp of light soy sauce and 2 tbsp of vegetable oil, then blend again.
+  Pour the mixture over the cubed chicken from 4 small breast fillets and leave to marnate for at least 1hr.
+  Toss in the 20 button mushrooms for the last half an hour so the take on some of the flavour, too.
+
+  Step 2:
+  Thread the chicken, 20 cherry tomatoes, mushrooms and 2 large red peppers onto 20 wooden skewers,
+  then cook on a griddle pan for 7-8 mins each side or until the chicken is thoroughly cooked and golden brown.
+  Turn the kebabs frequently and baste with the marinade from time to time until evenly cooked.
+  Arrange on a platter, and eat with your fingers.
+&#34;&#34;&#34;</code></pre>
+<p>Write the system instruction to tell the LLM what to do with the prompt (e.g. get a list of ingredients). The response from the LLM should look like:</p>
+<pre><code>- 3 garlic cloves
+- knob of fresh ginger
+- 3 spring onions
+- 2 tbsp of clear honey
+- 1 orange
+- 1 tbsp of light soy sauce
+- 2 tbsp of vegetable oil
+- 4 small chicken breast fillets
+- 20 button mushrooms
+- 20 cherry tomatoes
+- 2 large red peppers</code></pre>
+<h3 is-upgraded><strong>Task 2</strong></h3>
+<p>The next step is to further format the shopping list based on the ingredients extracted.</p>
+<p>Take the output from Task 1 (the list of ingredients) and make another call to the LLM to organise the ingredients into categories.</p>
+<p>Give the prompt a couple examples, or perform few-shot prompting, so it understands how to format your grocery list.</p>
+<p>Expected output:</p>
+<pre><code>## VEGETABLES
+- [ ] 20 cherry tomatoes
+- [ ] 20 button mushrooms
+- [ ] ...
+## MEAT
+- [ ] 4 small chicken breast fillets
+## SAUCES
+- [ ] 2 tbsp of vegetable oil
+...</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Congratulations" duration="0">
+        <p>Well done, this one was an important one! Prompt engineering is already an essential skill in work, especially for software developers.</p>
+<h2 is-upgraded><strong>Further reading</strong></h2>
+<ul>
+<li><a href="https://www.promptingguide.ai" target="_blank">promptingguide.ai</a> </li>
+<li><a href="https://ai.google.dev/gemini-api/docs/prompting-strategies" target="_blank">Gemini Prompt Engineering Guide</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

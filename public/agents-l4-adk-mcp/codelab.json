@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2025-07-11T17:59:15Z",
+  "id": "agents-l4-adk-mcp",
+  "duration": 52,
+  "title": "Lab 4: Agent Development Kit and Model Context Protocol",
+  "authors": "Antony Harfield",
+  "summary": "In this codelab, you will give ADK agents tools through the Model Context Protocol.",
+  "source": "1r_h-6rvysj4bu5bqLOMHk95NHj5yIBOCcw2UW0bXLL0",
+  "theme": "ai",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "ai"
+  ],
+  "tags": [
+    "agents"
+  ],
+  "feedback": "https://github.com/antonyharfield/codelabs/issues",
+  "ga": "UA-50147748-15",
+  "url": "agents-l4-adk-mcp"
+}

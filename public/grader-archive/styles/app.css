@@ -1,0 +1,218 @@
+body {
+    background: #ededed;
+}
+
+header h1 small:before  {
+    content: "|";
+    margin: 0 0.5em;
+    font-size: 1.6em;
+}
+
+footer {
+    background: #d9d9d9;
+    margin-top: 20px;
+}
+
+footer .note {
+    font-size: 0.8em;
+}
+
+.ink-navigation .breadcrumbs li:first-child a {
+    padding-left: 0;
+}
+
+.ink-form textarea {
+    height: 10em;
+    min-height: 10em;
+}
+
+.ink-form ul.control {
+    margin: 0;
+}
+
+.ink-form .control img {
+    width: 100px;
+    height: 50px;
+}
+
+
+
+.event-grid img, .event-grid .noimage {
+    height: 210px;
+}
+
+.event-grid .noimage {
+    background-color: #ccc;
+    text-align: center;
+    font-size: 4em;
+    padding-top: 32px;
+}
+.event-grid .noimage.swift {
+    background-color: #ffc470;
+}
+.event-grid .noimage.java {
+    background-color: #8fbfdf;
+}
+.event-grid .noimage.python {
+    background-color: #ffed92;
+}
+.event-grid .noimage.kotlin {
+    background-color: #b194ea;
+}
+
+.event-grid a {
+    color: #404040;
+}
+.event-grid a:hover {
+    color: #000;
+}
+
+
+
+.problem-box {
+    margin-right: 20px;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+}
+
+.problem-box .description {
+    height: 3em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.problem-box .description svg, .problem-box .description pre {
+    display: none;
+}
+
+/* Problem progress indicator */
+
+/*
+.progress-indicator svg circle {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s linear;
+  stroke: #666;
+  stroke-width: 0.5em;
+}
+.progress-indicator svg #bar {
+  stroke: #FF9F1E;
+}
+*/
+.progress-indicator svg {
+    transform: rotate(-90deg);
+}
+.progress-indicator svg circle {
+    stroke-linecap: round;
+}
+.progress-indicator {
+  display: block;
+  height: 120px;
+  width: 120px;
+  margin: 1em auto;
+  border-radius: 100%;
+  position: relative;
+}
+.progress-indicator:after {
+  position: absolute;
+  display: block;
+  height: 80px;
+  width: 80px;
+  left: 50%;
+  top: 50%;
+  content: attr(data-pct)"%";
+  margin-top: -40px;
+  margin-left: -40px;
+  border-radius: 100%;
+  line-height: 80px;
+  font-size: 1.5em;
+}
+
+.problem-box .not-started {
+  display: block;
+  height: 120px;
+  width: 120px;
+  margin: 1em auto;
+  padding-top: 40px;
+  border-radius: 100%;
+  background-color: #e6e6e6;
+  color: #ccc;
+}
+
+
+img.language {
+    width: 0.9em;
+    height: 0.9em;
+    vertical-align: baseline;
+}
+img.language:first-of-type {
+    margin-left: 0.1em;
+}
+
+/* Profile pics */
+
+img.profile {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: solid 1px #000;
+}
+
+.profile-tiny {
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    margin: 0 4px;
+}
+.profile-tiny:first-child {
+    margin-left: 0px;
+}
+div.profile-tiny {
+    display: inline-block;
+    background-color: #ccc;
+    margin-bottom: -4px;
+    text-align: center;
+}
+img.profile-tiny {
+    margin-top: -2px;
+}
+
+/* Scores */
+
+table.scores tbody tr:nth-child(-n+3) td {
+    font-size: 1.2em;
+}
+
+table.scores tbody tr:nth-child(-n+2) td {
+    font-size: 1.4em;
+}
+
+table.scores tbody tr:first-child td {
+    font-size: 1.6em;
+}
+
+table.scores tbody tr:nth-child(-n+3) .profile-tiny {
+    width: 28px;
+    height: 28px;
+}
+
+table.scores tbody tr:nth-child(-n+2) .profile-tiny {
+    width: 31px;
+    height: 31px;
+}
+
+table.scores tbody tr:first-child .profile-tiny {
+    width: 34px;
+    height: 34px;
+}
+
+img.cup {
+    height: 36px;
+}
+
+.countdown.fullscreen {
+    margin: 40px 0;
+    padding: 80px 40px;
+    background-color: #fff;
+    text-align: center;
+    font-size: 72px;
+}

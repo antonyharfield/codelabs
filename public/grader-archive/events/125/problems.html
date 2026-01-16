@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from grader.mobcomlab.com/events/125/problems by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 25 Apr 2021 06:16:18 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>254275 OOP Lab 5-10</title>
+    <meta name="description" content="">
+    <meta name="author" content="ink, cookbook, recipes">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <!-- load Ink's css from the cdn -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.ink.sapo.pt/3.1.10/css/ink-flex.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.ink.sapo.pt/3.1.10/css/font-awesome.min.css">
+
+    <!-- load Ink's css for IE8 -->
+    <!--[if lt IE 9 ]>
+    <link rel="stylesheet" href="https://cdn.ink.sapo.pt/3.1.10/css/ink-ie.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <![endif]-->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-42372609-2"></script><script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-42372609-2');
+    </script>
+
+    <!-- test browser flexbox support and load legacy grid if unsupported -->
+    <script type="text/javascript" src="https://cdn.ink.sapo.pt/3.1.10/js/modernizr.js"></script>
+    <script type="text/javascript">
+    Modernizr.load({
+    test: Modernizr.flexbox,
+    nope : 'https://cdn.ink.sapo.pt/3.1.10/css/ink-legacy.min.css'
+    });
+    </script>
+
+    <!-- load Ink's javascript files from the cdn -->
+    <script type="text/javascript" src="https://cdn.ink.sapo.pt/3.1.10/js/holder.js"></script>
+    <script type="text/javascript" src="https://cdn.ink.sapo.pt/3.1.10/js/ink-all.min.js"></script>
+    <script type="text/javascript" src="https://cdn.ink.sapo.pt/3.1.10/js/autoload.js"></script>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../styles/app.css">
+    
+</head>
+
+<body>
+
+<div class="ink-grid">
+
+    <!--[if lte IE 9 ]>
+    <div class="ink-alert basic" role="alert">
+        <button class="ink-dismiss">&times;</button>
+        <p>
+            <strong>You are using an outdated Internet Explorer version.</strong>
+            Please <a href="http://browsehappy.com/">upgrade to a modern browser</a> to improve your web experience.
+        </p>
+    </div>
+    -->
+
+    <style>
+    nav.ink-navigation ul.menu.horizontal li.right {
+        float: right;
+    }
+</style>
+
+<header class="vertical-space">
+    <h1>Grader<small>practice for programmers</small></h1>
+    <nav class="ink-navigation">
+        <ul class="menu horizontal grey">
+            <li class="active"><a href="../../index.html">Events</a></li>
+            <li ><a href="../../rankings.html">Rankings</a></li>
+
+                <li class="right "><a href="../../profile.html">Profile</a></li>
+                <li class="right disabled"><a href="#">Logged in as Anonymous Student</a></li>
+        </ul>
+    </nav>
+</header> 
+
+
+ 
+
+<h2>
+    254275 OOP Lab 5-10 <img class="language" src="../../images/languages/java.png"> <small>2/2563</small>
+</h2>
+
+<nav class="ink-navigation">
+        <ul class="pagination pills grey">
+            <li class="active"><a href="problems.html">Problems</a></li>
+            <li ><a href="submissions.html">Submissions</a></li>
+            <li ><a href="scores.html">Scores</a></li>
+        </ul>
+    </nav> <div class="column-group top-space">
+    <div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/1.html">Q1. Starbucks Class</a>
+                </div>
+                <div class="description">
+                    A  Starbucks Shop has a menu and a size Complete the StarbucksShop class by writing 2 methods:<br>
+* getSize returns the size as a String  (short, tall,grande,venti)<br>
+* getMenu returns the menu of StarbucksShop<br>
+
+<p><b>Test code:</b></p>
+<pre>
+    private static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        StarbucksShop d = input();
+
+        System.out.println("Drink name: " + d.getMenu());
+        System.out.print("Size: ");
+        switch (d.getSize())
+        {
+            case "short":
+                System.out.println("Short"); break;
+            case "tall":
+                System.out.println("Tall"); break;
+            case "grande":
+                System.out.println("Grande"); break;
+            case "venti":
+                System.out.println("Venti"); break;
+        }
+   }
+      private static   StarbucksShop input() 
+      {
+          String name = sc.nextLine();
+          String container = sc.nextLine();
+          return new   StarbucksShop(name, container);
+      }
+  </pre> </div>
+            </div>
+        </div>
+<div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/2.html">Q2. Add toString() method</a>
+                </div>
+                <div class="description">
+                    Reuse your Starbuck class from question 1. Add a method named toString that returns the menu  the size  and  the name Customer
+<pre>
+private static Scanner sc = new Scanner(System.in);
+    public static void main(String[] args)
+    {
+        StarbucksShop d = input();
+        System.out.println(d.toString());
+    }
+
+    private static StarbucksShop input()
+    {
+        String menu = sc.nextLine();
+        String size= sc.nextLine().toLowerCase();
+        String name = sc.nextLine();
+        return new StarbucksShop(menu,size,name);
+    }
+</pre> </div>
+            </div>
+        </div>
+<div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/3.html">Q3. Add getContainerDescription() method</a>
+                </div>
+                <div class="description">
+                    Reuse your Starbucks class from question 2. Add a method named getContainerDescription that returns  "Normal glass", "Starbucks glass" as a String for the container name.
+<pre>
+  private static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        StarbucksShop d = input();
+
+        System.out.println(d.getContainerDescription());
+    }
+
+    private static StarbucksShop input()
+    {
+        String menu = sc.nextLine();
+        String size = sc.nextLine();
+        char container = sc.nextLine().charAt(0);
+        return new StarbucksShop(menu, size, container);
+    }
+</pre> </div>
+            </div>
+        </div>
+<div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/4.html">Q4. Add isSameNameMenu() method</a>
+                </div>
+                <div class="description">
+                    Reuse your Starsbuck class from question 3. Add a method named isSameName that takes another Drink and returns true if they have the same name.
+<pre>
+private static Scanner sc = new Scanner(System.in);
+public static void main(String[] args) {
+         StarbucksShop d1 = input();
+         StarbucksShop d2 = input();
+
+         if (d1.isSameName(d2)) {
+             System.out.println("Drink 1 and Drink 2 is the same menu");
+         }
+         else {
+             System.out.println("Not the same menu");
+         }
+     }
+
+     private static StarbucksShop input() {
+         String menu = sc.nextLine();
+         String size = sc.nextLine();
+         char container = sc.nextLine().charAt(0);
+         return new StarbucksShop(menu, size, container);
+     }
+</pre> </div>
+            </div>
+        </div>
+<div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/5.html">Q5. Palace of Atom</a>
+                </div>
+                <div class="description">
+                    Palace of Atom, also known as "Wang Dong Programmer", this elegant place is full of knowledge of Various programming The palace is located at Phitsanulok - Nakhon Sawan 99 Moo 9, Tha Pho Subdistrict Tha Pho, Mueang Phitsanulok District, 65000
+The key is that this palace has been stung by programmers as Provide the best programming knowledge<br>
+Write a class named Palace with fields for "castle"  and "principality".<br>
+<ul>
+<li><code>getCastle</code> returns the number of castles <em></em></li>
+<li><code>getPrincipality</code> returns the number of principality <em></em></li>
+</ul>
+Template:
+<pre>
+ public static void main(String[] args)
+ {
+      Scanner sc = new Scanner(System.in);
+      Palace p = new Palace(sc.nextInt(), sc.nextInt());
+      System.out.print("Palace of Atom has "+p.getCastle()+ " Castle");
+      if(p.getCastle()>1)
+      {
+          System.out.print("s");
+      }
+      System.out.print(" including "+p.getPrincipality()+" Principality");
+      if(p.getPrincipality()>1)
+      {
+          System.out.print("s");
+      }
+   }
+</pre> </div>
+            </div>
+        </div>
+<div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/6.html">Q6. Add toString() method</a>
+                </div>
+                <div class="description">
+                    Add a new method to the Palace named toString that returns amount of the castle and principality<br>
+Template:<br>
+<pre>
+  public static void main(String[] args)
+  {
+      Scanner sc = new Scanner(System.in);
+       int castle = Integer.parseInt(sc.nextLine());
+       int principality = Integer.parseInt(sc.nextLine());
+       Palace p = new Palace(castle,principality);
+       System.out.println(p.toString());
+  }
+</pre>. </div>
+            </div>
+        </div>
+<div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/7.html">Q7. Is it a Large Palace</a>
+                </div>
+                <div class="description">
+                    A Large Palace is a  with  if the castle more than 5 and principality 8 . Add a method named is LargePalace that returns true if the Palace is  Large Palace
+<pre>
+  public static void main(String[] args)
+  {
+        Scanner sc = new Scanner(System.in);
+        int castle = Integer.parseInt(sc.nextLine());
+        int principality = Integer.parseInt(sc.nextLine());
+        String name = sc.nextLine();
+        Palace p = new Palace(castle,principality,name);
+        if (p.LargePalace()==true)
+        {
+          System.out.println(p.getName()+" is a Large Palace");
+        }
+        else
+        {
+          System.out.println(p.getName()+" is a Normal Palace");
+        }
+  }
+</pre> </div>
+            </div>
+        </div>
+<div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/8.html">Q8. Is your Castle ???</a>
+                </div>
+                <div class="description">
+                    Castles have owner.  Add a method named is IsyouCastle that returns true if the correct name Castle owner<br>
+<ul>
+<li><code>Vachirapon Tosawat owns the java </code> </li>
+<li><code>Piyachok Seangbuddee owns the the python</code> </li>
+<li><code>Nanthaphong Khongyut owns the the kotlin</code> </li>
+<li><code>Thadaphong Kesornprom owns the the swift</code> </li>
+<li><code>Puwanasul Klanhun owns the  ruby</code> </li>
+<li><code>Panuphun Injan owns the  javascpit</code> </li>
+</ul>
+<pre>
+public static void main(String[] args)
+{
+      Scanner sc = new Scanner(System.in);
+        int castle = Integer.parseInt(sc.nextLine());
+        int principality = Integer.parseInt(sc.nextLine());
+        String owner = sc.nextLine().toLowerCase();
+        String name = sc.nextLine().toLowerCase();
+        Palace p = new Palace(castle,principality,name,owner);
+        if (p.isyourCastle()==true)
+        {
+          System.out.println(p.getOwner()+" is the owner of the "+p.getName()+" castle.");
+        }
+        else
+        {
+          System.out.println(p.getOwner()+" isn't the owner of the "+p.getName()+" castle.");
+        }
+ }
+</pre> </div>
+            </div>
+        </div>
+<div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/9.html">Q9. Complex number</a>
+                </div>
+                <div class="description">
+                    Complex numbers are those that have an imaginary part and a real part associated with it. They can be added and subtracted like regular numbers. The real parts and imaginary parts are respectively added or subtracted or even multiplied and divided.<br>
+The value of a complex numbers is calculated by The real parts + reals parts and imaginary part+ parts 
+Complete the class Complex by adding a constructor and methods for getting real,img  and sum
+<pre>
+ public static void main(String args[])
+ {
+     Scanner sc = new Scanner(System.in);
+     ComplexNumber c1 = new ComplexNumber(sc.nextDouble(),sc.nextDouble());
+     ComplexNumber c2 = new ComplexNumber(sc.nextDouble(),sc.nextDouble());
+     ComplexNumber ss = sum(c1, c2);
+     System.out.printf("The sum of two complex numbers is "+String.format("%.1f",ss.real)+" + "+String.format("%.1f",ss.img) +"i");
+ }
+</pre>
+ </div>
+            </div>
+        </div>
+<div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/10.html">Q10. Parabola</a>
+                </div>
+                <div class="description">
+                    In mathematics, a parabola is a plane curve which is mirror-symmetrical and is approximately U-shaped. It fits several superficially different mathematical descriptions, which can all be proved to define exactly the same curves.<br>
+One description of a parabola involves a point (the focus) and a line (the directrix). The focus does not lie on the directrix. The parabola is the locus of points in that plane that are equidistant from both the directrix and the focus. Another description of a parabola is as a conic section, created from the intersection of a right circular conical surface and a plane parallel to another plane that is tangential to the conical surface.[a]<br>
+The line perpendicular to the directrix and passing through the focus (that is, the line that splits the parabola through the middle) is called the "axis of symmetry". The point where the parabola intersects its axis of symmetry is called the "vertex" and is the point where the parabola is most sharply curved. The distance between the vertex and the focus, measured along the axis of symmetry, is the "focal length". The "latus rectum" is the chord of the parabola that is parallel to the directrix and passes through the focus. Parabolas can open up, down, left, right, or in some other arbitrary direction. Any parabola can be repositioned and rescaled to fit exactly on any other parabola—that is, all parabolas are geometrically similar.
+write a method 6 method  getLatusrectum , getVertexa, getVertexb , getFocusa, getFocusb, getDirectrix
+<pre>
+public static void main(String[] args)
+{
+    Scanner in = new Scanner(System.in);
+    double a = in.nextDouble();
+    double b = in.nextDouble();
+    double c = in.nextDouble();
+    Parabola x = new Parabola(a,b,c);
+    System.out.println("Latus Rectum = "+"+- "+String.format("%.2f",x.getLatusrectum(c)));
+    System.out.println("Vertex: ("+String.format("%.2f",x.getVertexa(a,b))+","+String.format("%.2f",x.getVertexb(a,b,c))+")");
+    System.out.println("Focus : ("+String.format("%.2f",x.getFocusa(a,b))+","+String.format("%.2f",x.getFocusb(a,b,c))+")");
+    System.out.println("Directrix: y = "+String.format("%.2f",x.getDirectrix(a,b,c)));
+}
+</pre> </div>
+            </div>
+        </div>
+<div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/11.html">Q11. Create Watch</a>
+                </div>
+                <div class="description">
+                    Write a class named Watch with members name, colour and price. The class needs a constructor and get methods for each member.
+<p><img src="https://mobcomlab.s3.amazonaws.com/grader/oop-minitest2/1d87464b.png"></p>
+<p><b>Test code:</b></p>
+<pre>
+class Q11 {
+    private static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        Watch w = input();
+
+        System.out.println("Watch name: " + w.getName());
+        System.out.println("Colour: " + w.getColour());
+        System.out.println("Price: " + w.getPrice() + " baht");
+    }
+
+    private static Watch input() {
+        String name = sc.nextLine();
+        String colour = sc.nextLine();
+        int price = Integer.parseInt(sc.nextLine());
+        return new Watch(name, colour, price);
+    }
+}
+</pre> </div>
+            </div>
+        </div>
+<div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/12.html">Q12. Add toString method</a>
+                </div>
+                <div class="description">
+                    Reuse your Watch class from question 1. Add a method named toString that returns the name and the colour.
+<p><b>Test code:</b></p>
+<pre>
+
+    private static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        Watch w = input();
+
+        System.out.println(w.toString());
+    }
+
+    private static Watch input() {
+        String name = sc.nextLine();
+        String colour = sc.nextLine();
+        int price = Integer.parseInt(sc.nextLine());
+        return new Watch(name, colour, price);
+    }
+
+</pre> </div>
+            </div>
+        </div>
+<div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/13.html">Q13. Add getPriceRange method</a>
+                </div>
+                <div class="description">
+                    Reuse your Watch class from question 1. Add a method named getPriceRange that returns a String. If the price is less than 1000 then it is "Budget", if it is greater than 10000 then it is "Executive", else it is "Regular".
+<p><b>Test code:</b></p>
+<pre>
+
+    private static Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) {
+        Watch w = input();
+
+        System.out.print(w.getName() + " is ");
+        System.out.println(w.getPriceRange());
+    }
+
+    private static Watch input() {
+        String name = sc.nextLine();
+        String colour = sc.nextLine();
+        int price = Integer.parseInt(sc.nextLine());
+        return new Watch(name, colour, price);
+    }
+
+</pre> </div>
+            </div>
+        </div>
+<div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/14.html">Q14. Add isBudget method</a>
+                </div>
+                <div class="description">
+                    Reuse your Watch class from question 3. Add a method named isBudget that returns true if the watch is less than 1000 baht (0-999).
+<p><b>Test code:</b></p>
+<pre>
+
+    private static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        Watch w = input();
+
+        if (w.isBudget()) {
+            System.out.println(w.getName() + " is under 1000 baht");
+        }
+        else {
+            System.out.println(w.getName() + " is too expensive");
+        }
+    }
+
+    private static Watch input() {
+        String name = sc.nextLine();
+        String colour = sc.nextLine();
+        int price = Integer.parseInt(sc.nextLine());
+        return new Watch(name, colour, price);
+    }
+
+</pre> </div>
+            </div>
+        </div>
+<div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/15.html">Q15. Create subclass Smartwatch</a>
+                </div>
+                <div class="description">
+                    Smartwatch <b>is a subclass of</b> Watch. Smartwatch has a String member named operatingSystem (e.g. "WatchOS" or "Android Wear"). Write the Smartwatch class.
+<p><img src="https://mobcomlab.s3.amazonaws.com/grader/oop-minitest2/979bc330.png"></p>
+<p><b>Test code:</b></p>
+<pre>
+
+    private static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        Smartwatch w = input();
+
+        System.out.println("Watch name: " + w.getName());
+        System.out.println("Operating System: " + w.getOperatingSystem());
+    }
+
+    private static Smartwatch input() {
+        String name = sc.nextLine();
+        String colour = sc.nextLine();
+        int price = Integer.parseInt(sc.nextLine());
+        String operatingSystem = sc.nextLine();
+        return new Smartwatch(name, colour, price, operatingSystem);
+    }
+
+</pre> </div>
+            </div>
+        </div>
+<div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/16.html">Q16. Add isAppleWatch method</a>
+                </div>
+                <div class="description">
+                    Reuse your Smartwatch class from question 5. Add a method named isAppleWatch that returns true if the operating system is "WatchOS".
+<p><b>Test code:</b></p>
+<pre>
+
+    private static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        Smartwatch w = input();
+
+        if (w.isAppleWatch()) {
+            System.out.println(w.getName() + " is an Apple Watch");
+        }
+        else {
+            System.out.println("Not an Apple Watch");
+        }
+    }
+
+    private static Smartwatch input() {
+        String name = sc.nextLine();
+        String colour = sc.nextLine();
+        int price = Integer.parseInt(sc.nextLine());
+        String operatingSystem = sc.nextLine();
+        return new Smartwatch(name, colour, price, operatingSystem);
+    }
+
+</pre> </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="clearfix">
+    <div class="ink-grid">
+        <ul class="unstyled inline half-vertical-space">
+            <li><a href="../../about.html">About</a></li>
+            <li><a href="https://github.com/antonyharfield/grader/">Github</a></li>
+        </ul>
+        <p class="note">Made in Phitsanulok ❤</p>
+    </div>
+</footer>
+<script>
+    var RADIUS = 54;
+    var CIRCUMFERENCE = 2 * Math.PI * RADIUS;
+
+    $(document).ready(function() {
+        $(".progress-indicator").each(function() {
+            var value = $(this).attr("data-pct");
+            var progress = value / 100;
+            var dashoffset = CIRCUMFERENCE * (1 - progress);
+            var progressValue = $(this).find("circle.progress-value").get(0);
+            progressValue.style.strokeDasharray = CIRCUMFERENCE;
+            progressValue.style.strokeDashoffset = dashoffset;
+            if (value == 100) {
+                progressValue.style.stroke = "#4a9b17";
+            }
+        });
+    });
+    </script>
+</body>
+
+<!-- Mirrored from grader.mobcomlab.com/events/125/problems by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 25 Apr 2021 06:16:36 GMT -->
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from grader.mobcomlab.com/events/86/problems by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 25 Apr 2021 06:21:10 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>254271 Fun (2562) - Midterm</title>
+    <meta name="description" content="">
+    <meta name="author" content="ink, cookbook, recipes">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <!-- load Ink's css from the cdn -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.ink.sapo.pt/3.1.10/css/ink-flex.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.ink.sapo.pt/3.1.10/css/font-awesome.min.css">
+
+    <!-- load Ink's css for IE8 -->
+    <!--[if lt IE 9 ]>
+    <link rel="stylesheet" href="https://cdn.ink.sapo.pt/3.1.10/css/ink-ie.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <![endif]-->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-42372609-2"></script><script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-42372609-2');
+    </script>
+
+    <!-- test browser flexbox support and load legacy grid if unsupported -->
+    <script type="text/javascript" src="https://cdn.ink.sapo.pt/3.1.10/js/modernizr.js"></script>
+    <script type="text/javascript">
+    Modernizr.load({
+    test: Modernizr.flexbox,
+    nope : 'https://cdn.ink.sapo.pt/3.1.10/css/ink-legacy.min.css'
+    });
+    </script>
+
+    <!-- load Ink's javascript files from the cdn -->
+    <script type="text/javascript" src="https://cdn.ink.sapo.pt/3.1.10/js/holder.js"></script>
+    <script type="text/javascript" src="https://cdn.ink.sapo.pt/3.1.10/js/ink-all.min.js"></script>
+    <script type="text/javascript" src="https://cdn.ink.sapo.pt/3.1.10/js/autoload.js"></script>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../styles/app.css">
+    
+</head>
+
+<body>
+
+<div class="ink-grid">
+
+    <!--[if lte IE 9 ]>
+    <div class="ink-alert basic" role="alert">
+        <button class="ink-dismiss">&times;</button>
+        <p>
+            <strong>You are using an outdated Internet Explorer version.</strong>
+            Please <a href="http://browsehappy.com/">upgrade to a modern browser</a> to improve your web experience.
+        </p>
+    </div>
+    -->
+
+    <style>
+    nav.ink-navigation ul.menu.horizontal li.right {
+        float: right;
+    }
+</style>
+
+<header class="vertical-space">
+    <h1>Grader<small>practice for programmers</small></h1>
+    <nav class="ink-navigation">
+        <ul class="menu horizontal grey">
+            <li class="active"><a href="../../index.html">Events</a></li>
+            <li ><a href="../../rankings.html">Rankings</a></li>
+
+                <li class="right "><a href="../../profile.html">Profile</a></li>
+                <li class="right disabled"><a href="#">Logged in as Anonymous Student</a></li>
+        </ul>
+    </nav>
+</header> 
+
+
+ 
+
+<h2>
+    254271 Fun (2562) - Midterm <img class="language" src="../../images/languages/java.png"> <small></small>
+</h2>
+
+<nav class="ink-navigation">
+        <ul class="pagination pills grey">
+            <li class="active"><a href="problems.html">Problems</a></li>
+            <li ><a href="submissions.html">Submissions</a></li>
+            <li ><a href="scores.html">Scores</a></li>
+        </ul>
+    </nav> <div class="column-group top-space">
+    <div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/1.html">Part 4 Question 1</a>
+                </div>
+                <div class="description">
+                    หน่วยอุณหภูมิ มี 3 หน่วยที่นิยมใช้ คือ องศาเซลเซียส (Celsius) องศาฟาเรนไฮต์ (Fahrenheit) และ เคลวิน (Kelvin) โดยมีสูตรในการแปลงระหว่างหน่วยดังนี้
+<ul><li>แปลงจากองศาฟาเรนไฮต์ (F) เป็นองศาเซลเซียส (C) คือ	<code>F = (1.8 × C) + 32</code></li>
+<li>แปลงจาก เคลวิน (K) เป็น องศาเซลเซียส (C) คือ		<code>C = K - 273.15</code></li></ul>
+จงเขียนโปรแกรมรับค่าอุณหภูมิจากแป้นพิมพ์ ในหน่วย เคลวิน แล้วแสดงผลออกมาเป็นหน่วย องศาฟาเรนไฮต์ ดังตัวอย่าง
+<pre>Temperature Converter from Kelvin to Fahrenheit
+Input Temperature (Kelvin): 680 					{input ครั้งที่ 1}	
+680.0 Kelvin = 764.33 Fahrenheit.					{output}
+</pre> </div>
+            </div>
+        </div>
+<div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/2.html">Part 4 Question 2</a>
+                </div>
+                <div class="description">
+                    กำหนดให้กาแฟแก้วละ 50 บาท  และชาแก้วละ 30 บาท จงเขียนโปรแกรมเพื่อแสดงเมนูให้ผู้ใช้เลือกซื้อ (อย่างใดอย่างหนึ่ง) โดย การป้อนตัวเลข ถ้าป้อนเลข 1 หมายถึง เลือกซื้อกาแฟ ถ้าป้อนหมายเลข 2 หมายถึง เลือกซื้อชา หลังจากนั้นจึงถามจำนวนแก้วที่ต้องการ แล้วโปรแกรมจะแสดงผลเป็นคำนวนยอดจ่ายเงินสุทธิให้
+<pre>
+****Menu*****
+1. Coffee 50 baht/cup
+2. Tea 30 baht/cup
+Enter a number to order [1/2]: 1		{input ครั้งที่ 1}
+How many cups? 5				{input ครั้งที่ 2}
+You have to pay 250 baht.			{output}
+</pre> </div>
+            </div>
+        </div>
+<div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/3.html">Part 3 Question 3</a>
+                </div>
+                <div class="description">
+                    เขียนโปรแกรมให้กับบริษัทที่ขายอุปกรณ์กอล์ฟ พนักงานขาย (Sales people) จะได้รับค่าคอมมิสชัน (Commission) โดยขึ้นอยู่กับยอดขาย (Sales amount) และเงื่อนไขของบริษัท
+<pre>
+ยอดขาย		การคิดค่าคอมมิสชัน
+1 - 100,000	2% * ยอดขาย
+100,001 - 400,000	5% * ยอดขาย
+400,001 ขึ้นไป		10% * ยอดขาย
+</pre> </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="clearfix">
+    <div class="ink-grid">
+        <ul class="unstyled inline half-vertical-space">
+            <li><a href="../../about.html">About</a></li>
+            <li><a href="https://github.com/antonyharfield/grader/">Github</a></li>
+        </ul>
+        <p class="note">Made in Phitsanulok ❤</p>
+    </div>
+</footer>
+<script>
+    var RADIUS = 54;
+    var CIRCUMFERENCE = 2 * Math.PI * RADIUS;
+
+    $(document).ready(function() {
+        $(".progress-indicator").each(function() {
+            var value = $(this).attr("data-pct");
+            var progress = value / 100;
+            var dashoffset = CIRCUMFERENCE * (1 - progress);
+            var progressValue = $(this).find("circle.progress-value").get(0);
+            progressValue.style.strokeDasharray = CIRCUMFERENCE;
+            progressValue.style.strokeDashoffset = dashoffset;
+            if (value == 100) {
+                progressValue.style.stroke = "#4a9b17";
+            }
+        });
+    });
+    </script>
+</body>
+
+<!-- Mirrored from grader.mobcomlab.com/events/86/problems by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 25 Apr 2021 06:21:15 GMT -->
+</html>

@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2025-07-11T04:34:31Z",
+  "id": "agents-l5-multi-agent",
+  "duration": 20,
+  "title": "Lab 5: Multi Agent Systems",
+  "authors": "Antony Harfield",
+  "summary": "In this codelab, you will build a multi-agent system using conversational and workflow agents.",
+  "source": "1OF4IJqo1CIev6dHXB-0eNkZNAEs3tjF9twlbyZYVXLc",
+  "theme": "ai",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "ai"
+  ],
+  "tags": [
+    "agents"
+  ],
+  "feedback": "https://github.com/antonyharfield/codelabs/issues",
+  "ga": "UA-50147748-15",
+  "url": "agents-l5-multi-agent"
+}

@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2025-07-11T17:46:58Z",
+  "id": "agents-l6-fullstack",
+  "duration": 50,
+  "title": "Lab 6: Full-stack Agent",
+  "authors": "Antony Harfield",
+  "summary": "In this codelab, you'll run a complete example web application containing an agent backend and you'll modify it to create your own application.",
+  "source": "10f8sxMCMqAif434ZGJBhctvpCqngh4o7H3lwlVB7QIA",
+  "theme": "ai",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "ai"
+  ],
+  "tags": [
+    "agents"
+  ],
+  "feedback": "https://github.com/antonyharfield/codelabs/issues",
+  "ga": "UA-50147748-15",
+  "url": "agents-l6-fullstack"
+}

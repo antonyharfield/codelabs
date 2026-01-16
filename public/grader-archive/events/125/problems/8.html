@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from grader.mobcomlab.com/events/125/problems/8 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 25 Apr 2021 06:29:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Problem Q8. Is your Castle ???</title>
+    <meta name="description" content="">
+    <meta name="author" content="ink, cookbook, recipes">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <!-- load Ink's css from the cdn -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.ink.sapo.pt/3.1.10/css/ink-flex.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.ink.sapo.pt/3.1.10/css/font-awesome.min.css">
+
+    <!-- load Ink's css for IE8 -->
+    <!--[if lt IE 9 ]>
+    <link rel="stylesheet" href="https://cdn.ink.sapo.pt/3.1.10/css/ink-ie.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <![endif]-->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-42372609-2"></script><script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-42372609-2');
+    </script>
+
+    <!-- test browser flexbox support and load legacy grid if unsupported -->
+    <script type="text/javascript" src="https://cdn.ink.sapo.pt/3.1.10/js/modernizr.js"></script>
+    <script type="text/javascript">
+    Modernizr.load({
+    test: Modernizr.flexbox,
+    nope : 'https://cdn.ink.sapo.pt/3.1.10/css/ink-legacy.min.css'
+    });
+    </script>
+
+    <!-- load Ink's javascript files from the cdn -->
+    <script type="text/javascript" src="https://cdn.ink.sapo.pt/3.1.10/js/holder.js"></script>
+    <script type="text/javascript" src="https://cdn.ink.sapo.pt/3.1.10/js/ink-all.min.js"></script>
+    <script type="text/javascript" src="https://cdn.ink.sapo.pt/3.1.10/js/autoload.js"></script>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../styles/app.css">
+    
+</head>
+
+<body>
+
+<div class="ink-grid">
+
+    <!--[if lte IE 9 ]>
+    <div class="ink-alert basic" role="alert">
+        <button class="ink-dismiss">&times;</button>
+        <p>
+            <strong>You are using an outdated Internet Explorer version.</strong>
+            Please <a href="http://browsehappy.com/">upgrade to a modern browser</a> to improve your web experience.
+        </p>
+    </div>
+    -->
+
+    <style>
+    nav.ink-navigation ul.menu.horizontal li.right {
+        float: right;
+    }
+</style>
+
+<header class="vertical-space">
+    <h1>Grader<small>practice for programmers</small></h1>
+    <nav class="ink-navigation">
+        <ul class="menu horizontal grey">
+            <li class="active"><a href="../../../index.html">Events</a></li>
+            <li ><a href="../../../rankings.html">Rankings</a></li>
+
+                <li class="right "><a href="../../../profile.html">Profile</a></li>
+                <li class="right disabled"><a href="#">Logged in as Anonymous Student</a></li>
+        </ul>
+    </nav>
+</header> 
+
+
+ 
+
+<p>Back to <a href="../problems.html">254275 OOP Lab 5-10</a></p>
+
+<h2>Q8. Is your Castle ???</h2>
+
+<div class="column-group gutters">
+    <div class="all-60 small-100 tiny-100">
+        <h3>Problem</h3>
+        <p class="quarter-top-space">Castles have owner.  Add a method named is IsyouCastle that returns true if the correct name Castle owner<br>
+<ul>
+<li><code>Vachirapon Tosawat owns the java </code> </li>
+<li><code>Piyachok Seangbuddee owns the the python</code> </li>
+<li><code>Nanthaphong Khongyut owns the the kotlin</code> </li>
+<li><code>Thadaphong Kesornprom owns the the swift</code> </li>
+<li><code>Puwanasul Klanhun owns the  ruby</code> </li>
+<li><code>Panuphun Injan owns the  javascpit</code> </li>
+</ul>
+<pre>
+public static void main(String[] args)
+{
+      Scanner sc = new Scanner(System.in);
+        int castle = Integer.parseInt(sc.nextLine());
+        int principality = Integer.parseInt(sc.nextLine());
+        String owner = sc.nextLine().toLowerCase();
+        String name = sc.nextLine().toLowerCase();
+        Palace p = new Palace(castle,principality,name,owner);
+        if (p.isyourCastle()==true)
+        {
+          System.out.println(p.getOwner()+" is the owner of the "+p.getName()+" castle.");
+        }
+        else
+        {
+          System.out.println(p.getOwner()+" isn't the owner of the "+p.getName()+" castle.");
+        }
+ }
+</pre></p>
+        <h3>Examples</h3>
+        <div class="column-group gutters">
+                <div class="all-50">
+                    <p class="note">Input</p>
+                    <pre>8
+10
+Vachirapon Tosawat
+java</pre>
+                </div>
+                <div class="all-50">
+                    <p class="note">Output</p>
+                    <pre>Vachirapon Tosawat is the owner of the java castle.</pre>
+                </div>
+            </div>
+<div class="column-group gutters">
+                <div class="all-50">
+                    <p class="note">Input</p>
+                    <pre>12
+15
+Piyachok Seangbuddee
+python</pre>
+                </div>
+                <div class="all-50">
+                    <p class="note">Output</p>
+                    <pre>Piyachok Seangbuddee is the owner of the python castle.</pre>
+                </div>
+            </div>
+<div class="column-group gutters">
+                <div class="all-50">
+                    <p class="note">Input</p>
+                    <pre>9
+12
+Nanthaphong Khongyut
+ruby</pre>
+                </div>
+                <div class="all-50">
+                    <p class="note">Output</p>
+                    <pre>Nanthaphong Khongyut isn&#39;t the owner of the ruby castle.</pre>
+                </div>
+            </div>
+    </div>
+    <div class="all-40 small-100 tiny-100">
+        <h3>Submit your solution</h3>
+        <form method="post" enctype="multipart/form-data" class="ink-form">
+            <div class="control-group">
+                <div class="column-group gutters">
+                    <label for="inline-name" class="all-30">Source file</label>
+                    <div class="control all-70">
+                        <input type="file" name="file">
+                    </div>
+                </div>
+                <div class="column-group gutters">
+                    <label for="inline-name" class="all-30">Language</label>
+                    <div class="control all-70">
+                        <p>java</p>
+                    </div>
+                </div>
+                <div class="control">
+                    <input type="submit" class="ink-button">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+
+<footer class="clearfix">
+    <div class="ink-grid">
+        <ul class="unstyled inline half-vertical-space">
+            <li><a href="../../../about.html">About</a></li>
+            <li><a href="https://github.com/antonyharfield/grader/">Github</a></li>
+        </ul>
+        <p class="note">Made in Phitsanulok ❤</p>
+    </div>
+</footer>
+
+</body>
+
+<!-- Mirrored from grader.mobcomlab.com/events/125/problems/8 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 25 Apr 2021 06:29:58 GMT -->
+</html>

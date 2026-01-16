@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2025-07-16T08:35:25Z",
+  "id": "agents-l2-prompting",
+  "duration": 55,
+  "title": "Lab 2: Prompt Engineering",
+  "authors": "Antony Harfield",
+  "summary": "In this codelab, you will experiment with different prompting techniques to understand how they influence LLM responses.",
+  "source": "1uihvkwfbLWGXlCEQQv_9LOPsG4NOegcpU5nl5PB9OeI",
+  "theme": "ai",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "ai"
+  ],
+  "tags": [
+    "agents"
+  ],
+  "feedback": "https://github.com/antonyharfield/codelabs/issues",
+  "ga": "UA-50147748-15",
+  "url": "agents-l2-prompting"
+}

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from grader.mobcomlab.com/events/23/problems by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 25 Apr 2021 06:27:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>273387 Kotlin - Language basics</title>
+    <meta name="description" content="">
+    <meta name="author" content="ink, cookbook, recipes">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <!-- load Ink's css from the cdn -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.ink.sapo.pt/3.1.10/css/ink-flex.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.ink.sapo.pt/3.1.10/css/font-awesome.min.css">
+
+    <!-- load Ink's css for IE8 -->
+    <!--[if lt IE 9 ]>
+    <link rel="stylesheet" href="https://cdn.ink.sapo.pt/3.1.10/css/ink-ie.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <![endif]-->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-42372609-2"></script><script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-42372609-2');
+    </script>
+
+    <!-- test browser flexbox support and load legacy grid if unsupported -->
+    <script type="text/javascript" src="https://cdn.ink.sapo.pt/3.1.10/js/modernizr.js"></script>
+    <script type="text/javascript">
+    Modernizr.load({
+    test: Modernizr.flexbox,
+    nope : 'https://cdn.ink.sapo.pt/3.1.10/css/ink-legacy.min.css'
+    });
+    </script>
+
+    <!-- load Ink's javascript files from the cdn -->
+    <script type="text/javascript" src="https://cdn.ink.sapo.pt/3.1.10/js/holder.js"></script>
+    <script type="text/javascript" src="https://cdn.ink.sapo.pt/3.1.10/js/ink-all.min.js"></script>
+    <script type="text/javascript" src="https://cdn.ink.sapo.pt/3.1.10/js/autoload.js"></script>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../styles/app.css">
+    
+</head>
+
+<body>
+
+<div class="ink-grid">
+
+    <!--[if lte IE 9 ]>
+    <div class="ink-alert basic" role="alert">
+        <button class="ink-dismiss">&times;</button>
+        <p>
+            <strong>You are using an outdated Internet Explorer version.</strong>
+            Please <a href="http://browsehappy.com/">upgrade to a modern browser</a> to improve your web experience.
+        </p>
+    </div>
+    -->
+
+    <style>
+    nav.ink-navigation ul.menu.horizontal li.right {
+        float: right;
+    }
+</style>
+
+<header class="vertical-space">
+    <h1>Grader<small>practice for programmers</small></h1>
+    <nav class="ink-navigation">
+        <ul class="menu horizontal grey">
+            <li class="active"><a href="../../index.html">Events</a></li>
+            <li ><a href="../../rankings.html">Rankings</a></li>
+
+                <li class="right "><a href="../../profile.html">Profile</a></li>
+                <li class="right disabled"><a href="#">Logged in as Anonymous Student</a></li>
+        </ul>
+    </nav>
+</header> 
+
+
+ 
+
+<h2>
+    273387 Kotlin - Language basics <img class="language" src="../../images/languages/kotlin.png"> <small>Learning about variables, input/output, loops</small>
+</h2>
+
+<nav class="ink-navigation">
+        <ul class="pagination pills grey">
+            <li class="active"><a href="problems.html">Problems</a></li>
+            <li ><a href="submissions.html">Submissions</a></li>
+            <li ><a href="scores.html">Scores</a></li>
+        </ul>
+    </nav> <div class="column-group top-space">
+    <div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/1.html">1. Output</a>
+                </div>
+                <div class="description">
+                    Print "Hello Mor Nor" (without quotes). </div>
+            </div>
+        </div>
+<div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/2.html">2. Input</a>
+                </div>
+                <div class="description">
+                    Read in a name and then print out a greeting. </div>
+            </div>
+        </div>
+<div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/3.html">3. Looping (10 times)</a>
+                </div>
+                <div class="description">
+                    Read in a name (same as problem 2), and then print out "Hello <name>" 10 times.
+
+Hint: use a loop! </div>
+            </div>
+        </div>
+<div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/4.html">4. Looping (X times)</a>
+                </div>
+                <div class="description">
+                    <p>Read in a name (same as problem 2) and a number X (integer). Print out "Hello " X times.</p>
+<p>Note: if the 2nd input is not a number then do not print.</p>
+ </div>
+            </div>
+        </div>
+<div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/5.html">5. Looping input and conditions</a>
+                </div>
+                <div class="description">
+                    Read in a list of names, and for each one, print "Hello <name>".
+
+The input ends when the name "exit" is read. </div>
+            </div>
+        </div>
+<div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/6.html">6. Gift wrap printer ☆</a>
+                </div>
+                <div class="description">
+                    You are making gift wrapping paper for Christmas! Write a program that reads the size of the paper (width and height), then print it out using the following pattern.
+<ul>
+<li>The pattern is <code>@}~</code></li>
+<li>Put 2 spaces between the pattern on the same line</li>
+<li>The following line should be offset by 2 spaces</li>
+</ul>
+If the width of the paper is 7 then the line will be <code>@}~  @}</code><br>
+You must print trailing spaces up to the end of the line. </div>
+            </div>
+        </div>
+<div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/7.html">7. Tautograms ☆</a>
+                </div>
+                <div class="description">
+                    A tautogram is a sentence or piece of text where all the words begin with the same letter. Write a program to determine if the input is a tautogram. The program can accept many lines of input. Output Y or N for each line. </div>
+            </div>
+        </div>
+<div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/8.html">8. Magic squares ☆☆☆</a>
+                </div>
+                <div class="description">
+                    A magic square is a n×n square grid filled with distinct positive integers in the range 1, 2, ... n<sup>2</sup> such that each cell contains a different integer and the sum of the integers in each row, column and diagonal is equal.
+
+<table class="" style="margin-left:auto;margin-right:auto;text-align:center;width:6em;height:6em;table-layout:fixed;">
+<tbody><tr>
+<td>4</td>
+<td>9</td>
+<td>2
+</td></tr>
+<tr>
+<td>3</td>
+<td>5</td>
+<td>7
+</td></tr>
+<tr>
+<td>8</td>
+<td>1</td>
+<td>6
+</td></tr></tbody></table>
+
+Write a program that inputs a square and then checks that it is a magic square. The first line of input is the number of rows/columns n. The rest of the input is the square of integers. If it is a magic square then output "magic = X" where X is the sum of a row/column. Else output "invalid". </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="clearfix">
+    <div class="ink-grid">
+        <ul class="unstyled inline half-vertical-space">
+            <li><a href="../../about.html">About</a></li>
+            <li><a href="https://github.com/antonyharfield/grader/">Github</a></li>
+        </ul>
+        <p class="note">Made in Phitsanulok ❤</p>
+    </div>
+</footer>
+<script>
+    var RADIUS = 54;
+    var CIRCUMFERENCE = 2 * Math.PI * RADIUS;
+
+    $(document).ready(function() {
+        $(".progress-indicator").each(function() {
+            var value = $(this).attr("data-pct");
+            var progress = value / 100;
+            var dashoffset = CIRCUMFERENCE * (1 - progress);
+            var progressValue = $(this).find("circle.progress-value").get(0);
+            progressValue.style.strokeDasharray = CIRCUMFERENCE;
+            progressValue.style.strokeDashoffset = dashoffset;
+            if (value == 100) {
+                progressValue.style.stroke = "#4a9b17";
+            }
+        });
+    });
+    </script>
+</body>
+
+<!-- Mirrored from grader.mobcomlab.com/events/23/problems by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 25 Apr 2021 06:27:53 GMT -->
+</html>

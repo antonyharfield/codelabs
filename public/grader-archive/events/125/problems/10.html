@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from grader.mobcomlab.com/events/125/problems/10 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 25 Apr 2021 06:29:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Problem Q10. Parabola</title>
+    <meta name="description" content="">
+    <meta name="author" content="ink, cookbook, recipes">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <!-- load Ink's css from the cdn -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.ink.sapo.pt/3.1.10/css/ink-flex.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.ink.sapo.pt/3.1.10/css/font-awesome.min.css">
+
+    <!-- load Ink's css for IE8 -->
+    <!--[if lt IE 9 ]>
+    <link rel="stylesheet" href="https://cdn.ink.sapo.pt/3.1.10/css/ink-ie.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <![endif]-->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-42372609-2"></script><script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-42372609-2');
+    </script>
+
+    <!-- test browser flexbox support and load legacy grid if unsupported -->
+    <script type="text/javascript" src="https://cdn.ink.sapo.pt/3.1.10/js/modernizr.js"></script>
+    <script type="text/javascript">
+    Modernizr.load({
+    test: Modernizr.flexbox,
+    nope : 'https://cdn.ink.sapo.pt/3.1.10/css/ink-legacy.min.css'
+    });
+    </script>
+
+    <!-- load Ink's javascript files from the cdn -->
+    <script type="text/javascript" src="https://cdn.ink.sapo.pt/3.1.10/js/holder.js"></script>
+    <script type="text/javascript" src="https://cdn.ink.sapo.pt/3.1.10/js/ink-all.min.js"></script>
+    <script type="text/javascript" src="https://cdn.ink.sapo.pt/3.1.10/js/autoload.js"></script>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../styles/app.css">
+    
+</head>
+
+<body>
+
+<div class="ink-grid">
+
+    <!--[if lte IE 9 ]>
+    <div class="ink-alert basic" role="alert">
+        <button class="ink-dismiss">&times;</button>
+        <p>
+            <strong>You are using an outdated Internet Explorer version.</strong>
+            Please <a href="http://browsehappy.com/">upgrade to a modern browser</a> to improve your web experience.
+        </p>
+    </div>
+    -->
+
+    <style>
+    nav.ink-navigation ul.menu.horizontal li.right {
+        float: right;
+    }
+</style>
+
+<header class="vertical-space">
+    <h1>Grader<small>practice for programmers</small></h1>
+    <nav class="ink-navigation">
+        <ul class="menu horizontal grey">
+            <li class="active"><a href="../../../index.html">Events</a></li>
+            <li ><a href="../../../rankings.html">Rankings</a></li>
+
+                <li class="right "><a href="../../../profile.html">Profile</a></li>
+                <li class="right disabled"><a href="#">Logged in as Anonymous Student</a></li>
+        </ul>
+    </nav>
+</header> 
+
+
+ 
+
+<p>Back to <a href="../problems.html">254275 OOP Lab 5-10</a></p>
+
+<h2>Q10. Parabola</h2>
+
+<div class="column-group gutters">
+    <div class="all-60 small-100 tiny-100">
+        <h3>Problem</h3>
+        <p class="quarter-top-space">In mathematics, a parabola is a plane curve which is mirror-symmetrical and is approximately U-shaped. It fits several superficially different mathematical descriptions, which can all be proved to define exactly the same curves.<br>
+One description of a parabola involves a point (the focus) and a line (the directrix). The focus does not lie on the directrix. The parabola is the locus of points in that plane that are equidistant from both the directrix and the focus. Another description of a parabola is as a conic section, created from the intersection of a right circular conical surface and a plane parallel to another plane that is tangential to the conical surface.[a]<br>
+The line perpendicular to the directrix and passing through the focus (that is, the line that splits the parabola through the middle) is called the "axis of symmetry". The point where the parabola intersects its axis of symmetry is called the "vertex" and is the point where the parabola is most sharply curved. The distance between the vertex and the focus, measured along the axis of symmetry, is the "focal length". The "latus rectum" is the chord of the parabola that is parallel to the directrix and passes through the focus. Parabolas can open up, down, left, right, or in some other arbitrary direction. Any parabola can be repositioned and rescaled to fit exactly on any other parabola—that is, all parabolas are geometrically similar.
+write a method 6 method  getLatusrectum , getVertexa, getVertexb , getFocusa, getFocusb, getDirectrix
+<pre>
+public static void main(String[] args)
+{
+    Scanner in = new Scanner(System.in);
+    double a = in.nextDouble();
+    double b = in.nextDouble();
+    double c = in.nextDouble();
+    Parabola x = new Parabola(a,b,c);
+    System.out.println("Latus Rectum = "+"+- "+String.format("%.2f",x.getLatusrectum(c)));
+    System.out.println("Vertex: ("+String.format("%.2f",x.getVertexa(a,b))+","+String.format("%.2f",x.getVertexb(a,b,c))+")");
+    System.out.println("Focus : ("+String.format("%.2f",x.getFocusa(a,b))+","+String.format("%.2f",x.getFocusb(a,b,c))+")");
+    System.out.println("Directrix: y = "+String.format("%.2f",x.getDirectrix(a,b,c)));
+}
+</pre></p>
+        <h3>Examples</h3>
+        <div class="column-group gutters">
+                <div class="all-50">
+                    <p class="note">Input</p>
+                    <pre>1
+2
+2</pre>
+                </div>
+                <div class="all-50">
+                    <p class="note">Output</p>
+                    <pre>Latus Rectum = +- 0.50
+Vertex: (-1.00,1.00)
+Focus : (-1.00,1.25)
+Directrix: y = -18.00
+</pre>
+                </div>
+            </div>
+<div class="column-group gutters">
+                <div class="all-50">
+                    <p class="note">Input</p>
+                    <pre>1
+2
+4</pre>
+                </div>
+                <div class="all-50">
+                    <p class="note">Output</p>
+                    <pre>Latus Rectum = +- 1.00
+Vertex: (-1.00,3.00)
+Focus : (-1.00,3.25)
+Directrix: y = -16.00</pre>
+                </div>
+            </div>
+    </div>
+    <div class="all-40 small-100 tiny-100">
+        <h3>Submit your solution</h3>
+        <form method="post" enctype="multipart/form-data" class="ink-form">
+            <div class="control-group">
+                <div class="column-group gutters">
+                    <label for="inline-name" class="all-30">Source file</label>
+                    <div class="control all-70">
+                        <input type="file" name="file">
+                    </div>
+                </div>
+                <div class="column-group gutters">
+                    <label for="inline-name" class="all-30">Language</label>
+                    <div class="control all-70">
+                        <p>java</p>
+                    </div>
+                </div>
+                <div class="control">
+                    <input type="submit" class="ink-button">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+
+<footer class="clearfix">
+    <div class="ink-grid">
+        <ul class="unstyled inline half-vertical-space">
+            <li><a href="../../../about.html">About</a></li>
+            <li><a href="https://github.com/antonyharfield/grader/">Github</a></li>
+        </ul>
+        <p class="note">Made in Phitsanulok ❤</p>
+    </div>
+</footer>
+
+</body>
+
+<!-- Mirrored from grader.mobcomlab.com/events/125/problems/10 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 25 Apr 2021 06:29:58 GMT -->
+</html>

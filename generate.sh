@@ -1,6 +1,6 @@
 #!/bin/bash
 
-claat="./claat-2.2.0"
+claat="./claat-2.2.6"
 outputdir="public"
 
 if [ $# -gt 0 ]; then

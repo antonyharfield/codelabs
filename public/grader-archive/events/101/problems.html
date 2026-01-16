@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from grader.mobcomlab.com/events/101/problems by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 25 Apr 2021 06:20:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>254275 OOP - Mini Test 2 (Sec 3 &amp; 4)</title>
+    <meta name="description" content="">
+    <meta name="author" content="ink, cookbook, recipes">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <!-- load Ink's css from the cdn -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.ink.sapo.pt/3.1.10/css/ink-flex.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.ink.sapo.pt/3.1.10/css/font-awesome.min.css">
+
+    <!-- load Ink's css for IE8 -->
+    <!--[if lt IE 9 ]>
+    <link rel="stylesheet" href="https://cdn.ink.sapo.pt/3.1.10/css/ink-ie.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <![endif]-->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-42372609-2"></script><script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-42372609-2');
+    </script>
+
+    <!-- test browser flexbox support and load legacy grid if unsupported -->
+    <script type="text/javascript" src="https://cdn.ink.sapo.pt/3.1.10/js/modernizr.js"></script>
+    <script type="text/javascript">
+    Modernizr.load({
+    test: Modernizr.flexbox,
+    nope : 'https://cdn.ink.sapo.pt/3.1.10/css/ink-legacy.min.css'
+    });
+    </script>
+
+    <!-- load Ink's javascript files from the cdn -->
+    <script type="text/javascript" src="https://cdn.ink.sapo.pt/3.1.10/js/holder.js"></script>
+    <script type="text/javascript" src="https://cdn.ink.sapo.pt/3.1.10/js/ink-all.min.js"></script>
+    <script type="text/javascript" src="https://cdn.ink.sapo.pt/3.1.10/js/autoload.js"></script>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../styles/app.css">
+    
+</head>
+
+<body>
+
+<div class="ink-grid">
+
+    <!--[if lte IE 9 ]>
+    <div class="ink-alert basic" role="alert">
+        <button class="ink-dismiss">&times;</button>
+        <p>
+            <strong>You are using an outdated Internet Explorer version.</strong>
+            Please <a href="http://browsehappy.com/">upgrade to a modern browser</a> to improve your web experience.
+        </p>
+    </div>
+    -->
+
+    <style>
+    nav.ink-navigation ul.menu.horizontal li.right {
+        float: right;
+    }
+</style>
+
+<header class="vertical-space">
+    <h1>Grader<small>practice for programmers</small></h1>
+    <nav class="ink-navigation">
+        <ul class="menu horizontal grey">
+            <li class="active"><a href="../../index.html">Events</a></li>
+            <li ><a href="../../rankings.html">Rankings</a></li>
+
+                <li class="right "><a href="../../profile.html">Profile</a></li>
+                <li class="right disabled"><a href="#">Logged in as Anonymous Student</a></li>
+        </ul>
+    </nav>
+</header> 
+
+
+ 
+
+<h2>
+    254275 OOP - Mini Test 2 (Sec 3 &amp; 4) <img class="language" src="../../images/languages/java.png"> <small></small>
+</h2>
+
+<nav class="ink-navigation">
+        <ul class="pagination pills grey">
+            <li class="active"><a href="problems.html">Problems</a></li>
+            <li ><a href="submissions.html">Submissions</a></li>
+            <li ><a href="scores.html">Scores</a></li>
+        </ul>
+    </nav> <div class="column-group top-space">
+    <div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/1.html">1. Create the Album class</a>
+                </div>
+                <div class="description">
+                    Write a class named <code>Album</code> with fields for "title", "artist" and "songs".<br>
+<p><img src="https://mobcomlab.s3.ap-southeast-1.amazonaws.com/grader/oop-minitest2-2020/29517265.png"></p>
+<p><b>Test code:</b></p>
+<pre>
+class Task1 {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String title = sc.nextLine();
+        String artist = sc.nextLine();
+        int songs = Integer.parseInt(sc.nextLine());
+
+        Album a1 = new Album(title, artist, songs);
+        System.out.println(a1.getTitle() + " by " + a1.getArtist() + " is " + a1.getSongs() + " songs");
+    }
+}
+</pre> </div>
+            </div>
+        </div>
+<div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/2.html">2. Add the toString method</a>
+                </div>
+                <div class="description">
+                    Add a new method to the <code>Album</code> named <code>toString</code> that returns <strong>title - artist</strong>.
+<p><img src="https://mobcomlab.s3.ap-southeast-1.amazonaws.com/grader/oop-minitest2-2020/f9c0013b.png"></p>
+<p><b>Test code:</b></p>
+<pre>
+class Task2 {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String title = sc.nextLine();
+        String artist = sc.nextLine();
+        int songs = Integer.parseInt(sc.nextLine());
+
+        Album album1 = new Album(title, artist, songs);
+        System.out.println(album1.toString());
+    }
+}
+</pre> </div>
+            </div>
+        </div>
+<div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/3.html">3. Is it an EP?</a>
+                </div>
+                <div class="description">
+                    An <strong>EP</strong> is a short album with <strong>less than 8 songs</strong>. Add a method named <code>isEP</code> that returns true if the album is an EP.
+<p><b>Test code:</b></p>
+<pre>
+class Task3 {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String title = sc.nextLine();
+        String artist = sc.nextLine();
+        int songs = Integer.parseInt(sc.nextLine());
+
+        Album album1 = new Album(title, artist, songs);
+        if (album1.isEP()) {
+            System.out.println(album1.getTitle() + " is short");
+        } else {
+            System.out.println(album1.getTitle() + " is normal");
+        }
+    }
+}
+</pre> </div>
+            </div>
+        </div>
+<div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/4.html">4. Create a Soundtrack class</a>
+                </div>
+                <div class="description">
+                    A <strong>soundtrack</strong> is an album with music from a movie. Write a class named <code>Soundtrack</code> that is a subclass of <code>Album</code> with an extra field for "movie".<br>
+<p><img src="https://mobcomlab.s3.ap-southeast-1.amazonaws.com/grader/oop-minitest2-2020/30778050.png"></p>
+<p><b>Test code:</b></p>
+<pre>
+class Task4 {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String movie = sc.nextLine();
+        int songs = Integer.parseInt(sc.nextLine());
+        
+        Album st1 = new Soundtrack(movie + " Soundtrack", "Various Artists", songs, movie);
+        System.out.println(st1.toString());
+    }
+}
+</pre> </div>
+            </div>
+        </div>
+<div class="all-25 small-50 tiny-50 align-center">
+            <div class="problem-box not-yet-attempted">
+                <div class="not-started small">
+                        Awaiting submission
+                    </div>
+                <div class="large">
+                    <a href="problems/5.html">5. Count the songs in a movie</a>
+                </div>
+                <div class="description">
+                    Add a method called <code>getMovie()</code> to the <code>Soundtrack</code> class.
+<p><b>Test code:</b></p>
+<pre>
+class Task5 {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String movie = sc.nextLine();
+        int songs = Integer.parseInt(sc.nextLine());
+
+        Soundtrack st1 = new Soundtrack(movie + " Soundtrack", "Various Artists", songs, movie);
+        System.out.print("There are " + st1.getSongs());
+        System.out.println(" songs in the movie " + st1.getMovie());
+    }
+}
+</pre> </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="clearfix">
+    <div class="ink-grid">
+        <ul class="unstyled inline half-vertical-space">
+            <li><a href="../../about.html">About</a></li>
+            <li><a href="https://github.com/antonyharfield/grader/">Github</a></li>
+        </ul>
+        <p class="note">Made in Phitsanulok ❤</p>
+    </div>
+</footer>
+<script>
+    var RADIUS = 54;
+    var CIRCUMFERENCE = 2 * Math.PI * RADIUS;
+
+    $(document).ready(function() {
+        $(".progress-indicator").each(function() {
+            var value = $(this).attr("data-pct");
+            var progress = value / 100;
+            var dashoffset = CIRCUMFERENCE * (1 - progress);
+            var progressValue = $(this).find("circle.progress-value").get(0);
+            progressValue.style.strokeDasharray = CIRCUMFERENCE;
+            progressValue.style.strokeDashoffset = dashoffset;
+            if (value == 100) {
+                progressValue.style.stroke = "#4a9b17";
+            }
+        });
+    });
+    </script>
+</body>
+
+<!-- Mirrored from grader.mobcomlab.com/events/101/problems by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 25 Apr 2021 06:20:08 GMT -->
+</html>

@@ -1,0 +1,330 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Lab 4: Agent Development Kit and Model Context Protocol</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid="UA-50147748-15"
+                  id="agents-l4-adk-mcp"
+                  title="Lab 4: Agent Development Kit and Model Context Protocol"
+                  environment="web"
+                  feedback-link="https://github.com/antonyharfield/codelabs/issues">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <p class="image-container"><img style="width: 378.99px" src="img/2b69d488abbd10df.png"></p>
+<p><strong>Last Updated:</strong> 2025-07-10</p>
+<h2 class="checklist" is-upgraded><strong>What you&#39;ll learn</strong></h2>
+<ul class="checklist">
+<li>What is Model Context Protocol (MCP)</li>
+<li>How to provide tools to an agent through MCP</li>
+<li>How to use MCP to interact with public APIs</li>
+<li>How to use MCP to query databases</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Project Setup" duration="2">
+        <h2 is-upgraded><strong>Setting up ADK and MCP</strong></h2>
+<p>Refer to <a href="https://ant-codelabs.web.app/agents-l3-adk/#1" target="_blank">Lab 3 Getting Started</a> for setting up an ADK project:</p>
+<ol type="1" start="1">
+<li>Create a new project folder <code>l4-adk-mcp</code></li>
+<li>Install ADK package (<code>uv add google-adk</code>)</li>
+<li>Create your environment variables (.env file)</li>
+</ol>
+<p>In this lab, we will also install the MCP package:</p>
+<pre>$ uv add &#34;mcp[cli]&#34;</pre>
+<h2 is-upgraded><strong>Node.js</strong></h2>
+<p>Some MCP clients/servers require Node.js. Check if you have Node.js installed and ready:</p>
+<pre>$ npx -v
+10.9.2</pre>
+<p>There are two common errors:</p>
+<ol type="1" start="1">
+<li>If <code>npx</code> command is not found then download and install Node.js from <a href="https://nodejs.org/" target="_blank">nodejs.org</a> </li>
+<li>If <code>npx</code> is restricted because running scripts is disabled (&#34;Execution Policies&#34; on Windows) then open Powershell as Administrator and run <code>Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned</code></li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Filesystem Agent" duration="10">
+        <p>Create a file named <code>agent.py</code> in a new agent folder named <code>filesystem-agent</code>.</p>
+<p><code>filesystem-agent/agent.py</code></p>
+<pre><code>from google.adk.agents.llm_agent import LlmAgent
+from google.adk.tools.mcp_tool.mcp_toolset import MCPToolset
+from google.adk.tools.mcp_tool.mcp_session_manager import StdioServerParameters
+
+toolset = MCPToolset(
+    connection_params=StdioServerParameters(
+        command=&#39;npx&#39;, 
+        args=[&#34;-y&#34;,   
+              &#34;@modelcontextprotocol/server-filesystem&#34;,
+              &#34;C:\\Users\\CSIT\\agent-workshop&#34;,
+        ],
+    )
+)
+
+root_agent = LlmAgent(
+    name=&#39;filesystem_assistant&#39;,
+    model=&#39;gemini-2.0-flash&#39;,
+    instruction=&#39;Help user interact with the local filesystem using available tools.&#39;,
+    tools=[toolset], 
+)</code></pre>
+<p>In the <code>args</code>, replace <code>C:\\Users\\CSIT\\agent-workshop</code> with a path on your filesystem. If you are using Windows then use double backslash. For example, use the agent-workshop folder containing all your code from labs 1-3.</p>
+<p>Don&#39;t forget that you will also need to add an init file:</p>
+<p><code>filesystem-agent/__init__.py</code></p>
+<pre><code>from . import agent</code></pre>
+<p>Run the ADK web interface: </p>
+<pre>$ uv run adk web
+...
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)</pre>
+<p>Open your web browser at the given address, e.g. <a href="http://127.0.0.1:8000" target="_blank">http://127.0.0.1:8000</a> </p>
+<p>Test your new agent. Example prompts:</p>
+<ul>
+<li>&#34;What directories can I access?&#34;</li>
+<li>&#34;List the folders inside the accessible directory&#34;</li>
+<li>&#34;Open the contents of each file in l1-gemini and summarise what this directory is for.&#34;</li>
+</ul>
+<p class="image-container"><img style="width: 624.00px" src="img/3ded8fa6a21a6c85.png"></p>
+<p>Note how the agent can make many calls to different tools to satisfy the request.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Airbnb Agent" duration="10">
+        <p>The filesystem agent accessed data locally. MCP can also access remote data through APIs. In this section, we will call the Airbnb API to get information about places to stay. The MCP server provides 2 tools, one for searching and one for getting information about a specific Airbnb location. (Note: you cannot search availability or book - but maybe that will be available in the future!)</p>
+<p>Create a file named <code>agent.py</code> in a new agent folder named <code>bnb-agent</code>.</p>
+<p><code>bnb-agent/agent.py</code></p>
+<pre><code>from google.adk.agents.llm_agent import LlmAgent
+from google.adk.tools.mcp_tool.mcp_toolset import MCPToolset
+from google.adk.tools.mcp_tool.mcp_session_manager import StdioServerParameters
+
+toolset = MCPToolset(
+    connection_params=StdioServerParameters(
+        command=&#39;npx&#39;, 
+        args=[&#34;-y&#34;,   
+              &#34;@openbnb/mcp-server-airbnb&#34;,
+              &#34;--ignore-robots-txt&#34;,
+        ],
+    )
+)
+
+root_agent = LlmAgent(
+    name=&#39;bnb_agent&#39;,
+    model=&#39;gemini-2.0-flash&#39;,
+    instruction=&#39;Help user interact with the AirBNB website and listings.&#39;,
+    tools=[toolset], 
+)</code></pre>
+<p>You will need to restart your ADK and refresh your browser.</p>
+<p>Test your new agent. Example prompts:</p>
+<ul>
+<li>&#34;List the airbnbs in Phitsanulok&#34;</li>
+<li>&#34;Tell me about the 2nd place on the list&#34;</li>
+<li>&#34;Find a cheap airbnb in Chiang Mai for 2 people&#34;</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Pick Your Own MCP" duration="10">
+        <p>Creating MCP servers is fashionable right now. Check out these lists of awesome MCP servers:</p>
+<ul>
+<li><a href="https://github.com/punkpeye/awesome-mcp-servers" target="_blank">https://github.com/punkpeye/awesome-mcp-servers</a></li>
+<li><a href="https://mcp.so/" target="_blank">https://mcp.so/</a> </li>
+</ul>
+<h2 is-upgraded><strong>Exercise</strong></h2>
+<p>Find an MCP server that interests you and build an agent for it.</p>
+<aside class="special"><p><strong>Tip:</strong> The MCP servers that use <code>Stdio</code> and that have examples of how to run via <code>npx</code> are generally easier to implement. They will look something like this:</p>
+<p><code>    StdioServerParameters(</code></p>
+<p><code>        command='npx', </code></p>
+<p><code>        args=["-y", "@openbnb/mcp-server-airbnb"]</code></p>
+</aside>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="MCP Toolbox for Databases" duration="20">
+        <p>Much of the world&#39;s data is stored in public and private databases and there are many use cases where we&#39;d like LLMs to be able to read and process that data. Unfortunately, most databases are too big to be able to pass all the data as a prompt for the LLM (and it would be too expensive).</p>
+<p>The solution is to give LLMs access to a database via tools, and prompt the LLM describing the tools it can use to get data (and in some cases, insert or update data).</p>
+<p>The MCP Toolbox for Databases allows you to create an MCP server for any supported database. </p>
+<h2 is-upgraded><strong>Prepare Database</strong></h2>
+<p>For this task we will create a university course database. To keep things simple, we will store the data in an SQLite file, but we can achieve the same outcome with any supported database management system (e.g. MySQL, Postgres, etc).</p>
+<p>Download the <a href="https://drive.google.com/file/d/1nBQvDgVXi6H8Ecw4nuAqMqvyWynILZVT/view?usp=sharing" target="_blank">Database files (l4-db.zip)</a> and unzip the contents.</p>
+<p>Move the <code>courses.db</code> to a new agent folder named <code>course-agent</code>.</p>
+<p>The courses database contains one table, <code>courses</code>, with the columns:</p>
+<ul>
+<li><code>course_code</code> → 254361</li>
+<li><code>title</code> → Artificial Intelligence</li>
+<li><code>description</code> → This course addresses fundamental issues in artificial intelligence...</li>
+<li><code>credits</code> → 3(2-2-5)</li>
+<li><code>degree_level</code> → B.Sc.</li>
+<li><code>degree_programme</code> → Computer Science</li>
+<li><code>degree_year</code> → 3</li>
+<li><code>degree_semester</code>  → 2</li>
+</ul>
+<p>To inspect the data, the zip file contains <code>courses.csv</code> which you can open in a spreadsheet or editor.</p>
+<h2 is-upgraded><strong>Download Toolbox</strong></h2>
+<p>Go to the Toolbox <a href="https://github.com/googleapis/genai-toolbox/releases" target="_blank">Releases page</a> and download the latest version for your platform.</p>
+<p>Place the executable (e.g. toolbox.exe) in your <code>course-agent</code> folder.</p>
+<aside class="warning"><p><strong>Note:</strong> Running on Mac? You&#39;ll need to remove the quarantine and make the file executable:</p>
+<p><code>xattr -d com.apple.quarantine toolbox</code></p>
+<p><code>chmod +x toolbox</code></p>
+</aside>
+<p>Open a 2nd terminal window and verify that you can run the toolbox.</p>
+<pre>$ cd course-agent
+$ ./toolbox -v
+toolbox version 0.8.0+binary.windows.x86</pre>
+<p>If you see the version information then you are ready for the next step.</p>
+<h2 is-upgraded><strong>Define the tools</strong></h2>
+<p>The toolbox requires a configuration file that defines the database connection and the tools:</p>
+<p><code>course-agent/tools.yaml</code></p>
+<pre><code>sources:
+  course-db:
+    kind: &#34;sqlite&#34;
+    database: &#34;courses.db&#34;
+
+tools:
+  search-courses-by-title:
+    kind: sqlite-sql
+    source: course-db
+    description: Search for a course by title
+    parameters:
+      - name: title
+        type: string
+        description: The course title to search for
+    statement: SELECT course_code, title, description, credits, degree_level, degree_programme, degree_year, degree_semester FROM courses WHERE title LIKE &#39;%&#39; || ? || &#39;%&#39;
+  get-course-by-code:
+    kind: sqlite-sql
+    source: course-db
+    description: Get a course by its code
+    parameters:
+      - name: course_code
+        type: string
+        description: The code of the course to retrieve
+    statement: SELECT course_code, title, description, credits, degree_level, degree_programme, degree_year, degree_semester FROM courses WHERE course_code = ?
+
+toolsets:
+  basic-toolset:
+    - search-courses-by-title
+    - get-course-by-code</code></pre>
+<p>The first section, <code>sources</code>, defines the database. If you change the path or name of your SQLite file then update the <code>database</code> key.</p>
+<p>The second section, <code>tools</code>, defines the SQL statement for each tool. You can add a list parameters to be passed into the SQL statement. The descriptions are very important to tell the LLM how to use the tool.</p>
+<p>In the 2nd terminal window, run the toolbox with the configuration file:</p>
+<pre>$ ./toolbox --tools-file tools.yaml
+2025-07-10T01:34:47.211745+07:00 INFO &#34;Initialized 1 sources.&#34; 
+2025-07-10T01:34:47.211832+07:00 INFO &#34;Initialized 0 authServices.&#34; 
+2025-07-10T01:34:47.211845+07:00 INFO &#34;Initialized 2 tools.&#34; 
+2025-07-10T01:34:47.211856+07:00 INFO &#34;Initialized 2 toolsets.&#34; 
+2025-07-10T01:34:47.212127+07:00 INFO &#34;Server ready to serve!&#34;</pre>
+<h2 is-upgraded><strong>Create the agent</strong></h2>
+<p>Finally, we create a file named <code>agent.py</code> in a new agent folder named <code>course-agent</code>.</p>
+<p><code>course-agent/agent.py</code></p>
+<pre><code>from google.adk.agents import Agent
+from toolbox_core import ToolboxSyncClient
+
+toolbox = ToolboxSyncClient(&#34;http://127.0.0.1:5000&#34;)
+
+# Load all the tools
+tools = toolbox.load_toolset(&#39;basic-toolset&#39;)
+
+prompt = &#34;&#34;&#34;
+You are a helpful university student assistant. 
+You handle course searching using tools provided by the university&#39;s course management system.
+Answer user questions about courses.
+Do not answer questions about other topics.
+&#34;&#34;&#34;
+
+root_agent = Agent(
+    model=&#39;gemini-2.0-flash-001&#39;,
+    name=&#39;course_agent&#39;,
+    description=&#39;A helpful AI assistant.&#39;,
+    instruction=prompt,
+    tools=tools,
+)</code></pre>
+<p>The agent uses a new package <code>toolbox-core</code>, which you can add via uv:</p>
+<pre>$ uv add toolbox-core</pre>
+<p>Run the ADK in your 1st terminal (note you will need the toolbox running in one terminal and the ADK in another).</p>
+<p>Test your new agent. Example prompts:</p>
+<ul>
+<li>&#34;Find courses about programming&#34;</li>
+<li>&#34;Tell me about Fundamentals of Programming&#34;</li>
+<li>&#34;Find courses with introduction in the title. Format the data as a table containing the course code and title&#34;</li>
+</ul>
+<h2 is-upgraded><strong>Adding more tools and SQL statements</strong></h2>
+<p>You can add more tools to <code>tools.yaml</code> for each SQL statement you would like your agent to have access to.</p>
+<p>However, you can also harness the power of LLMs to write SQL for you. Add the following tool to <code>tools.yaml</code>. Also add it to the toolset.</p>
+<pre><code>  search-courses-by-custom-condition:
+    kind: sqlite-sql
+    source: course-db
+    description: |
+      Search for courses based on a custom condition.
+      The condition should be a valid SQL WHERE clause without the &#34;WHERE&#34; keyword.
+      Example:
+      &#123;&#123;
+          &#34;condition&#34;: &#34;degree_programme = &#39;Computer Science&#39; AND degree_year = 1&#34;,
+      }}
+    statement: SELECT course_code, title, description, credits, degree_level, degree_programme, degree_year, degree_semester FROM courses WHERE &#123;&#123;.condition}};
+    templateParameters:
+      - name: condition
+        type: string
+        description: The custom condition to filter courses
+
+
+...
+toolsets:
+  basic-toolset:
+    - search-courses-by-title
+    - search-courses-by-custom-condition
+    - get-course-by-code</code></pre>
+<p>Restart the toolbox and the ADK server.</p>
+<p>Now you can prompt more advanced queries, and the LLM will generate the <code>WHERE</code> clause of the SQL. For example:</p>
+<ul>
+<li>&#34;Find courses for 1st year computer science.&#34;</li>
+<li>&#34;What courses mention algorithms in the description?&#34;</li>
+</ul>
+<p>Use the ADK web interface to Inspect the events, can you find where the call to the tool was made? Can you identify the SQL used in the custom condition?</p>
+<p class="image-container"><img style="width: 441.48px" src="img/677a24122a72ee82.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Finished" duration="0">
+        <p>Congratulations, you&#39;ve successfully built agents that use MCP to interact with the local filesystem, remote APIs and databases.</p>
+<h2 is-upgraded><strong>Reference docs</strong></h2>
+<ul>
+<li><a href="https://modelcontextprotocol.io/introduction" target="_blank">Model Context Protocol</a></li>
+<li><a href="https://google.github.io/adk-docs/tools/mcp-tools/" target="_blank">ADK Docs on MCP</a></li>
+<li><a href="https://googleapis.github.io/genai-toolbox/getting-started/introduction/" target="_blank">MCP Toolbox for Databases</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

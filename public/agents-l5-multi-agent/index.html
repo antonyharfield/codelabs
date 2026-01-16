@@ -1,0 +1,256 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Lab 5: Multi Agent Systems</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid="UA-50147748-15"
+                  id="agents-l5-multi-agent"
+                  title="Lab 5: Multi Agent Systems"
+                  environment="web"
+                  feedback-link="https://github.com/antonyharfield/codelabs/issues">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <p class="image-container"><img style="width: 378.99px" src="img/2b69d488abbd10df.png"></p>
+<p><strong>Last Updated:</strong> 2025-07-11</p>
+<p>In the Agent Development Kit (ADK), an <strong>Agent</strong> is an independent unit that autonomously performs tasks, interacts with users, and collaborates with other agents to reach its goals.</p>
+<p>All agents are built upon the fundamental <strong>BaseAgent</strong> class. From this base, agents are typically developed into one of three core categories:</p>
+<h2 is-upgraded><strong>Core Agent Types</strong></h2>
+<ul>
+<li><strong>LLM Agents</strong>: These are the thinkers 🧠. They use Large Language Models to understand, reason, and make dynamic decisions, making them perfect for tasks that require flexibility and natural language processing.</li>
+<li><strong>Workflow Agents</strong>: These are the organizers 📋. They manage how other agents execute tasks in predictable, structured patterns like sequences, parallel operations, or loops, without using an LLM for control.</li>
+<li><strong>Custom Agents</strong>: These are the specialists 🛠️. Built by directly extending BaseAgent, they are created for unique, highly tailored tasks that don&#39;t fit into the other categories, allowing for specific logic and integrations.</li>
+</ul>
+<p class="image-container"><img style="width: 624.00px" src="img/4f0f04b76b31b27.png"></p>
+<h2 is-upgraded><strong>Multi-Agent Systems</strong></h2>
+<p>There are two main types of multi-agent systems:</p>
+<ul>
+<li><strong>Conversational</strong> - user interacts via chat, control is passed between agents</li>
+<li><strong>Workflow</strong> - typically run programmatically, agents are arranged in a workflow to perform a task</li>
+</ul>
+<p>We will take a look one of each of these types. The Coordinator Pattern is a typical conversational multi-agent system. The Critique and Iterative Refinement Patterns are often used together in a multi-agent workflow.</p>
+<p>The common theme in both examples is the use of <code>sub_agents</code>.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Coordinator Pattern" duration="10">
+        <p>The Coordinator pattern uses a central agent to manage and delegate tasks to a team of specialized sub-agents. This central &#34;Coordinator&#34; agent assesses incoming user requests and, based on the descriptions of the available sub-agents, routes the request to the most suitable specialist for handling.</p>
+<p>This process, known as delegation, relies on the Large Language Model&#39;s (LLM) ability to match the user&#39;s query with the most relevant sub-agent&#39;s description. Therefore, having clear and distinct descriptions for each specialized agent is crucial for the Coordinator to effectively route tasks and ensure the right agent handles the right job.</p>
+<p>Create a file named <code>agent.py</code> in a new agent folder named <code>helpdesk-agent</code>.</p>
+<p><code>helpdesk-agent/agent.py</code></p>
+<pre><code>from google.adk.agents import LlmAgent
+
+feature_agent = LlmAgent(
+    name=&#34;feature_suggestions_agent&#34;, 
+    model=&#34;gemini-2.0-flash&#34;,
+    description=&#34;Handles feature suggestions.&#34;,
+    instruction=&#34;&#34;&#34;
+        Process user requests related to feature suggestions. 
+        Collect the following information:
+        - User&#39;s name
+        - Feature suggestion details
+        - Contact information
+        - Any additional comments
+        Respond with a confirmation message once the information is collected.
+    &#34;&#34;&#34;,
+)
+
+support_agent = LlmAgent(
+    name=&#34;support_agent&#34;,
+    model=&#34;gemini-2.0-flash&#34;,
+    description=&#34;Handles technical support requests.&#34;,
+    instruction=&#34;&#34;&#34;
+        Process user requests related to technical support.
+        Collect the following information:
+        - User&#39;s name
+        - Issue description
+        - Expected result and actual result
+        - Contact information
+        Respond with a confirmation message once the information is collected.
+    &#34;&#34;&#34;,
+)
+
+root_agent = LlmAgent(
+    name=&#34;helpdesk_coordinator&#34;,
+    model=&#34;gemini-2.0-flash&#34;,
+    instruction=&#34;Route user requests: Use feature_suggestions_agent for feature suggestions, support_agent for technical problems.&#34;,
+    description=&#34;Main help desk router.&#34;,
+    sub_agents=[feature_agent, support_agent]
+)
+</code></pre>
+<p>Don&#39;t forget that you will also need to add an init file:</p>
+<p><code>helpdesk-agent/__init__.py</code></p>
+<pre><code>from . import agent</code></pre>
+<p>Run the agent via the web UI. Notice how you are transferred to different agents depending on your request.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Critique and Iterative Refinement Patterns" duration="10">
+        <p>In a Critique pattern, often called a &#34;Generator-Critic&#34; model, one agent creates an initial piece of work, and a second agent reviews and critiques it. This is a sequential, two-step process where the first agent (the Generator) produces an output, and the second (the Critic) evaluates it to enhance its quality or accuracy.</p>
+<p>The Refinement pattern takes this a step further by creating an iterative loop. In this structure, one or more agents work on a task repeatedly, progressively improving the output with each cycle. The process continues until the result meets a specific quality standard or a set maximum number of iterations has been completed. This pattern is ideal for tasks that benefit from gradual enhancement, like refining code or a developing a detailed plan.</p>
+<p>These patterns are typically used in a workflow agent (run programmatically), but we can test the agents via the ADK web UI.</p>
+<p>.</p>
+<p>Create a file named <code>agent.py</code> in a new agent folder named <code>story-workflow</code>.</p>
+<p><code>story-workflow/agent.py</code></p>
+<pre><code>from google.adk.agents import LoopAgent, LlmAgent, SequentialAgent
+from google.adk.tools.tool_context import ToolContext
+
+GEMINI_MODEL = &#34;gemini-2.0-flash&#34;
+
+# --- State Keys ---
+STATE_CURRENT_DOC = &#34;current_document&#34;
+STATE_CRITICISM = &#34;criticism&#34;
+COMPLETION_PHRASE = &#34;No major issues found.&#34;
+
+# --- Tool Definition ---
+def exit_loop(tool_context: ToolContext):
+  &#34;&#34;&#34;Call this function ONLY when the critique indicates no further changes are needed, signaling the iterative process should end.&#34;&#34;&#34;
+  print(f&#34;  [Tool Call] exit_loop triggered by {tool_context.agent_name}&#34;)
+  tool_context.actions.escalate = True
+  return {}
+
+# --- Agent Definitions ---
+
+# STEP 1: Initial Writer Agent (Runs ONCE at the beginning)
+initial_writer_agent = LlmAgent(
+    name=&#34;initial_writer_agent&#34;,
+    model=GEMINI_MODEL,
+    include_contents=&#39;none&#39;,
+    instruction=f&#34;&#34;&#34;
+        You are a Creative Writing Assistant tasked with starting a story.
+        Write the *first draft* of a short story (aim for 2-4 sentences).
+        Output *only* the story/document text. Do not add introductions or explanations.
+        Base the content *only* on the topic provided below. Try to introduce a specific element (like a character, a setting detail, or a starting action) to make it engaging.
+        Topic:
+    &#34;&#34;&#34;,
+    description=&#34;Writes the initial document draft based on the topic, aiming for some initial substance.&#34;,
+    output_key=STATE_CURRENT_DOC
+)
+
+# STEP 2a: Critic Agent (Inside the Refinement Loop)
+critic_agent_in_loop = LlmAgent(
+    name=&#34;critic_agent&#34;,
+    model=GEMINI_MODEL,
+    include_contents=&#39;none&#39;,
+    instruction=f&#34;&#34;&#34;You are a Constructive Critic AI reviewing a short document draft (typically 2-6 sentences). Your goal is balanced feedback.
+
+    **Document to Review:**
+    ```
+    &#123;&#123;current_document}}
+    ```
+
+    **Task:**
+    Review the document for clarity, engagement, and basic coherence according to the initial topic (if known).
+
+    IF you identify 1-2 *clear and actionable* ways the document could be improved to better capture the topic or enhance reader engagement (e.g., &#34;Needs a stronger opening sentence&#34;, &#34;Clarify the character&#39;s goal&#34;):
+    Provide these specific suggestions concisely. Output *only* the critique text.
+
+    ELSE IF the document is coherent, addresses the topic adequately for its length, and has no glaring errors or obvious omissions:
+    Respond *exactly* with the phrase &#34;{COMPLETION_PHRASE}&#34; and nothing else. It doesn&#39;t need to be perfect, just functionally complete for this stage. Avoid suggesting purely subjective stylistic preferences if the core is sound.
+
+    Do not add explanations. Output only the critique OR the exact completion phrase.
+&#34;&#34;&#34;,
+    description=&#34;Reviews the current draft, providing critique if clear improvements are needed, otherwise signals completion.&#34;,
+    output_key=STATE_CRITICISM
+)
+
+
+# STEP 2b: Refiner/Exiter Agent (Inside the Refinement Loop)
+refiner_agent_in_loop = LlmAgent(
+    name=&#34;refiner_agent&#34;,
+    model=GEMINI_MODEL,
+    # Relies solely on state via placeholders
+    include_contents=&#39;none&#39;,
+    instruction=f&#34;&#34;&#34;You are a Creative Writing Assistant refining a document based on feedback OR exiting the process.
+    **Current Document:**
+    ```
+    &#123;&#123;current_document}}
+    ```
+    **Critique/Suggestions:**
+    &#123;&#123;criticism}}
+
+    **Task:**
+    Analyze the &#39;Critique/Suggestions&#39;.
+    IF the critique is *exactly* &#34;{COMPLETION_PHRASE}&#34;:
+    You MUST call the &#39;exit_loop&#39; function. Do not output any text.
+    ELSE (the critique contains actionable feedback):
+    Carefully apply the suggestions to improve the &#39;Current Document&#39;. Output *only* the refined document text.
+
+    Do not add explanations. Either output the refined document OR call the exit_loop function.
+&#34;&#34;&#34;,
+    description=&#34;Refines the document based on critique, or calls exit_loop if critique indicates completion.&#34;,
+    tools=[exit_loop], # Provide the exit_loop tool
+    output_key=STATE_CURRENT_DOC # Overwrites state[&#39;current_document&#39;] with the refined version
+)
+
+
+# STEP 2: Refinement Loop Agent
+refinement_loop = LoopAgent(
+    name=&#34;refinement_loop_agent&#34;,
+    # Agent order is crucial: Critique first, then Refine/Exit
+    sub_agents=[
+        critic_agent_in_loop,
+        refiner_agent_in_loop,
+    ],
+    max_iterations=5 # Limit loops
+)
+
+# STEP 3: Overall Sequential Pipeline
+root_agent = SequentialAgent(
+    name=&#34;iterative_story_refinement_agent&#34;,
+    sub_agents=[
+        initial_writer_agent, # Run first to create initial doc
+        refinement_loop       # Then run the critique/refine loop
+    ],
+    description=&#34;Writes an initial document and then iteratively refines it with critique using an exit tool.&#34;
+)</code></pre>
+<p>When testing, enter a single word or sentence to describe the topic of a story. Examples:</p>
+<ul>
+<li>&#34;Herbie the old racing beetle&#34;</li>
+<li>&#34;A mug named Jake&#34;</li>
+<li>&#34;F1 racer&#34;</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Congratulations" duration="0">
+        <p>That&#39;s a wrap.</p>
+<p>Find out more about multi-agent techniques and patterns in the docs:</p>
+<ul>
+<li><a href="https://google.github.io/adk-docs/agents/multi-agents/" target="_blank">Multi-Agent Systems in ADK</a></li>
+<li><a href="https://google.github.io/adk-docs/agents/workflow-agents/" target="_blank">Workflow Agents</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

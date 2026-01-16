@@ -1,0 +1,161 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Lab 6: Full-stack Agent</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid="UA-50147748-15"
+                  id="agents-l6-fullstack"
+                  title="Lab 6: Full-stack Agent"
+                  environment="web"
+                  feedback-link="https://github.com/antonyharfield/codelabs/issues">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <p class="image-container"><img style="width: 624.00px" src="img/8cf5f12cbcf822ba.png"></p>
+<p><strong>Last Updated:</strong> 2025-07-05</p>
+<h2 is-upgraded><strong>What you&#39;ll build</strong></h2>
+<p>In this codelab, you&#39;re going to reuse an example application that contains the frontend and backend for a complete chatbot. You will:</p>
+<ul>
+<li>Download and configure the application</li>
+<li>Understand the components of the frontend and backend, as well as how it uses Agent Development Kit</li>
+<li>Make modifications to the application to build your own complete chatbot</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Zero to App" duration="5">
+        <h2 is-upgraded><strong>Get the example code</strong></h2>
+<p>Download and unzip the example code to your working folder. You should see a <code>l6-fullstack</code> folder - this is your project folder for this codelab.</p>
+<p><a href="https://drive.google.com/file/d/1IwNlqpv65QugqYLHPGywZzqfV7BHh6ij/view?usp=sharing" target="_blank"><paper-button class="colored" raised><iron-icon icon="file-download"></iron-icon>Download example code</paper-button></a></p>
+<aside class="special"><p><strong>Alternatively:</strong> To get the latest version of the example code, download it directly from the <a href="https://github.com/google/adk-samples/tree/main/python/agents/gemini-fullstack" target="_blank">ADK Samples repo</a> on GitHub. You can find it in the <code>adk-samples/python/agents/gemini-fullstack</code></p>
+<p>folder.</p>
+</aside>
+<h2 is-upgraded><strong>Prepare your environment variables</strong></h2>
+<p>Open AI Studio and follow the instructions to <strong>get an API key.</strong></p>
+<p><a href="https://aistudio.google.com" target="_blank"><paper-button class="colored" raised>Google AI Studio</paper-button></a></p>
+<aside class="warning"><p><strong>Caution:</strong> Protect your API Keys like you protect your passwords. You should <strong>never</strong> check your API Key into a source repository, post it online, or share it. If your API Key is exposed then it could be used by others to call Gemini (or use other Google Cloud services) which will be charged to your billing account. </p>
+</aside>
+<p>Our agents will need the API key to use Gemini. Inside your <code>app</code> folder, create a <code>.env</code> file for the environment variables:</p>
+<p><code>app/.env</code></p>
+<pre><code>GOOGLE_GENAI_USE_VERTEXAI=FALSE
+GOOGLE_API_KEY=[YOUR API KEY HERE]</code></pre>
+<p>Copy/paste your API key to replace <strong><code>[YOUR API KEY HERE]</code></strong>.</p>
+<h2 is-upgraded><strong>Install dependencies</strong></h2>
+<p>The backend application is Python (using ADK) and therefore we install dependencies and setup the environment with uv:</p>
+<pre>$ uv sync
+
+Using CPython 3.11.3 interpreter at: /opt/homebrew/opt/python@3.11/bin/python3.11
+Creating virtual environment at: .venv
+Resolved 94 packages in 7ms
+      Built gemini-fullstack @ file:///Users/ant/Dev/codelabs-agents/l6-fullstack
+Prepared 14 packages in 4.67s
+Installed 82 packages in 165ms</pre>
+<p>The frontend is TypeScript (using React) and we can use npm:</p>
+<pre>$ npm --prefix frontend install
+
+added 335 packages, and audited 336 packages in 7s</pre>
+<h2 is-upgraded><strong>Run the app</strong></h2>
+<p>You will need 2 terminal windows, one for the frontend and one for the backend.</p>
+<p>First, start the backend:</p>
+<pre>$ uv run adk api_server app --allow_origins=&#34;*&#34;
+
+INFO:     Started server process [1298]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)</pre>
+<p>Then, in another terminal tab, start the frontend:</p>
+<pre>$ npm --prefix frontend run dev
+
+&gt; frontend@0.0.0 dev
+&gt; vite
+
+  VITE v6.3.4  ready in 1167 ms
+
+  ➜  Local:   http://localhost:5173/app/
+  ➜  Network: http://192.168.1.130:5173/app/
+  ➜  Network: http://192.168.64.1:5173/app/
+  ➜  press h + enter to show help</pre>
+<p>Open your web browser at the given address, e.g. <a href="http://localhost:5173" target="_blank">http://localhost:5173</a> </p>
+<p>Test the application.</p>
+<p class="image-container"><img style="width: 624.00px" src="img/2410d766b984d92a.gif"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Challenge" duration="45">
+        <p>Task: Using what you&#39;ve learnt in earlier workshops, think of an agent that would help you and modify the example to make it a reality.</p>
+<h2 is-upgraded><strong>Hints</strong></h2>
+<h3 is-upgraded><strong>Modifying the UI</strong></h3>
+<p>Take a look at the contents of the <code>frontend</code> folder - it is a regular React app written in TypeScript. If you make changes to the frontend code then the hot-reload means you&#39;ll immediately see the result on save.</p>
+<p>Find the file <code>src/components/WelcomeScreen.tsx</code> and look for the HTML showing the header section of the card  (maybe lines 29 to 36). Make some changes and check you can see the result in the browser.</p>
+<p><code>src/components/WelcomeScreen.tsx</code></p>
+<pre><code>...
+
+        {/* Header section of the card */}
+        &lt;div className=&#34;text-center space-y-4&#34;&gt;
+          &lt;h1 className=&#34;text-4xl font-bold text-white flex items-center justify-center gap-3&#34;&gt;
+            ✨ Recipe Maker 🌮
+          &lt;/h1&gt;
+          &lt;p className=&#34;text-lg text-neutral-300 max-w-md mx-auto&#34;&gt;
+            Enter any dish that you&#39;d like to make!
+          &lt;/p&gt;
+        &lt;/div&gt;
+
+
+...</code></pre>
+<h3 is-upgraded><strong>Modifying the agent</strong></h3>
+<p>Next, open the <code>app</code> folder and you will find <code>agent.py</code>. The backend of the application is simply the ADK, and so you can write any agent or multiagent in the <code>app</code> folder.</p>
+<p>Continuing the theme of a recipe maker, you could try the following agent.</p>
+<p><code>agent.py</code></p>
+<pre><code>from google.adk.agents import Agent
+
+prompt = &#34;&#34;&#34;You are a recipe assistant, helping users create and modify recipes.
+    The user will provide a dish name.
+    You will respond with a recipe that includes ingredients, instructions, and cooking time.
+    If the user asks for modifications, you will adjust the recipe accordingly.
+    Do not answer questions about other topics.&#34;&#34;&#34;
+
+root_agent = Agent(
+    model=&#39;gemini-2.5-flash&#39;,
+    name=&#39;root_agent&#39;,
+    description=&#39;A recipe maker.&#39;,
+    instruction=prompt
+)</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="What Can You Build" duration="0">
+        <p>That&#39;s the end of the workshop. We hope you&#39;ve enjoyed learning about agents and we&#39;re excited to see what you can build today and in the future.</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

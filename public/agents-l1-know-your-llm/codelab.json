@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2025-07-09T05:31:44Z",
+  "id": "agents-l1-know-your-llm",
+  "duration": 70,
+  "title": "Lab 1: Know your LLM",
+  "authors": "Antony Harfield",
+  "summary": "In this codelab, you will try the core features of Gemini, Google's latest generation of LLMs, and you will learn how to call Gemini using the Python SDK.",
+  "source": "1f_R7yeKd1dO4beJ1KJlhCowXWbfKsal2bwfH4OCSevI",
+  "theme": "ai",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "ai"
+  ],
+  "tags": [
+    "agents"
+  ],
+  "feedback": "https://github.com/antonyharfield/codelabs/issues",
+  "ga": "UA-50147748-15",
+  "url": "agents-l1-know-your-llm"
+}

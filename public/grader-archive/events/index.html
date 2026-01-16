@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Events</title>
+    <meta name="description" content="">
+    <meta name="author" content="ink, cookbook, recipes">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <!-- load Ink's css from the cdn -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.ink.sapo.pt/3.1.10/css/ink-flex.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.ink.sapo.pt/3.1.10/css/font-awesome.min.css">
+
+    <!-- load Ink's css for IE8 -->
+    <!--[if lt IE 9 ]>
+    <link rel="stylesheet" href="https://cdn.ink.sapo.pt/3.1.10/css/ink-ie.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <![endif]-->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-42372609-2"></script><script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-42372609-2');
+    </script>
+
+    <!-- test browser flexbox support and load legacy grid if unsupported -->
+    <script type="text/javascript" src="https://cdn.ink.sapo.pt/3.1.10/js/modernizr.js"></script>
+    <script type="text/javascript">
+    Modernizr.load({
+    test: Modernizr.flexbox,
+    nope : 'https://cdn.ink.sapo.pt/3.1.10/css/ink-legacy.min.css'
+    });
+    </script>
+
+    <!-- load Ink's javascript files from the cdn -->
+    <script type="text/javascript" src="https://cdn.ink.sapo.pt/3.1.10/js/holder.js"></script>
+    <script type="text/javascript" src="https://cdn.ink.sapo.pt/3.1.10/js/ink-all.min.js"></script>
+    <script type="text/javascript" src="https://cdn.ink.sapo.pt/3.1.10/js/autoload.js"></script>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/styles/app.css">
+    
+</head>
+
+<body>
+
+<div class="ink-grid">
+
+    <!--[if lte IE 9 ]>
+    <div class="ink-alert basic" role="alert">
+        <button class="ink-dismiss">&times;</button>
+        <p>
+            <strong>You are using an outdated Internet Explorer version.</strong>
+            Please <a href="http://browsehappy.com/">upgrade to a modern browser</a> to improve your web experience.
+        </p>
+    </div>
+    -->
+
+    <style>
+    nav.ink-navigation ul.menu.horizontal li.right {
+        float: right;
+    }
+</style>
+
+<header class="vertical-space">
+    <h1>Grader<small>practice for programmers</small></h1>
+    <nav class="ink-navigation">
+        <ul class="menu horizontal grey">
+            <li class="active"><a href="/events">Events</a></li>
+            <li ><a href="/rankings">Rankings</a></li>
+
+            
+            <li class="right "><a href="/register">Register</a></li>
+                <li class="right "><a href="/login">Login</a></li>
+        </ul>
+    </nav>
+</header> 
+
+
+ 
+
+    <h2>Events</h2>
+
+    <h3>Current &amp; Upcoming</h3>
+
+    <div class="event-grid column-group gutters">
+        
+    </div>
+
+    <h3>Previous</h3>
+
+    <div class="event-grid column-group gutters">
+        <div class="all-33 small-50 tiny-100">
+    <a href="/events/100">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254275 OOP - Labs 1-5 Review 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/99">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254275 OOP - Mini Test 1 (Sec 3 &amp; 4) 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/98">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254275 OOP - Mini Test 1 (Sec 1, 2 &amp; 5) 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/97">
+    <figure class="ink-image">
+        <div class="noimage python">
+                <img class="language" src="/images/languages/python.png"> </div>
+        <figcaption class="over-bottom">
+            Python for IT-2-2562 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/94">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254271 Fun (2562 Sec 1&amp;2) - Mini Test 1 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/92">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254271 Fun (2562 Sec 2) - Arrays 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/91">
+    <figure class="ink-image">
+        <img src="/events/91/image">
+        <figcaption class="over-bottom">
+            CSIT Coding Contest #3 (NU Super Coder) 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/90">
+    <figure class="ink-image">
+        <img src="/events/90/image">
+        <figcaption class="over-bottom">
+            CSIT Coding Contest #3 (CSIT Newbie Coder) 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/86">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254271 Fun (2562) - Midterm 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/85">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254271 Fun (2562 Sec 2) - Loops 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/84">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254271 Fun (2562 Sec 2) - Pre Midterm 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/83">
+    <figure class="ink-image">
+        <div class="noimage swift">
+                <img class="language" src="/images/languages/swift.png"> </div>
+        <figcaption class="over-bottom">
+            273387 MAD 2562 - Mini Test 1 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/82">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254271 Fun (2562 Sec 2) - Weeks 4-5 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/81">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254271 Fun (2562 Sec 2)  - Weeks 1-3 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/79">
+    <figure class="ink-image">
+        <div class="noimage swift">
+                <img class="language" src="/images/languages/swift.png"> </div>
+        <figcaption class="over-bottom">
+            273387 MAD 2562 - Classes 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/78">
+    <figure class="ink-image">
+        <div class="noimage swift">
+                <img class="language" src="/images/languages/swift.png"> </div>
+        <figcaption class="over-bottom">
+            273387 MAD 2562 - Functions 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/77">
+    <figure class="ink-image">
+        <div class="noimage swift">
+                <img class="language" src="/images/languages/swift.png"> </div>
+        <figcaption class="over-bottom">
+            273387 MAD 2562 - Variables, conditions, loops 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/75">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254275 OOP - Mini Test 2 (re-run) 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/74">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254275 OOP - Mini Test 1 (re-run) 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/73">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254275 OOP - Mini Test 2 (Sec 3 &amp; 4) 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/72">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254275 OOP - Mini Test 2 (Sec 1 &amp; 2) 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/71">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254275 OOP - Mini Test 1 (Sec 3 &amp; 4) 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/70">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254275 OOP - Mini Test 1 (Sec 1 &amp; 2) 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/69">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254275 OOP - Practice before Mini Test 1 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/66">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254271 Fundamentals - Mini Test 2 (Sec 3 &amp; 4) 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/65">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254271 Fundamentals - Mini Test 2 (Sec 1 &amp; 2) 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/64">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254271 Fundamentals Programming (Sec 1&amp;2) - Arrays 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/61">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            231322 Java U8 - Lists 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/60">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            231322 Java U7 - Control Flow 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/59">
+    <figure class="ink-image">
+        <img src="/events/59/image">
+        <figcaption class="over-bottom">
+            CSIT Coding Contest #2 (NU Super Coder) 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/58">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254271 Fundamentals Programming - while (sc.hasNext()) 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/57">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254271 Fundamentals Programming - Midterm 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/56">
+    <figure class="ink-image">
+        <img src="/events/56/image">
+        <figcaption class="over-bottom">
+            CSIT Coding Contest #2 (CSIT Newbie Coder) 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/50">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254271 Fundamentals - Mini Test 1 (Sec 1 &amp; 2) 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/48">
+    <figure class="ink-image">
+        <div class="noimage swift">
+                <img class="language" src="/images/languages/swift.png"> </div>
+        <figcaption class="over-bottom">
+            273387 Swift - Mini Test 1 (2561/1) 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/47">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            231322 Java U6 - Streams 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/46">
+    <figure class="ink-image">
+        <div class="noimage swift">
+                <img class="language" src="/images/languages/swift.png"> </div>
+        <figcaption class="over-bottom">
+            273387 Swift - Classes 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/45">
+    <figure class="ink-image">
+        <div class="noimage swift">
+                <img class="language" src="/images/languages/swift.png"> </div>
+        <figcaption class="over-bottom">
+            273387 Swift - Functions 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/44">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            231322 Java U4 - Methods 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/43">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            231322 Java U3 - Types &amp; Values 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/42">
+    <figure class="ink-image">
+        <div class="noimage swift">
+                <img class="language" src="/images/languages/swift.png"> </div>
+        <figcaption class="over-bottom">
+            273387 Swift - Variables, conditions, loops 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/41">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254271 Fundamentals - Weeks 4-5 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/40">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            231322 Java U2 - Self-Sufficiency 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/39">
+    <figure class="ink-image">
+        <div class="noimage python">
+                <img class="language" src="/images/languages/python.png"> </div>
+        <figcaption class="over-bottom">
+            254251	Data Structure 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/38">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254271 Fundamentals 2561 - Weeks 1-3 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/37">
+    <figure class="ink-image">
+        <div class="noimage ">
+                 </div>
+        <figcaption class="over-bottom">
+            254383	Algorithm Design and Analysis 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/35">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            231322 Java U1 - Mastering the Basics 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/34">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254275 OOP (Summer) - Mini Test 1B 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/33">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254275 OOP (Summer) - Mini Test 1 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/32">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254275 OOP - Loops and conditionals 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/29">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254275 OOP - Arrays (Extra Lab B) 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/28">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254275 OOP - Mini Test 1 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/27">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            BC - Java Contest Warmup 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/25">
+    <figure class="ink-image">
+        <div class="noimage kotlin">
+                <img class="language" src="/images/languages/kotlin.png"> </div>
+        <figcaption class="over-bottom">
+            273387 Kotlin - Functions (part 2) 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/24">
+    <figure class="ink-image">
+        <div class="noimage kotlin">
+                <img class="language" src="/images/languages/kotlin.png"> </div>
+        <figcaption class="over-bottom">
+            273387 Kotlin - Functions (part 1) 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/23">
+    <figure class="ink-image">
+        <div class="noimage kotlin">
+                <img class="language" src="/images/languages/kotlin.png"> </div>
+        <figcaption class="over-bottom">
+            273387 Kotlin - Language basics 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/22">
+    <figure class="ink-image">
+        <div class="noimage swift">
+                <img class="language" src="/images/languages/swift.png"> </div>
+        <figcaption class="over-bottom">
+            273387 Swift - Mini Test 3 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/21">
+    <figure class="ink-image">
+        <img src="/events/21/image">
+        <figcaption class="over-bottom">
+            CSIT Coding Contest 2017 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/18">
+    <figure class="ink-image">
+        <img src="/events/18/image">
+        <figcaption class="over-bottom">
+            Teach me Kotlin! <img class="language" src="/images/languages/kotlin.png">
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/17">
+    <figure class="ink-image">
+        <img src="/events/17/image">
+        <figcaption class="over-bottom">
+            CSIT Coding Contest - PRACTICE 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/12">
+    <figure class="ink-image">
+        <div class="noimage java">
+                <img class="language" src="/images/languages/java.png"> </div>
+        <figcaption class="over-bottom">
+            254271 Fundamentals - CS Practice 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/10">
+    <figure class="ink-image">
+        <div class="noimage swift">
+                <img class="language" src="/images/languages/swift.png"> </div>
+        <figcaption class="over-bottom">
+            273387 Swift - Classes 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/9">
+    <figure class="ink-image">
+        <div class="noimage swift">
+                <img class="language" src="/images/languages/swift.png"> </div>
+        <figcaption class="over-bottom">
+            273387 Swift - Mini Test 2 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/6">
+    <figure class="ink-image">
+        <div class="noimage swift">
+                <img class="language" src="/images/languages/swift.png"> </div>
+        <figcaption class="over-bottom">
+            273387 Swift - Mini Test 1 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/4">
+    <figure class="ink-image">
+        <div class="noimage swift">
+                <img class="language" src="/images/languages/swift.png"> </div>
+        <figcaption class="over-bottom">
+            273387 Swift - Functions 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+<div class="all-33 small-50 tiny-100">
+    <a href="/events/2">
+    <figure class="ink-image">
+        <div class="noimage swift">
+                <img class="language" src="/images/languages/swift.png"> </div>
+        <figcaption class="over-bottom">
+            273387 Swift - Variables, conditions, loops 
+        </figcaption>
+    </figure>
+    </a>
+</div>
+    </div>
+
+    
+</div>
+
+<footer class="clearfix">
+    <div class="ink-grid">
+        <ul class="unstyled inline half-vertical-space">
+            <li><a href="/about">About</a></li>
+            <li><a href="https://github.com/antonyharfield/grader/">Github</a></li>
+        </ul>
+        <p class="note">Made in Phitsanulok ❤</p>
+    </div>
+</footer>
+
+</body>
+</html>

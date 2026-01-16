@@ -1,0 +1,403 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Lab 3: Agent Development Kit</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid="UA-50147748-15"
+                  id="agents-l3-adk"
+                  title="Lab 3: Agent Development Kit"
+                  environment="web"
+                  feedback-link="https://github.com/antonyharfield/codelabs/issues">
+    
+      <google-codelab-step label="Introduction" duration="0">
+        <p class="image-container"><img style="width: 500.00px" src="img/54c2efd55ac83464.png"></p>
+<p><strong>Last Updated:</strong> 2025-06-27</p>
+<h2 is-upgraded><strong>What is the Agent Development Kit?</strong></h2>
+<p>Agent Development Kit (ADK) is a flexible and modular framework for <strong>developing and deploying AI agents</strong>. While optimized for Gemini and the Google ecosystem, ADK is <strong>model-agnostic</strong>, <strong>deployment-agnostic</strong>, and is <strong>built for compatibility</strong> with other frameworks. ADK was designed to make agent development feel more like software development, to make it easier for developers to create, deploy, and orchestrate agentic architectures that range from simple tasks to complex workflows.</p>
+<h2 is-upgraded><strong>What you&#39;ll build</strong></h2>
+<p>In this codelab, you&#39;re going to build an agent. Your agent will:</p>
+<ul>
+<li>Use prompting to specify the behaviour of the agent.</li>
+<li>Use tools to call code functions</li>
+</ul>
+<p class="image-container"><img style="width: 624.00px" src="img/879fea9080a4094a.png"></p>
+<h2 class="checklist" is-upgraded><strong>What you&#39;ll learn</strong></h2>
+<ul class="checklist">
+<li>How to setup the ADK in Python</li>
+<li>How to build a simple &#34;hello world&#34; agent</li>
+<li>How to use function calling in an agent</li>
+</ul>
+<h2 is-upgraded><strong>What you&#39;ll need</strong></h2>
+<ul>
+<li>A recent version of <a href="https://www.python.org/downloads/" target="_blank">Python</a></li>
+<li>An editor such as <a href="https://code.visualstudio.com" target="_blank">Visual Studio Code</a>.</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Getting set up" duration="5">
+        <h2 is-upgraded><strong>Install uv</strong></h2>
+<p>What is uv? It is a dependency manager and virtual environment manager for Python. It&#39;s written in rust and it&#39;s fast!</p>
+<p>To install:</p>
+<pre>$ powershell -ExecutionPolicy ByPass -c &#34;irm https://astral.sh/uv/install.ps1 | iex&#34;</pre>
+<p>Or download the binaries from <a href="https://github.com/astral-sh/uv/releases" target="_blank">uv&#39;s GitHub releases page</a>.</p>
+<p>More information on <a href="https://docs.astral.sh/uv/getting-started/installation/" target="_blank">installation</a>.</p>
+<h2 is-upgraded><strong>Create a project with uv</strong></h2>
+<p>First create a folder for this workshop agents-workshop.</p>
+<p>Open VS Code, and open the agents-workshop folder.</p>
+<p>Open the terminal and run</p>
+<pre>$ uv init l3-adk</pre>
+<p>You should see some files created in a folder named l3-adk.</p>
+<h2 is-upgraded><strong>Test our project</strong></h2>
+<p>In the terminal, run:</p>
+<pre>$ cd l3-adk
+$ uv run main.py
+Hello from l3-adk!</pre>
+<p>For this and the remaining steps of the lab, you will be working inside the <code>l3-adk</code> folder - we will call this <strong>the project folder</strong>.</p>
+<h2 is-upgraded><strong>Prepare your API key</strong></h2>
+<p>Open AI Studio and follow the instructions to <strong>get an API key.</strong></p>
+<p><a href="https://aistudio.google.com" target="_blank"><paper-button class="colored" raised>Google AI Studio</paper-button></a></p>
+<aside class="warning"><p><strong>Caution:</strong> Protect your API Keys like you protect your passwords. You should <strong>never</strong> check your API Key into a source repository, post it online, or share it. If your API Key is exposed then it could be used by others to call Gemini (or use other Google Cloud services) which will be charged to your billing account. </p>
+</aside>
+<p>Our agents will need the API key to use Gemini. Inside your project folder, create a <code>.env</code> file for the environment variables:</p>
+<p><code>.env</code></p>
+<pre><code>GOOGLE_GENAI_USE_VERTEXAI=FALSE
+GOOGLE_API_KEY=[YOUR API KEY HERE]</code></pre>
+<p>Copy/paste your API key to replace <strong><code>[YOUR API KEY HERE]</code></strong>.</p>
+<h2 is-upgraded><strong>Ready</strong></h2>
+<p>You have prepared your project folder ready for creating agents.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Create your first agent" duration="10">
+        <p>Add the ADK to your project.</p>
+<pre>$ uv add google-adk</pre>
+<p>Create a new subfolder inside your project folder with the name of your agent, e.g. <code>messi-agent</code>.</p>
+<pre>$ mkdir messi-agent</pre>
+<p>Create a file named <code>messi-agent/agent.py</code> in your project and copy/paste the following contents:</p>
+<p><code>messi-agent/agent.py</code></p>
+<pre><code>from google.adk.agents import Agent
+
+prompt = &#34;&#34;&#34;You are Lionel Messi, the greatest football player 
+    of all time. Answer user questions about football to the best
+    of your knowledge. Do not answer questions about other topics.&#34;&#34;&#34;
+
+root_agent = Agent(
+    model=&#39;gemini-2.0-flash-001&#39;,
+    name=&#39;root_agent&#39;,
+    description=&#39;A helpful assistant for questions about football.&#39;,
+    instruction=prompt
+)</code></pre>
+<p>Create an init file in the same folder and copy/paste the following (note the filename has 2 underscores before init and 2 after):</p>
+<p><code>messi-agent/__init__.py</code></p>
+<pre><code>from . import agent</code></pre>
+<h2 is-upgraded><strong>Run the agent (CLI)</strong></h2>
+<p>It is time to test your agent.</p>
+<p>Back in the Terminal, start the ADK with the command <code>adk run [YOUR AGENT NAME]</code>:</p>
+<pre>$ uv run adk run messi-agent
+
+Running agent root_agent, type exit to exit.
+[user]: Who are you?
+[root_agent]: I am Lionel Messi, the greatest football player of all time. I am here to answer your questions about football.
+
+[user]: How many times have Liverpool won the league?
+[root_agent]: Liverpool have won the English league title 19 times.
+
+[user]: Who do you play for?
+[root_agent]: I currently play for Inter Miami CF.
+
+[user]: exit</pre>
+<h2 is-upgraded><strong>Open the web-based UI</strong></h2>
+<p>The ADK offers a richer way to interact, test and inspect your agents, through a web UI using the command <code>adk run web</code>.</p>
+<pre>$ uv run adk web
+
+INFO:     Started server process [28327]
+INFO:     Waiting for application startup.
+
++-----------------------------------------------------------------------------+
+| ADK Web Server started                                                      |
+|                                                                             |
+| For local testing, access at http://localhost:8000.                         |
++-----------------------------------------------------------------------------+
+
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)</pre>
+<p>Open your web browser at the given address, e.g. <a href="http://127.0.0.1:8000" target="_blank">http://127.0.0.1:8000</a> </p>
+<h2 is-upgraded><strong>Example prompts to try</strong></h2>
+<ul>
+<li>Who are you?</li>
+<li>Which team do you play for?</li>
+<li>What languages do you speak?</li>
+<li>What is the capital of Thailand?</li>
+<li>Which team has the largest stadium in Thailand?</li>
+<li>How do you say football in Thai?</li>
+<li>How do you say noodles in Thai?</li>
+<li>ลิเวอร์พูลได้แชมป์ลีกกี่ครั้งแล้ว?</li>
+<li>ทีมไหนได้แชมป์ไทยลีกในรอบ 5 ปีที่ผ่านมา?</li>
+<li>ปี2024ใครได้แชมป์ไทยลีก1?</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Exploring the UI" duration="5">
+        <h2 is-upgraded><strong>Reloading</strong></h2>
+<p>If you make any changes to your code then you will need to restart the ADK. Ctrl-c will stop the ADK and then run <code>adk run web</code> again.</p>
+<h2 is-upgraded><strong>Debugging requests and responses</strong></h2>
+<p>The web UI provides tools for inspecting agents.</p>
+<p class="image-container"><img style="width: 386.20px" src="img/c8623e4ea4f1071a.png"></p>
+<p>Find one of the events from your previous conversation and:</p>
+<ul>
+<li>What was the complete prompt that was sent to the LLM?</li>
+<li>How many tokens were used in the request to the LLM?</li>
+</ul>
+<h2 is-upgraded><strong>Adding agents</strong></h2>
+<p>The web-based UI will load all the agents in your project and gives you a drop-down box to select an agent.</p>
+<p class="image-container"><img style="width: 203.58px" src="img/8cc182bb1f9d15ce.png"></p>
+<p>Try to create another agent:</p>
+<ol type="1" start="1">
+<li>Repeat the instructions in the previous task to create a new agent (with a different name).</li>
+<li>Restart the ADK.</li>
+<li>Select and test your new agent</li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Agents with grounding in search" duration="5">
+        <p>Remember when you asked your first agent &#34;What team won the Thai League 1 in 2024?&#34;, it didn&#39;t know the answer. Why was that?</p>
+<p>Reasons:</p>
+<ol type="1" start="1">
+<li>Fixed Training Data Cutoff:</li>
+</ol>
+<ul>
+<li>Large Language Models (LLMs) like Gemini are trained on vast datasets of text and code. This training process is computationally intensive and takes a significant amount of time.</li>
+<li>Once trained, the model&#39;s knowledge base is essentially &#34;frozen&#34; at the point of its last training data update. It doesn&#39;t continuously learn in real-time from the internet or current events unless explicitly designed with a grounding mechanism.</li>
+<li>If the Thai League 1 season concluded after training data cutoff then the model would not have any knowledge of the results at the end of the season.</li>
+</ul>
+<ol type="1" start="2">
+<li>No Real-time Information Retrieval (Grounding):</li>
+</ol>
+<ul>
+<li>&#34;Grounding&#34; refers to the ability of an AI model to connect its internal knowledge with external, real-world information sources, typically through web searches or APIs.</li>
+<li>Without grounding, Gemini cannot perform a live search: It cannot go to a sports website, Wikipedia, or news outlet to look up the latest Thai League 1 results.</li>
+</ul>
+<h2 is-upgraded><strong>The Google Search tool</strong></h2>
+<p>Gemini and ADK make it very easy to add grounding. Edit your agent, importing and adding the Google Search tool:</p>
+<p><code>messi-agent/agent.py</code></p>
+<pre><code>from google.adk.agents import Agent
+from google.adk.tools import google_search
+
+prompt = &#34;&#34;&#34;You are Lionel Messi, the greatest football player 
+    of all time. Answer user questions about football to the best
+    of your knowledge. Do not answer questions about other topics.&#34;&#34;&#34;
+
+root_agent = Agent(
+    model=&#39;gemini-2.0-flash-001&#39;,
+    name=&#39;root_agent&#39;,
+    description=&#39;A helpful assistant for questions about football.&#39;,
+    instruction=prompt,
+    tools=[google_search]
+)</code></pre>
+<p>Reload the ADK and try asking your agent who won the league again.</p>
+<p class="image-container"><img style="width: 624.00px" src="img/e3c95e8a4cae14ce.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Agents with function calling" duration="10">
+        <p>In the previous task, Google Search was a tool that we passed to the LLM. We can define our own tools, and this approach is called &#34;tool calling&#34; or &#34;function calling&#34;. Here&#39;s how it works:</p>
+<ul>
+<li>With each request, you provide the LLM with a list of available tools and their descriptions.</li>
+<li>The LLM uses these descriptions to decide which tool (if any) can help fulfill the request.</li>
+<li>Instead of running the tool itself, the LLM generates a structured output that specifies which tool it wants to use and what information to pass to it.</li>
+<li>Your application code receives this output, executes the actual tool, and then calls the LLM a second time, providing the tool&#39;s result as part of the new request.</li>
+<li>The LLM then uses the tool&#39;s output to generate its final response to you.</li>
+</ul>
+<h2 is-upgraded><strong>Simple example</strong></h2>
+<p>Create a new agent, with the same <code>agent.py</code> and <code>__init__.py</code> files. Copy/paste the code below into <code>agent.py</code>.</p>
+<p><code>secret-agent/agent.py</code></p>
+<pre><code>from google.adk.agents import Agent
+
+def verify_secret_passcode(secret: str) -&gt; bool:
+    &#34;&#34;&#34;Given a secret passcode, verify if it matches the expected value.&#34;&#34;&#34;
+    return secret == &#39;1984&#39;
+
+root_agent = Agent(
+    model=&#39;gemini-2.0-flash&#39;,
+    name=&#39;root_agent&#39;,
+    description=&#39;A helpful assistant for user questions.&#39;,
+    instruction=&#39;Answer user questions to the best of your knowledge&#39;,
+    tools=[verify_secret_passcode]
+)</code></pre>
+<p>Try the agent, asking it questions about the secret passcode (e.g. &#34;is 1234 the correct passcode?&#34;).</p>
+<aside class="special"><p><strong>TIP:</strong> Documented functions are crucial for effective function calling with large language models (LLMs) because they provide the necessary information for the model to understand how to use a function, what it does, and what parameters it requires. Clear and comprehensive documentation enables the LLM to accurately identify when to call a function, extract the correct arguments, and generate a structured output that can be used to execute the function. </p>
+</aside>
+<h2 is-upgraded><strong>Time and weather example</strong></h2>
+<p>The implementation of functions is decided by the developer. You can get data from APIs or databases, perform complex calculations or even start other processes running. Next, we will explore an example with 2 functions. </p>
+<p>Create a new agent for <code>weather-time-agent</code>.</p>
+<p><code>weather-time-agent/agent.py</code></p>
+<pre><code>import datetime
+from zoneinfo import ZoneInfo
+from google.adk.agents import Agent
+
+def get_weather(city: str) -&gt; dict:
+    &#34;&#34;&#34;Retrieves the current weather report for a specified city.
+
+    Args:
+        city (str): The name of the city for which to retrieve the weather report.
+
+    Returns:
+        dict: status and report or error message.
+    &#34;&#34;&#34;
+    if city.lower() == &#34;phitsanulok&#34;:
+        return {
+            &#34;status&#34;: &#34;success&#34;,
+            &#34;report&#34;: &#34;The weather in Phitsanulok is sunny with a temperature of 28 degrees Celsius&#34;
+        }
+    elif city.lower() == &#34;chiang mai&#34;:
+        return {
+            &#34;status&#34;: &#34;success&#34;,
+            &#34;report&#34;: &#34;The weather in Chiang Mai is cloudy with a temperature of 24 degrees Celsius&#34;
+        }
+    else:
+        return {
+            &#34;status&#34;: &#34;error&#34;,
+            &#34;error_message&#34;: f&#34;Weather information for &#39;{city}&#39; is not available.&#34;,
+        }
+
+
+def get_current_time(city: str) -&gt; dict:
+    &#34;&#34;&#34;Returns the current time in a specified city.
+
+    Args:
+        city (str): The name of the city for which to retrieve the current time.
+
+    Returns:
+        dict: status and result or error message.
+    &#34;&#34;&#34;
+    if city.lower() == &#34;phitsanulok&#34;:
+        tz_identifier = &#34;Asia/Bangkok&#34;
+    elif city.lower() == &#34;london&#34;:
+        tz_identifier = &#34;Europe/London&#34;
+    else:
+        return {
+            &#34;status&#34;: &#34;error&#34;,
+            &#34;error_message&#34;: f&#34;Sorry, I don&#39;t have timezone information for {city}.&#34;
+        }
+
+    tz = ZoneInfo(tz_identifier)
+    now = datetime.datetime.now(tz)
+    result = (
+        f&#39;The current time in {city} is {now.strftime(&#34;%Y-%m-%d %H:%M:%S %Z%z&#34;)}&#39;
+    )
+    return {&#34;status&#34;: &#34;success&#34;, &#34;result&#34;: result}
+
+
+root_agent = Agent(
+    name=&#34;weather_time_agent&#34;,
+    model=&#34;gemini-2.0-flash&#34;,
+    description=(
+        &#34;Agent to answer questions about the time and weather in a city.&#34;
+    ),
+    instruction=(
+        &#34;You are a helpful agent who can answer user questions about the time and weather in a city.&#34;
+    ),
+    tools=[get_weather, get_current_time],
+)
+
+</code></pre>
+<h2 is-upgraded><strong>Infinite possibilities</strong></h2>
+<p>The use cases for function calling typically fall into the following themes:</p>
+<ol type="1" start="1">
+<li>Giving an LLM access to information it wasn&#39;t trained with</li>
+</ol>
+<ul>
+<li>Frequently changing information, such as a stock price or the current weather.</li>
+<li>Information specific to your app domain, such as product information or user profiles.</li>
+</ul>
+<ol type="1" start="2">
+<li>Introducing a degree of determinism into an LLM workflow</li>
+</ol>
+<ul>
+<li>Performing calculations that the LLM cannot reliably complete itself.</li>
+<li>Forcing an LLM to generate verbatim text under certain circumstances, such as when responding to a question about an app&#39;s terms of service.</li>
+</ul>
+<ol type="1" start="3">
+<li>Performing an action when initiated by an LLM</li>
+</ol>
+<ul>
+<li>Turning on and off lights in an LLM-powered home assistant</li>
+<li>Reserving table reservations in an LLM-powered restaurant agent</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Challenges" duration="30">
+        <p>Test out your ADK by taking on the following challenges</p>
+<h2 is-upgraded><strong>Fibonacci</strong></h2>
+<p>If you ask Gemini 2.0 (without any tools) &#34;What is the 77th number in the Fibonacci sequence, assuming the sequence starts with F(0)=0 and F(1)=1?&#34; then it will give you an answer that is wrong! The correct answer is 3,416,454,622,906,707.</p>
+<h3 is-upgraded><strong>Exercise 1</strong></h3>
+<p>Write an agent that uses function calling to a fibonacci tool to correctly answer  the question.</p>
+<h3 is-upgraded><strong>Exercise 2</strong></h3>
+<p>Write an agent that uses code execution (to generate a python function) to correctly answer  the question.</p>
+<h2 is-upgraded><strong>Guess the number game</strong></h2>
+<h3 is-upgraded><strong>Exercise 3</strong></h3>
+<p>Write an agent that uses prompting and function calling to play a guess the number game. The number can be a fixed number between 1 and 100. The agent should reply &#34;Too low&#34;, &#34;Too high&#34; or &#34;You guessed correctly&#34;.</p>
+<h3 is-upgraded><strong>Exercise 4 (hard)</strong></h3>
+<p>Create a &#34;Guess the Number&#34; agent that uses session state to remember a secret number across multiple turns. The agent thinks of a random number between 1 and 100. The player has 10 chances to guess the number. After each guess, the computer tells the player if it was too high or too low.</p>
+<p>Hints:</p>
+<ul>
+<li>Search how to use <code>ToolContext</code> and session state.</li>
+</ul>
+<h2 is-upgraded><strong>Weather</strong></h2>
+<h3 is-upgraded><strong>Exercise 5</strong></h3>
+<p>Can you modify your weather agent to use &#34;grounding in Google Search&#34; instead of the weather tool to answer questions about the current weather?</p>
+<h3 is-upgraded><strong>Exercise 6 (hard)</strong></h3>
+<p>Write a new weather agent with function calling that obtains the weather from a live weather API.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Super work" duration="0">
+        <p>Congratulations, you&#39;ve completed this lab and are on your way to becoming an expert in Agent Development Kit! </p>
+<h2 is-upgraded><strong>Further reading</strong></h2>
+<ul>
+<li><a href="https://codelabs.developers.google.com/your-first-agent-with-adk?hl=th" target="_blank">จากต้นแบบไปจนถึงตัวแทนด้วย ADK</a></li>
+<li><a href="https://google.github.io/adk-docs/" target="_blank">Agent Development Kit docs</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
